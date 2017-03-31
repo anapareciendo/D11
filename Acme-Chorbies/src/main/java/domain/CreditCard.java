@@ -3,17 +3,20 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Embeddable
 @Access(AccessType.PROPERTY)
 public class CreditCard {
 
 	private String holder;
-	private String brand;
+	private Brand brand;
 	private String number;
 	private int expirationMonth;
 	private int expirationYear;
@@ -34,6 +37,7 @@ public class CreditCard {
 //	}
 	
 	@NotBlank
+	@SafeHtml
 	public String getHolder() {
 		return holder;
 	}
@@ -41,15 +45,17 @@ public class CreditCard {
 		this.holder = holder;
 	}
 	
-	@NotBlank
-	public String getBrand() {
+	@Valid
+	@NotNull
+	public Brand getBrand() {
 		return brand;
 	}
-	public void setBrand(String brand) {
+	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
 	
 	@CreditCardNumber
+	@SafeHtml
 	public String getNumber() {
 		return number;
 	}

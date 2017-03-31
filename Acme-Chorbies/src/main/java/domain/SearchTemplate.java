@@ -4,7 +4,10 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -12,7 +15,7 @@ public class SearchTemplate extends DomainEntity{
 	
 	//----------------------Attributes-------------------------
 	private KindRelationship kindRelationship;
-	private int aproximateAge;
+	private Integer aproximateAge;
 	private Genre genre;
 	private String keyword;
 	private String country;
@@ -27,10 +30,11 @@ public class SearchTemplate extends DomainEntity{
 		this.kindRelationship = kindRelationship;
 	}
 	
-	public int getAproximateAge() {
+	@Min(18)
+	public Integer getAproximateAge() {
 		return aproximateAge;
 	}
-	public void setAproximateAge(int aproximateAge) {
+	public void setAproximateAge(Integer aproximateAge) {
 		this.aproximateAge = aproximateAge;
 	}
 	
@@ -42,18 +46,27 @@ public class SearchTemplate extends DomainEntity{
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
+	
+	@SafeHtml
+	@NotNull
 	public String getKeyword() {
 		return keyword;
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
+	@SafeHtml
+	@NotNull
 	public String getCountry() {
 		return country;
 	}
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	@SafeHtml
+	@NotNull
 	public String getCity() {
 		return city;
 	}

@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public abstract class Actor{
+public abstract class Actor extends DomainEntity{
 
 	//	-------------------Attributes----------------------------------------
 	private String	name;

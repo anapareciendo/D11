@@ -59,6 +59,7 @@ public class Chorbi extends Actor{
 	}
 	
 	@NotBlank
+	@SafeHtml
 	public String getCountry() {
 		return country;
 	}
@@ -67,6 +68,7 @@ public class Chorbi extends Actor{
 	}
 	
 	@NotBlank
+	@SafeHtml
 	public String getCity() {
 		return city;
 	}
