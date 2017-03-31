@@ -5,8 +5,10 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.SafeHtml;
@@ -40,4 +42,28 @@ public class Likes extends DomainEntity{
 	}
 		
 	//---------------------Relationships--------------------------
+	private Chorbi liker;
+	private Chorbi liked;
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	public Chorbi getLiker() {
+		return liker;
+	}
+	public void setLiker(Chorbi liker) {
+		this.liker = liker;
+	}
+	
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	public Chorbi getLiked() {
+		return liked;
+	}
+	public void setLiked(Chorbi liked) {
+		this.liked = liked;
+	}
+	
+	
 }

@@ -1,7 +1,9 @@
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -18,8 +20,8 @@ public class Chorbi extends Actor{
 	private KindRelationship kindRelationship;
 	private Date birthDate;
 	private Genre genre;
-	private String country;
-	private String city;
+	private CreditCard creditCard;
+	private Coordinates coordinates;
 	
 	@NotBlank
 	@SafeHtml
@@ -58,23 +60,74 @@ public class Chorbi extends Actor{
 		this.genre = genre;
 	}
 	
-	@NotBlank
-	@SafeHtml
-	public String getCountry() {
-		return country;
+	@NotNull
+	@Valid
+	public CreditCard getCreditCard() {
+		return creditCard;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
 	}
 	
-	@NotBlank
-	@SafeHtml
-	public String getCity() {
-		return city;
+	@NotNull
+	@Valid
+	public Coordinates getCoordinates() {
+		return coordinates;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
+
+
+
+	//---------------------Relationships--------------------------
+	private Collection<Chirp> sendChirps;
+	private Collection<Chirp> receivedChirps;
+	private Collection<Likes> makeLikes;
+	private Collection<Likes> receivedLikes;
+
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="sender")
+	public Collection<Chirp> getSendChirps() {
+		return sendChirps;
+	}
+	public void setSendChirps(Collection<Chirp> sendChirps) {
+		this.sendChirps = sendChirps;
+	}
+	
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="recipient")
+	public Collection<Chirp> getReceivedChirps() {
+		return receivedChirps;
+	}
+	public void setReceivedChirps(Collection<Chirp> receivedChirps) {
+		this.receivedChirps = receivedChirps;
+	}
+	
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="liker")
+	public Collection<Likes> getMakeLikes() {
+		return makeLikes;
+	}
+	public void setMakeLikes(Collection<Likes> makeLikes) {
+		this.makeLikes = makeLikes;
+	}
+	
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="liked")
+	public Collection<Likes> getReceivedLikes() {
+		return receivedLikes;
+	}
+	public void setReceivedLikes(Collection<Likes> receivedLikes) {
+		this.receivedLikes = receivedLikes;
+	}
+	
+	
+	
 	
 	
 }

@@ -13,6 +13,7 @@ public class Banner extends DomainEntity {
 
 	//----------------------Attributes-------------------------
 	private String	logo;
+	private boolean display;
 
 
 	@SafeHtml
@@ -23,5 +24,15 @@ public class Banner extends DomainEntity {
 	public void setLogo(final String logo) {
 		this.logo = logo;
 	}
+	
+	
+	public boolean isDisplay() {
+		return display;
+	}
+	public void setDisplay(boolean display) {
+		this.display = display;
+	}
+	
+	
 
 }
