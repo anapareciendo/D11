@@ -2,7 +2,8 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -11,10 +12,11 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 
-@Embeddable
+@Entity
 @Access(AccessType.PROPERTY)
-public class CreditCard {
+public class CreditCard extends DomainEntity{
 
+//-------------Attributes----------------------
 	private String holder;
 	private Brand brand;
 	private String number;
@@ -22,19 +24,6 @@ public class CreditCard {
 	private int expirationYear;
 	private int cvv;
 	
-	public CreditCard(){
-		super();
-	}
-	
-//	public CreditCard(String holder, String brand, String number,
-//			int expirationMonth, int expirationYear, int cvv) {
-//		this.holder = holder;
-//		this.brand = brand;
-//		this.number = number;
-//		this.expirationMonth = expirationMonth;
-//		this.expirationYear = expirationYear;
-//		this.cvv = cvv;
-//	}
 	
 	@NotBlank
 	@SafeHtml
@@ -84,6 +73,19 @@ public class CreditCard {
 	}
 	public void setCvv(int cvv) {
 		this.cvv = cvv;
+	}
+	
+	//-----------------------Relationships--------------------------
+	private Chorbi chorbi;
+
+	@Valid
+	@NotNull
+	@OneToOne(optional=false)
+	public Chorbi getChorbi() {
+		return chorbi;
+	}
+	public void setChorbi(Chorbi chorbi) {
+		this.chorbi = chorbi;
 	}
 	
 	

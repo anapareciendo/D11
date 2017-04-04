@@ -27,9 +27,15 @@ public class Chorbi extends Actor{
 	private KindRelationship kindRelationship;
 	private Date birthDate;
 	private Genre genre;
-	private CreditCard creditCard;
 	private Coordinates coordinates;
+	private boolean banned;
 	
+	public boolean getBanned() {
+		return banned;
+	}
+	public void setBanned(boolean banned) {
+		this.banned = banned;
+	}
 	@NotBlank
 	@URL
 	@SafeHtml
@@ -68,14 +74,6 @@ public class Chorbi extends Actor{
 		this.genre = genre;
 	}
 	
-	@Valid
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
-	
 	@NotNull
 	@Valid
 	public Coordinates getCoordinates() {
@@ -94,8 +92,16 @@ public class Chorbi extends Actor{
 	private Collection<Likes> makeLikes;
 	private Collection<Likes> receivedLikes;
 	private SearchTemplate searchTemplate;
+	private CreditCard creditCard;
 	
-	
+	@Valid
+	@OneToOne(optional=true, mappedBy="chorbi")
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 	@Valid
 	@OneToOne(optional=true)
 	public SearchTemplate getSearchTemplate() {

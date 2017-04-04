@@ -134,6 +134,7 @@ public class ChorbiService {
 			result.setPhone(actor.getPhone());
 			result.setPicture(actor.getPicture());
 			result.setBirthDate(actor.getBirthDate());
+			
 			switch(actor.getGenre()){
 			case 0: result.setGenre(Genre.WOMEN);
 			break;

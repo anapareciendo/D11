@@ -66,34 +66,6 @@
 		</property>
 	</bean>
 	
-	<!-- Credit Card -->
-	<bean id="creditCard1" class="domain.CreditCard">
-		<property name="holder" value="Roberto Pardo" />
-		<property name="brand" value="MASTERCARD" />
-		<property name="number" value="5545699813281813" />
-		<property name="expirationMonth" value="06" />
-		<property name="expirationYear" value="19" />
-		<property name="cvv" value="305" />
-	</bean>
-	
-	<bean id="creditCard2" class="domain.CreditCard">
-		<property name="holder" value="Juan Diaz" />
-		<property name="brand" value="MASTERCARD" />
-		<property name="number" value="6011238943402529" />
-		<property name="expirationMonth" value="12" />
-		<property name="expirationYear" value="16" />
-		<property name="cvv" value="408" />
-	</bean>
-	
-		<bean id="creditCard3" class="domain.CreditCard">
-		<property name="holder" value="Ana Rosa" />
-		<property name="brand" value="VISA" />
-		<property name="number" value="4716186058170469" />
-		<property name="expirationMonth" value="11" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="200" />
-	</bean>
-	
 	<!-- Coordinates -->
 	
 	<bean id="coordinates1" class="domain.Coordinates">
@@ -130,6 +102,7 @@
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="1991/12/5"/>
 		<property name="genre" value="MAN"/>
+		<property name="banned" value="false"/>
 		<property name="creditCard" ref="creditCard1"/>
 		<property name="coordinates" ref="coordinates1"/>
 		<property name="sendChirps">
@@ -156,6 +129,7 @@
 		<property name="kindRelationship" value="ACTIVITIES" />
 		<property name="birthDate" value="1998/10/9"/>
 		<property name="genre" value="OTHER"/>
+		<property name="banned" value="false"/>
 		<property name="creditCard" ref="creditCard2"/>
 		<property name="coordinates" ref="coordinates2"/>
 		<property name="sendChirps">
@@ -182,6 +156,7 @@
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="1989/11/7"/>
 		<property name="genre" value="WOMEN"/>
+		<property name="banned" value="true"/>
 		<property name="creditCard" ref="creditCard3"/>
 		<property name="coordinates" ref="coordinates1"/>
 		<property name="sendChirps">
@@ -281,6 +256,37 @@
 		<property name="results">
 			<list></list>
 		</property>
+	</bean>
+	
+	<!-- Credit Card -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holder" value="Roberto Pardo" />
+		<property name="brand" value="MASTERCARD" />
+		<property name="number" value="5545699813281813" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="19" />
+		<property name="cvv" value="305" />
+		<property name="chorbi" ref="chorbi1"/>
+	</bean>
+	
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holder" value="Juan Diaz" />
+		<property name="brand" value="MASTERCARD" />
+		<property name="number" value="6011238943402529" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="16" />
+		<property name="cvv" value="408" />
+		<property name="chorbi" ref="chorbi2"/>
+	</bean>
+	
+		<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holder" value="Ana Rosa" />
+		<property name="brand" value="VISA" />
+		<property name="number" value="4716186058170469" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="18" />
+		<property name="cvv" value="200" />
+		<property name="chorbi" ref="chorbi2"/>
 	</bean>
 	
 	
