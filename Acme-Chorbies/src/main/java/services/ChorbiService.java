@@ -56,6 +56,7 @@ public class ChorbiService {
 		res.setMakeLikes(new ArrayList<Likes>());
 		res.setReceivedLikes(new ArrayList<Likes>());
 		res.setReceivedChirps(new ArrayList<Chirp>());
+		res.setBanned(false);
 		res.setUserAccount(ua);
 		return res;
 	}
