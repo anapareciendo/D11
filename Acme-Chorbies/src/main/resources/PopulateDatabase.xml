@@ -103,6 +103,13 @@
 		<property name="province" value="Sevilla" />
 	</bean>
 	
+	<bean id="coordinates2" class="domain.Coordinates">
+		<property name="country" value="España" />
+		<property name="city" value="Granada" />
+		<property name="state" value="--" />
+		<property name="province" value="Granada" />
+	</bean>
+	
 	<!-- Administrator -->
 	<bean id="admin1" class="domain.Administrator">
 		<property name="name" value="Jefe" />
@@ -121,7 +128,7 @@
 		<property name="phone" value="+34872532287" />	
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
-		<property name="birthDate" value="2016/12/3"/>
+		<property name="birthDate" value="1991/12/5"/>
 		<property name="genre" value="MAN"/>
 		<property name="creditCard" ref="creditCard1"/>
 		<property name="coordinates" ref="coordinates1"/>
@@ -141,16 +148,16 @@
 	
 	<bean id="chorbi2" class="domain.Chorbi">
 		<property name="name" value="Martina" />
-		<property name="surname" value="Perez" />
+		<property name="surname" value="Ramos" />
 		<property name="email" value="perez@gmail.com" />
 		<property name="userAccount" ref="userAccount3" />
 		<property name="phone" value="+34872532254" />	
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="ACTIVITIES" />
-		<property name="birthDate" value="2016/12/3"/>
-		<property name="genre" value="WOMEN"/>
+		<property name="birthDate" value="1998/10/9"/>
+		<property name="genre" value="OTHER"/>
 		<property name="creditCard" ref="creditCard2"/>
-		<property name="coordinates" ref="coordinates1"/>
+		<property name="coordinates" ref="coordinates2"/>
 		<property name="sendChirps">
 			<list></list>
 		</property>
@@ -166,14 +173,14 @@
 	</bean>	
 	
 		<bean id="chorbi3" class="domain.Chorbi">
-		<property name="name" value="Daniel" />
+		<property name="name" value="Alicia" />
 		<property name="surname" value="Gonzalez" />
 		<property name="email" value="dagona@gmail.com" />
 		<property name="userAccount" ref="userAccount4" />
 		<property name="phone" value="+34872532251" />	
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
-		<property name="birthDate" value="2016/12/3"/>
+		<property name="birthDate" value="1989/11/7"/>
 		<property name="genre" value="WOMEN"/>
 		<property name="creditCard" ref="creditCard3"/>
 		<property name="coordinates" ref="coordinates1"/>
