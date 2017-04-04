@@ -5,8 +5,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.AdministratorRepository;
-import domain.Administrator;
+import repositories.SearchTemplateRepository;
+import domain.SearchTemplate;
 
 @Component
 @Transactional
@@ -17,7 +17,7 @@ public class StringToSearchTemplaterConverter implements Converter<String, Searc
 
 	@Override
 	public SearchTemplate convert(String text) {
-		Administrator result;
+		SearchTemplate result;
 		int id;
 
 		try {
