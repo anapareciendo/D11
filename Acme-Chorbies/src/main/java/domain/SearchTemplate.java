@@ -1,8 +1,11 @@
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -73,6 +76,21 @@ public class SearchTemplate extends DomainEntity{
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	//-------------Relationships-----------------------
+	private Collection<Chorbi> results;
+
+	@Valid
+	@NotNull
+	@OneToMany()
+	public Collection<Chorbi> getResults() {
+		return results;
+	}
+	public void setResults(Collection<Chorbi> results) {
+		this.results = results;
+	}
+	
+	
 	
 	
 

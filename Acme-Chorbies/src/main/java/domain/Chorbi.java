@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -91,7 +92,18 @@ public class Chorbi extends Actor{
 	private Collection<Chirp> receivedChirps;
 	private Collection<Likes> makeLikes;
 	private Collection<Likes> receivedLikes;
-
+	private SearchTemplate searchTemplate;
+	
+	
+	@Valid
+	@OneToOne(optional=false)
+	public SearchTemplate getSearchTemplate() {
+		return searchTemplate;
+	}
+	public void setSearchTemplate(SearchTemplate searchTemplate) {
+		this.searchTemplate = searchTemplate;
+	}
+	
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy="sender")
