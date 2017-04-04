@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -30,6 +31,7 @@ public class Chorbi extends Actor{
 	private Coordinates coordinates;
 	
 	@NotBlank
+	@URL
 	@SafeHtml
 	public String getPicture() {
 		return picture;
