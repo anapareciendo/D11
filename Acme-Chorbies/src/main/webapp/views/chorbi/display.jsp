@@ -28,7 +28,7 @@
 			<spring:message code="chorbi.phone"/>: <jstl:out value="${chorbi.phone}" /><br>
 			<spring:message code="chorbi.picture"/>: <jstl:out value="${chorbi.picture}" /><br>
 			<spring:message code="chorbi.kindRelationship"/>: <jstl:out value="${chorbi.kindRelationship}" /><br>
-			<spring:message code="chorbi.birthDate"/>: <jstl:out value="${chorbi.birthDatechorbi.phone}" /><br>
+			<spring:message code="chorbi.birthDate"/>: <jstl:out value="${chorbi.birthDate}" /><br>
 			<spring:message code="chorbi.genre"/>: <jstl:out value="${chorbi.genre}" /><br>
 			<spring:message code="coordinates.country"/>: <jstl:out value="${chorbi.phone}" /><br>
 		</p>

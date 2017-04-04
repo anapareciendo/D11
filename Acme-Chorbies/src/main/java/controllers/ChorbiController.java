@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.ChorbiService;
 import domain.Chorbi;
 
@@ -61,11 +62,12 @@ public class ChorbiController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam int chorbiId) {
+	public ModelAndView display() {
 		ModelAndView result;
 		Chorbi chorbi;
 		try{
-		chorbi = chorbiService.findOne(chorbiId);
+		Integer chorbiId= LoginService.getPrincipal().getId();
+		chorbi = chorbiService.findByUserAccountId(chorbiId);
 		result = new ModelAndView("chorbi/display");
 		result.addObject("chorbi", chorbi);
 		}catch(Throwable oops){

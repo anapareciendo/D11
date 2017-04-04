@@ -54,6 +54,7 @@
 		
 		<security:intercept-url pattern="/chorbi/list.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/chorbi/listMyLikes.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/chorbi/display.do" access="hasRole('CHORBI')" />
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
