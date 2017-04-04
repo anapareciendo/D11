@@ -37,10 +37,10 @@ public class LikesService {
 	}
 
 	//Simple CRUD methods
-	public Likes create(final Chorbi liker, final Chorbi received) {
+	public Likes create(final Chorbi liker, final Chorbi liked) {
 		Likes res;
 		res = new Likes();
-		res.setLiked(received);
+		res.setLiked(liked);
 		res.setLiker(liker);
 		res.setMoment(Calendar.getInstance().getTime());
 		return res;
