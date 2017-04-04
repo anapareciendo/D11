@@ -260,14 +260,17 @@
 	</bean>
 	
 	<!-- Search template -->
-	<bean id="searchTemplate1" class="domain.SearchTemplate">
+	<!-- <bean id="searchTemplate1" class="domain.SearchTemplate">
 		<property name="kindRelationship" value="LOVE" />
 		<property name="aproximateAge" value="24" />
 		<property name="keyword" value="perez" />
 		<property name="genre" value="MAN" />
 		<property name="country" value="España" />
 		<property name="city" value="Sevilla" />
-	</bean>
+		<property name="results">
+			<list></list>
+		</property>
+	</bean> -->
 	
 	
 	
