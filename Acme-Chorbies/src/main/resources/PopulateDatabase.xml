@@ -194,10 +194,18 @@
 	<!-- Banner -->
 	
 	<bean id="banner1" class="domain.Banner">
-		<property name="logo" value="Hola" />
+		<property name="logo" value="No todos son sábanas, Acme BnB" />
 	</bean>
 	
 	<bean id="banner2" class="domain.Banner">
+		<property name="logo" value="Acme Car nd Go!, para que viajar sea divertido" />
+	</bean>
+	
+	<bean id="banner3" class="domain.Banner">
+		<property name="logo" value="Ven a comer con nosotros y con tu espíritu, restaurante Acme Pad Thai" />
+	</bean>
+	
+	<bean id="banner4" class="domain.Banner">
 		<property name="logo" value="Bienvenidos" />
 	</bean>
 	
