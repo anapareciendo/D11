@@ -96,7 +96,7 @@ public class Chorbi extends Actor{
 	
 	
 	@Valid
-	@OneToOne(optional=false)
+	@OneToOne(optional=true)
 	public SearchTemplate getSearchTemplate() {
 		return searchTemplate;
 	}
