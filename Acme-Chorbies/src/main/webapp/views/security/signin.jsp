@@ -33,6 +33,7 @@
 	<form:select code="security.genre" path="genre">
 		<option value="MAN">Men</option>
 		<option value="WOMAN">Woman</option>
+		<option value="OTHER">Other</option>
 	</form:select>
 	
 	<acme:textbox code="security.country" path="country"/>
