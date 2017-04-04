@@ -29,11 +29,14 @@ public class Coordinates {
 		this.province = province;
 	}
 	
+
+
 	@NotBlank
 	@SafeHtml
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}

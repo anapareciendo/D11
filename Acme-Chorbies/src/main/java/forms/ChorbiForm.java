@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 
+import domain.Coordinates;
+
 @Access(AccessType.PROPERTY)
 public class ChorbiForm {
 
@@ -21,6 +23,8 @@ public class ChorbiForm {
 	private Integer kindRelationship;
 	private Date birthDate;
 	private Integer genre;
+	
+	private Coordinates coordinates;
 	
 	private String country;
 	private String city;
@@ -159,6 +163,14 @@ public class ChorbiForm {
 
 	public void setProvince(String province) {
 		this.province = province;
+	}
+
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
 	
 	
