@@ -24,13 +24,18 @@
 	
 	<acme:textbox code="security.picture" path="picture"/>
 
-	<form:select code="security.kindRelationship" path="kindRelationship">
+	<spring:message code='security.kindRelationship' var="kindRelationship"/> 
+	<jstl:out value="${kindRelationship }"/>
+	<form:select path="kindRelationship">
 		<option value="ACTIVITIES">Activities</option>
 		<option value="FRIENDSHIP">Friendship</option>
 		<option value="LOVE">Love</option>
 	</form:select>
-
-	<form:select code="security.genre" path="genre">
+	
+	<br/>
+	<spring:message code='security.genre' var="genre"/> 
+	<jstl:out value="${genre }"/>
+	<form:select path="genre">
 		<option value="MAN">Men</option>
 		<option value="WOMAN">Woman</option>
 		<option value="OTHER">Other</option>
