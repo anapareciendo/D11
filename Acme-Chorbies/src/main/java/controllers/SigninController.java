@@ -10,6 +10,8 @@
 
 package controllers;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -52,31 +54,37 @@ public class SigninController extends AbstractController {
 		Chorbi chorbi;
 		chorbi = chorbiService.reconstruct(actor, binding);
 
+		long edad = actor.getBirthDate().getTime();
+		long actual = Calendar.getInstance().getTimeInMillis();
+		long finale = actual-edad;
+		long dieciocho = 567600000000l;
 //		int years=(actor.getCreditCard().getExpirationYear()+2000)-1970;
 //		int month=actor.getCreditCard().getExpirationMonth();
 //		long exp = years*31540000000l+month*2628000000l;
 //		long finale = exp-Calendar.getInstance().getTime().getTime();
 		
-		if (binding.hasErrors() || chorbi.getName().equals("Pass") || chorbi.getName().equals("Cond")) {
+		if (binding.hasErrors() || chorbi.getName().equals("Pass") || chorbi.getName().equals("Cond") || finale<dieciocho) {
 			result = new ModelAndView("security/signin");
 			result.addObject("chorbi2", actor);
 			if(chorbi.getName().equals("Pass")){
 				result.addObject("message", "security.password.failed");
 			}else if(chorbi.getName().equals("Cond")){
 				result.addObject("message", "security.condition.failed");
+			}else if(finale<dieciocho){
+				result.addObject("message", "security.age.failed");
 			}
 			else{
 				result.addObject("errors", binding.getAllErrors());
 			}
 		} else {
-//			try{
+			try{
 				chorbiService.save(chorbi);
 				result = new ModelAndView("redirect:login.do");
-//			}catch (Throwable oops) {
-//				result = new ModelAndView("security/signin");
-//				result.addObject("chorbi2", actor);
-//				result.addObject("message", "security.signin.failed");
-//			}
+			}catch (Throwable oops) {
+				result = new ModelAndView("security/signin");
+				result.addObject("chorbi2", actor);
+				result.addObject("message", "security.signin.failed");
+			}
 		}
 
 		return result;
