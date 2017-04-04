@@ -95,7 +95,7 @@ public class Chorbi extends Actor{
 	private CreditCard creditCard;
 	
 	@Valid
-	@OneToOne(optional=true, mappedBy="chorbi")
+	@OneToOne(optional=true)
 	public CreditCard getCreditCard() {
 		return creditCard;
 	}

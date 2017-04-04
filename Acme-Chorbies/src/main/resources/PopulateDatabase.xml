@@ -103,7 +103,6 @@
 		<property name="birthDate" value="1991/12/5"/>
 		<property name="genre" value="MAN"/>
 		<property name="banned" value="false"/>
-		<property name="creditCard" ref="creditCard1"/>
 		<property name="coordinates" ref="coordinates1"/>
 		<property name="sendChirps">
 			<list></list>
@@ -130,7 +129,6 @@
 		<property name="birthDate" value="1998/10/9"/>
 		<property name="genre" value="OTHER"/>
 		<property name="banned" value="false"/>
-		<property name="creditCard" ref="creditCard2"/>
 		<property name="coordinates" ref="coordinates2"/>
 		<property name="sendChirps">
 			<list></list>
@@ -157,7 +155,6 @@
 		<property name="birthDate" value="1989/11/7"/>
 		<property name="genre" value="WOMEN"/>
 		<property name="banned" value="true"/>
-		<property name="creditCard" ref="creditCard3"/>
 		<property name="coordinates" ref="coordinates1"/>
 		<property name="sendChirps">
 			<list></list>
@@ -288,7 +285,5 @@
 		<property name="cvv" value="200" />
 		<property name="chorbi" ref="chorbi2"/>
 	</bean>
-	
-	
 	
 </beans>
