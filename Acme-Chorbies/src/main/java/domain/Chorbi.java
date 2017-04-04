@@ -85,6 +85,7 @@ public class Chorbi extends Actor{
 
 
 
+
 	//---------------------Relationships--------------------------
 	private Collection<Chirp> sendChirps;
 	private Collection<Chirp> receivedChirps;
