@@ -119,7 +119,7 @@
 		<property name="email" value="guti@gmail.com" />
 		<property name="userAccount" ref="userAccount2" />
 		<property name="phone" value="+34872532287" />	
-		<property name="picture" value="www.guapo.es" />
+		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="2016/12/3"/>
 		<property name="genre" value="MAN"/>
@@ -145,7 +145,7 @@
 		<property name="email" value="perez@gmail.com" />
 		<property name="userAccount" ref="userAccount3" />
 		<property name="phone" value="+34872532254" />	
-		<property name="picture" value="www.guapo.es" />
+		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="ACTIVITIES" />
 		<property name="birthDate" value="2016/12/3"/>
 		<property name="genre" value="WOMEN"/>
@@ -171,7 +171,7 @@
 		<property name="email" value="dagona@gmail.com" />
 		<property name="userAccount" ref="userAccount4" />
 		<property name="phone" value="+34872532251" />	
-		<property name="picture" value="www.guapo.es" />
+		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="2016/12/3"/>
 		<property name="genre" value="WOMEN"/>
@@ -194,19 +194,15 @@
 	<!-- Banner -->
 	
 	<bean id="banner1" class="domain.Banner">
-		<property name="logo" value="No todos son sábanas, Acme BnB" />
+		<property name="logo" value="No todos son sábanas, Acme Bed'n Breakfast" />
 	</bean>
 	
 	<bean id="banner2" class="domain.Banner">
-		<property name="logo" value="Acme Car nd Go!, para que viajar sea divertido" />
+		<property name="logo" value="Acme Car'n Go!, porque cambiar una rueda entre dos es mas fácil" />
 	</bean>
 	
 	<bean id="banner3" class="domain.Banner">
 		<property name="logo" value="Ven a comer con nosotros y con tu espíritu, restaurante Acme Pad Thai" />
-	</bean>
-	
-	<bean id="banner4" class="domain.Banner">
-		<property name="logo" value="Bienvenidos" />
 	</bean>
 	
 	<!-- Likes -->
