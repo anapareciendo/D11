@@ -169,5 +169,9 @@ public class ChorbiService {
 		Assert.notNull(likedId);
 		return this.chorbiRepository.findMyLikes(likedId);
 	} 
+	
+	public Collection<Chorbi> findNotBanned(){
+		return this.chorbiRepository.findNotBanned();
+	}
 
 }

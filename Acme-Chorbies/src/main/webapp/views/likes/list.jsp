@@ -49,7 +49,7 @@
 	</display:column>	
 	
 	<display:column>
-	  	<a href="likes/chorbi/like.do?chorbiId=${chorbi.id}">
+	  	<a href="likes/like.do?chorbiId=${chorbi.id}">
 	 			<spring:message code="chorbi.like" var="likeHeader" />
 		  		<jstl:out value="${likeHeader}" />
 		 </a>

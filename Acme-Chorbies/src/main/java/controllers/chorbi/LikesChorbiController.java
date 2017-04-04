@@ -8,7 +8,7 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers;
+package controllers.chorbi;
 
 import java.util.Collection;
 
@@ -20,34 +20,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ChorbiService;
+import services.LikesService;
+import controllers.AbstractController;
 import domain.Chorbi;
 
 @Controller
-@RequestMapping("/chorbi")
-public class ChorbiController extends AbstractController {
+@RequestMapping("/likes/chorbi")
+public class LikesChorbiController extends AbstractController {
 	
 	// Services -------------------------------------------------------
 	@Autowired
 	private ChorbiService chorbiService;
+	@Autowired
+	private LikesService likesService;
 
 	// Constructors -----------------------------------------------------------
 
-	public ChorbiController() {
+	public LikesChorbiController() {
 		super();
 	}
 
-	// Action-1 ---------------------------------------------------------------		
-
-	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public ModelAndView list() {
-		ModelAndView result;
-		Collection<Chorbi> chorbis = chorbiService.findAll();
-		
-		result = new ModelAndView("chorbi/list");
-		result.addObject("chorbi", chorbis);
-
-		return result;
-	}
 	
 	@RequestMapping(value="/listMyLikes", method = RequestMethod.GET)
 	public ModelAndView listMyLikes(@RequestParam int chorbiId) {
@@ -60,20 +52,4 @@ public class ChorbiController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam int chorbiId) {
-		ModelAndView result;
-		Chorbi chorbi;
-		try{
-		chorbi = chorbiService.findOne(chorbiId);
-		result = new ModelAndView("chorbi/display");
-		result.addObject("chorbi", chorbi);
-		}catch(Throwable oops){
-			
-			result= new ModelAndView("hacker/hackers");
-
-		}
-		return result;
-	}
-
 }
