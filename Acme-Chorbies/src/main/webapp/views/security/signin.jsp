@@ -27,18 +27,18 @@
 	<spring:message code='security.kindRelationship' var="kindRelationship"/> 
 	<jstl:out value="${kindRelationship }"/>
 	<form:select path="kindRelationship">
-		<option value="ACTIVITIES">Activities</option>
-		<option value="FRIENDSHIP">Friendship</option>
-		<option value="LOVE">Love</option>
+		<option value="0">Activities</option>
+		<option value="1">Friendship</option>
+		<option value="2">Love</option>
 	</form:select>
 	
 	<br/>
 	<spring:message code='security.genre' var="genre"/> 
 	<jstl:out value="${genre }"/>
 	<form:select path="genre">
-		<option value="MAN">Men</option>
-		<option value="WOMAN">Woman</option>
-		<option value="OTHER">Other</option>
+		<option value="0">Woman</option>
+		<option value="1">Men</option>
+		<option value="2">Other</option>
 	</form:select>
 	
 	<acme:textbox code="security.country" path="country"/>

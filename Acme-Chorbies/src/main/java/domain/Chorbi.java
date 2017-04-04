@@ -68,7 +68,6 @@ public class Chorbi extends Actor{
 		this.genre = genre;
 	}
 	
-	@NotNull
 	@Valid
 	public CreditCard getCreditCard() {
 		return creditCard;

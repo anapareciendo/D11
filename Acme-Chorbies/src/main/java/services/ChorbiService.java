@@ -20,6 +20,9 @@ import security.UserAccount;
 import security.UserAccountService;
 import domain.Chirp;
 import domain.Chorbi;
+import domain.Coordinates;
+import domain.Genre;
+import domain.KindRelationship;
 import domain.Likes;
 import forms.ChorbiForm;
 
@@ -70,15 +73,14 @@ public class ChorbiService {
 	public Chorbi save(final Chorbi chorbi) {
 		Assert.notNull(chorbi, "The chorbi to save cannot be null.");
 		
-		Assert.notNull(chorbi.getPicture(), "The chorbi to save cannot have 'picture' null.");
-		Assert.notNull(chorbi.getKindRelationship(), "The chorbi to save cannot have 'kindRelationship' null.");
-		Assert.notNull(chorbi.getBirthDate(), "The chorbi to save cannot have 'BirthDate' null.");
-		Assert.notNull(chorbi.getGenre(), "The chorbi to save cannot have 'Genre' null.");
-		Assert.notNull(chorbi.getBirthDate(), "The chorbi to save cannot have 'BirthDate' null.");
-		Assert.notNull(chorbi.getCoordinates(), "The chorbi to save cannot have 'BirthDate' null.");
+//		Assert.notNull(chorbi.getKindRelationship(), "The chorbi to save cannot have 'kindRelationship' null.");
+//		Assert.notNull(chorbi.getBirthDate(), "The chorbi to save cannot have 'BirthDate' null.");
+//		Assert.notNull(chorbi.getGenre(), "The chorbi to save cannot have 'Genre' null.");
+//		Assert.notNull(chorbi.getBirthDate(), "The chorbi to save cannot have 'BirthDate' null.");
+//		Assert.notNull(chorbi.getCoordinates(), "The chorbi to save cannot have 'BirthDate' null.");
 		
 		final Chorbi res = this.chorbiRepository.save(chorbi);
-		chorbiRepository.flush();
+//		chorbiRepository.flush();
 		return res;
 	}
 
@@ -122,6 +124,8 @@ public class ChorbiService {
 			a.setAuthority(Authority.CHORBI);
 			ua.getAuthorities().add(a);
 			
+			Coordinates coor= new Coordinates(actor.getCountry(), actor.getCity(), actor.getState(), actor.getProvince());
+			
 			result=this.create(ua);
 			
 			result.setName(actor.getName());
@@ -130,8 +134,23 @@ public class ChorbiService {
 			result.setPhone(actor.getPhone());
 			result.setPicture(actor.getPicture());
 			result.setBirthDate(actor.getBirthDate());
-			result.setGenre(actor.getGenre());
-			result.setKindRelationship(actor.getKindRelationship());
+			switch(actor.getGenre()){
+			case 0: result.setGenre(Genre.WOMEN);
+			break;
+			case 1: result.setGenre(Genre.MAN);
+			break;
+			case 2: result.setGenre(Genre.OTHER);
+			break;
+			}
+			switch(actor.getKindRelationship()){
+			case 0: result.setKindRelationship(KindRelationship.ACTIVITIES);
+			break;
+			case 1: result.setKindRelationship(KindRelationship.FRIENDSHIP);
+			break;
+			case 2: result.setKindRelationship(KindRelationship.LOVE);
+			break;
+			}
+			result.setCoordinates(coor);
 			
 			validator.validate(result, binding);
 		}else{

@@ -59,8 +59,7 @@ public class SigninController extends AbstractController {
 		
 		if (binding.hasErrors() || chorbi.getName().equals("Pass") || chorbi.getName().equals("Cond")) {
 			result = new ModelAndView("security/signin");
-			result.addObject("authority", "lessor2");
-			result.addObject("lessor2", actor);
+			result.addObject("chorbi2", actor);
 			if(chorbi.getName().equals("Pass")){
 				result.addObject("message", "security.password.failed");
 			}else if(chorbi.getName().equals("Cond")){
@@ -70,14 +69,14 @@ public class SigninController extends AbstractController {
 				result.addObject("errors", binding.getAllErrors());
 			}
 		} else {
-			try{
+//			try{
 				chorbiService.save(chorbi);
 				result = new ModelAndView("redirect:login.do");
-			}catch (Throwable oops) {
-				result = new ModelAndView("security/signin");
-				result.addObject("chorbi2", actor);
-				result.addObject("message", "security.signin.failed");
-			}
+//			}catch (Throwable oops) {
+//				result = new ModelAndView("security/signin");
+//				result.addObject("chorbi2", actor);
+//				result.addObject("message", "security.signin.failed");
+//			}
 		}
 
 		return result;

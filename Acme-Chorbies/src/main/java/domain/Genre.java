@@ -2,5 +2,5 @@ package domain;
 
 public enum Genre {
 	
-	MAN, WOMEN, OTHER;
+	WOMEN, MAN, OTHER;
 }

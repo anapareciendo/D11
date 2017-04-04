@@ -16,6 +16,19 @@ public class Coordinates {
 	private String state;
 	private String province;
 	
+	public Coordinates() {
+		super();
+	}
+
+	public Coordinates(String country, String city, String state,
+			String province) {
+		super();
+		this.country = country;
+		this.city = city;
+		this.state = state;
+		this.province = province;
+	}
+	
 	@NotBlank
 	@SafeHtml
 	public String getCountry() {

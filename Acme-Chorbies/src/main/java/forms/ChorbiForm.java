@@ -5,9 +5,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 
-import domain.Genre;
-import domain.KindRelationship;
-
 @Access(AccessType.PROPERTY)
 public class ChorbiForm {
 
@@ -21,9 +18,9 @@ public class ChorbiForm {
 	private String phone;
 	
 	private String picture;
-	private KindRelationship kindRelationship;
+	private Integer kindRelationship;
 	private Date birthDate;
-	private Genre genre;
+	private Integer genre;
 	
 	private String country;
 	private String city;
@@ -100,11 +97,11 @@ public class ChorbiForm {
 		this.picture = picture;
 	}
 
-	public KindRelationship getKindRelationship() {
+	public Integer getKindRelationship() {
 		return kindRelationship;
 	}
 
-	public void setKindRelationship(KindRelationship kindRelationship) {
+	public void setKindRelationship(Integer kindRelationship) {
 		this.kindRelationship = kindRelationship;
 	}
 
@@ -116,11 +113,11 @@ public class ChorbiForm {
 		this.birthDate = birthDate;
 	}
 
-	public Genre getGenre() {
+	public Integer getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Genre genre) {
+	public void setGenre(Integer genre) {
 		this.genre = genre;
 	}
 
