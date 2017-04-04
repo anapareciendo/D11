@@ -10,8 +10,6 @@
 
 package controllers.chorbi;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.ChorbiService;
 import services.LikesService;
 import controllers.AbstractController;
 import domain.Chorbi;
+import domain.Likes;
 
 @Controller
 @RequestMapping("/likes/chorbi")
@@ -41,15 +41,34 @@ public class LikesChorbiController extends AbstractController {
 	}
 
 	
-	@RequestMapping(value="/listMyLikes", method = RequestMethod.GET)
+	@RequestMapping(value="/like", method = RequestMethod.GET)
 	public ModelAndView listMyLikes(@RequestParam int chorbiId) {
 		ModelAndView result;
-		Collection<Chorbi> chorbis = chorbiService.findMyLikesId(chorbiId);
 		
-		result = new ModelAndView("chorbi/list");
-		result.addObject("chorbi", chorbis);
+		Chorbi liked = chorbiService.findOne(chorbiId);
+		Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		
+		Likes res = likesService.create(liker, liked);
+		
+		result = new ModelAndView("likes/like");
+		result.addObject("likes", res);
 
 		return result;
 	}
+	
+		@RequestMapping(value="/saylike", method = RequestMethod.POST)
+		public ModelAndView listMyLikes(@RequestParam int chorbiId) {
+			ModelAndView result;
+			
+			Chorbi liked = chorbiService.findOne(chorbiId);
+			Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			
+			Likes res = likesService.create(liker, liked);
+			
+			result = new ModelAndView("likes/like");
+			result.addObject("likes", res);
+
+			return result;
+		}
 	
 }

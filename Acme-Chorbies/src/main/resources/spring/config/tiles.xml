@@ -28,6 +28,7 @@
 		<value>/views/profile/tiles.xml</value>
 		
 		<value>/views/chorbi/tiles.xml</value>
+		<value>/views/likes/tiles.xml</value>
 	</util:list>
 
 </beans>
