@@ -143,5 +143,10 @@ public class ChorbiService {
 		}
 		return result;
 	} 
+	
+	public Collection<Chorbi> findMyLikesId(final int likedId) {
+		Assert.notNull(likedId);
+		return this.chorbiRepository.findMyLikes(likedId);
+	} 
 
 }

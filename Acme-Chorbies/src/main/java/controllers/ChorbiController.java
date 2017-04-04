@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ChorbiService;
@@ -40,6 +41,17 @@ public class ChorbiController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Chorbi> chorbis = chorbiService.findAll();
+		
+		result = new ModelAndView("chorbi/list");
+		result.addObject("chorbi", chorbis);
+
+		return result;
+	}
+	
+	@RequestMapping("/listMyLikes")
+	public ModelAndView listMyLikes(@RequestParam int chorbiId) {
+		ModelAndView result;
+		Collection<Chorbi> chorbis = chorbiService.findMyLikesId(chorbiId);
 		
 		result = new ModelAndView("chorbi/list");
 		result.addObject("chorbi", chorbis);

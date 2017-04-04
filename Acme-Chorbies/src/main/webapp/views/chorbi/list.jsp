@@ -39,7 +39,14 @@
 	<display:column property="genre" title="${genreHeader }" sortable="true" />
 	
 	<spring:message code="chorbi.coordinates.city" var="cityHeader" />
-	<display:column property="coordinates.city" title="${cityHeader }" sortable="true" />	
+	<display:column property="coordinates.city" title="${cityHeader }" sortable="true" />
+	
+	<display:column>
+	  	<a href="chorbi/listMyLikes.do?chorbiId=${chorbi.id}">
+	 			<spring:message code="chorbi.likes" var="likesHeader" />
+		  		<jstl:out value="${likesHeader}" />
+		 </a>
+	</display:column>	
 	
 	
 </display:table>

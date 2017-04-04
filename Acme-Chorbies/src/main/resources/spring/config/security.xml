@@ -52,7 +52,8 @@
 		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
 		
-		<security:intercept-url pattern="/chorbi/list.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/chorbi/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/chorbi/listMyLikes.do" access="isAuthenticated()" /> 
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
