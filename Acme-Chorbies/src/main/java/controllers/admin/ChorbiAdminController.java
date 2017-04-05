@@ -36,9 +36,20 @@ public class ChorbiAdminController extends AbstractController {
 	public ChorbiAdminController() {
 		super();
 	}
+	
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Chorbi> chorbis = chorbiService.findAll();
+		
+		result = new ModelAndView("chorbi/list");
+		result.addObject("chorbi", chorbis);
+
+		return result;
+	}
 
 	@RequestMapping(value="/banned", method = RequestMethod.GET)
-	public ModelAndView list(@RequestParam int chorbiId) {
+	public ModelAndView listBanned(@RequestParam int chorbiId) {
 		ModelAndView result;
 		Chorbi chorbi = chorbiService.findOne(chorbiId);
 		Collection<Chorbi> chorbis;
@@ -46,9 +57,27 @@ public class ChorbiAdminController extends AbstractController {
 		try{
 			chorbi.setBanned(true);
 			chorbiService.save(chorbi);
-			chorbis = chorbiService.findNotBanned();
+			chorbis = chorbiService.findAll();
 		}catch(Throwable oops){
-			chorbis = chorbiService.findNotBanned();
+			chorbis = chorbiService.findAll();
+			result.addObject("message", "chorbi.banned.error");
+		}
+		result.addObject("chorbi", chorbis);
+		return result;
+	}
+	
+	@RequestMapping(value="/unbanned", method = RequestMethod.GET)
+	public ModelAndView listUnBanned(@RequestParam int chorbiId) {
+		ModelAndView result;
+		Chorbi chorbi = chorbiService.findOne(chorbiId);
+		Collection<Chorbi> chorbis;
+		result = new ModelAndView("chorbi/list");
+		try{
+			chorbi.setBanned(false);
+			chorbiService.save(chorbi);
+			chorbis = chorbiService.findAll();
+		}catch(Throwable oops){
+			chorbis = chorbiService.findAll();
 			result.addObject("message", "chorbi.banned.error");
 		}
 		result.addObject("chorbi", chorbis);

@@ -14,7 +14,7 @@ public interface ChorbiRepository extends JpaRepository<Chorbi, Integer> {
 	@Query("select a from Chorbi a where a.userAccount.id = ?1")
 	Chorbi findByUserAccountId(int id);
 	
-	@Query("select distinct(l.liker) from Likes l where l.liked.id = ?1")
+	@Query("select distinct(l.liker) from Likes l where l.liked.id = ?1 and l.liker.banned = false")
 	Collection<Chorbi> findMyLikes(int likedId);
 	
 	@Query("select c from Chorbi c where c.banned=false")

@@ -59,10 +59,19 @@
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column>
+	<jstl:if test="${chorbi.banned == false }">
 	  	<a href="chorbi/admin/banned.do?chorbiId=${chorbi.id}">
 	 			<spring:message code="chorbi.banned" var="bannedHeader" />
 		  		<jstl:out value="${bannedHeader}" />
 		 </a>
+	</jstl:if>
+	
+	<jstl:if test="${chorbi.banned == true }">
+	  	<a href="chorbi/admin/unbanned.do?chorbiId=${chorbi.id}">
+	 			<spring:message code="chorbi.unbanned" var="unbannedHeader" />
+		  		<jstl:out value="${unbannedHeader}" />
+		 </a>
+	</jstl:if>
 	</display:column>
 	</security:authorize>
 	

@@ -53,7 +53,7 @@ public class ChorbiController extends AbstractController {
 	@RequestMapping(value="/listMyLikes", method = RequestMethod.GET)
 	public ModelAndView listMyLikes(@RequestParam int chorbiId) {
 		ModelAndView result;
-		Collection<Chorbi> chorbis = chorbiService.findMyLikesId(chorbiId);
+		Collection<Chorbi> chorbis = chorbiService.findMyLikes(chorbiId);
 		
 		result = new ModelAndView("chorbi/list");
 		result.addObject("chorbi", chorbis);

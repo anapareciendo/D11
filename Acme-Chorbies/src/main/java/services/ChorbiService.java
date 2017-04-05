@@ -165,7 +165,7 @@ public class ChorbiService {
 		return result;
 	} 
 	
-	public Collection<Chorbi> findMyLikesId(final int likedId) {
+	public Collection<Chorbi> findMyLikes(final int likedId) {
 		Assert.notNull(likedId);
 		return this.chorbiRepository.findMyLikes(likedId);
 	} 

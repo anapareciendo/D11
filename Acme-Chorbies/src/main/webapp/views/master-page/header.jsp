@@ -62,7 +62,14 @@
 			<li><a class="fNiv"><spring:message	code="master.page.chorbi" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
+					<security:authorize access="hasRole('ADMIN')">
+						<li><a href="chorbi/admin/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
+					</security:authorize>
+					
+					<security:authorize access="hasRole('CHORBI')">
+						<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
+					</security:authorize>
+					
 					<li><a href="template/search.do"><spring:message code="master.page.template" /></a></li>
 				</ul>
 			</li>
