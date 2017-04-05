@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="template/searchTemplate.do" modelAttribute="template">
+<form:form action="template/template.do" modelAttribute="template">
 	
 	<spring:message code='template.kindRelationship' var="kindRelationship"/> 
 	<jstl:out value="${kindRelationship }"/>
@@ -48,7 +48,7 @@
 	<acme:textbox code="template.state" path="state"/>
 	<acme:textbox code="template.province" path="province"/>
 	
-	<input type="submit" name="save" value="<spring:message code="like.save" />" />
+	<input type="submit" name="search" value="<spring:message code="like.save" />" />
 	
 	<input type="button" name="cancel" value="<spring:message code="like.cancel" />" onclick="window.location='welcome/index.do'" /> <br />
 	
