@@ -29,6 +29,7 @@
 		
 		<value>/views/chorbi/messages</value>
 		<value>/views/likes/messages</value>
+		<value>/views/template/messages</value>
 	</util:list>
 
 </beans>

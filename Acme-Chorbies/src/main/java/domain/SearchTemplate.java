@@ -21,8 +21,15 @@ public class SearchTemplate extends DomainEntity{
 	private Integer aproximateAge;
 	private Genre genre;
 	private String keyword;
-	private String country;
-	private String city;
+	private Coordinates coordinates;
+	
+	@Valid
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
+	}
 	
 	@Valid
 	@NotNull
@@ -57,24 +64,6 @@ public class SearchTemplate extends DomainEntity{
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
-	}
-	
-	@SafeHtml
-	@NotNull
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	
-	@SafeHtml
-	@NotNull
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
 	}
 	
 	//-------------Relationships-----------------------

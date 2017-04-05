@@ -248,8 +248,7 @@
 		<property name="aproximateAge" value="24" />
 		<property name="keyword" value="perez" />
 		<property name="genre" value="MAN" />
-		<property name="country" value="España" />
-		<property name="city" value="Sevilla" />
+		<property name="coordinates" ref="coordinates2" />
 		<property name="results">
 			<list></list>
 		</property>

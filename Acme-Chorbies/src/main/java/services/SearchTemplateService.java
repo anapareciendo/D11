@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import repositories.SearchTemplateRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Chorbi;
 import domain.SearchTemplate;
 
 @Service
@@ -23,10 +25,8 @@ public class SearchTemplateService {
 
 
 	//Validator
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
+//	@Autowired
+//	private Validator validator;
 
 	//Supporting services
 
@@ -39,6 +39,7 @@ public class SearchTemplateService {
 	public SearchTemplate create() {
 		SearchTemplate res;
 		res = new SearchTemplate();
+		res.setResults(new ArrayList<Chorbi>());
 		return res;
 	}
 

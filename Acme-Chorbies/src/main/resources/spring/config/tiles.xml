@@ -29,6 +29,7 @@
 		
 		<value>/views/chorbi/tiles.xml</value>
 		<value>/views/likes/tiles.xml</value>
+		<value>/views/template/messages</value>
 	</util:list>
 
 </beans>

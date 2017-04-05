@@ -60,6 +60,10 @@
 		
 		<security:intercept-url pattern="/likes/chorbi/like.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/likes/chorbi/sayLike.do" access="hasRole('CHORBI')" />
+		
+		<security:intercept-url pattern="/template/search.do" access="hasRole('CHORBI')" />
+		
+		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
