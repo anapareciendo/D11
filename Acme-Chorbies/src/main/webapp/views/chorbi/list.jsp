@@ -41,6 +41,7 @@
 	<spring:message code="chorbi.coordinates.city" var="cityHeader" />
 	<display:column property="coordinates.city" title="${cityHeader }" sortable="true" />
 	
+	<security:authorize access="hasRole('CHORBI')">
 	<display:column>
 	  	<a href="chorbi/listMyLikes.do?chorbiId=${chorbi.id}">
 	 			<spring:message code="chorbi.likes" var="likesHeader" />
@@ -54,6 +55,16 @@
 		  		<jstl:out value="${likeHeader}" />
 		 </a>
 	</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<display:column>
+	  	<a href="chorbi/admin/banned.do?chorbiId=${chorbi.id}">
+	 			<spring:message code="chorbi.banned" var="bannedHeader" />
+		  		<jstl:out value="${bannedHeader}" />
+		 </a>
+	</display:column>
+	</security:authorize>
 	
 
 	
