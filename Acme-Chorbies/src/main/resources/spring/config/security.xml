@@ -63,9 +63,8 @@
 		<security:intercept-url pattern="/likes/chorbi/sayLike.do" access="hasRole('CHORBI')" />
 		
 		<security:intercept-url pattern="/template/search.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/template/template.do" access="hasRole('CHORBI')" />
 		
-		
-	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 
