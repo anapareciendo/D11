@@ -10,14 +10,16 @@
 
 package controllers.chorbi;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import security.LoginService;
 import services.ChorbiService;
 import services.LikesService;
 import controllers.AbstractController;
@@ -42,13 +44,12 @@ public class LikesChorbiController extends AbstractController {
 
 	
 	@RequestMapping(value="/like", method = RequestMethod.GET)
-	public ModelAndView listMyLikes(@RequestParam int chorbiId) {
+	public ModelAndView like(@RequestParam int chorbiId) {
 		ModelAndView result;
 		
 		Chorbi liked = chorbiService.findOne(chorbiId);
-		Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
 		
-		Likes res = likesService.create(liker, liked);
+		Likes res = likesService.create(liked, liked);
 		
 		result = new ModelAndView("likes/like");
 		result.addObject("likes", res);
@@ -57,17 +58,29 @@ public class LikesChorbiController extends AbstractController {
 	}
 	
 		@RequestMapping(value="/saylike", method = RequestMethod.POST)
-		public ModelAndView listMyLikes(@RequestParam int chorbiId) {
+		public ModelAndView sayLike(Likes likes, BindingResult binding) {
 			ModelAndView result;
+			Likes res = likesService.reconstruct(likes, binding);
 			
-			Chorbi liked = chorbiService.findOne(chorbiId);
-			Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			if(!binding.hasErrors()){
+				try{
+					likesService.save(res);
+					Collection<Chorbi> chorbis = chorbiService.findNotBanned();
+					result = new ModelAndView("chorbi/list");
+					result.addObject("chorbi", chorbis);
+					result.addObject("message", "like.commit.success");
+				}catch (Throwable opps){
+					result = new ModelAndView("likes/like");
+					result.addObject("likes", res);
+					result.addObject("message","like.commit.error");
+				}
+			}else{
+				result = new ModelAndView("likes/like");
+				result.addObject("likes", res);
+				result.addObject("message","like.commit.error");
+			}
 			
-			Likes res = likesService.create(liker, liked);
 			
-			result = new ModelAndView("likes/like");
-			result.addObject("likes", res);
-
 			return result;
 		}
 	

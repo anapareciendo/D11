@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.LikesRepository;
 import security.LoginService;
@@ -24,12 +26,12 @@ public class LikesService {
 
 
 	//Validator
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
+	@Autowired
+	private Validator validator;
 
 	//Supporting services
+	@Autowired
+	private ChorbiService chorbiService;
 
 	//Constructors
 	public LikesService() {
@@ -78,6 +80,18 @@ public class LikesService {
 
 		final UserAccount ua = LoginService.getPrincipal();
 		Assert.isTrue(likes.getLiked().getUserAccount().equals(ua),"You are not the owner of the message" );
+	}
+
+	//----------------Other Methods---------------
+	public Likes reconstruct(Likes likes, BindingResult binding) {
+
+		Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		Likes res = this.create(liker, likes.getLiked());
+		res.setComment(likes.getComment());
+		
+		validator.validate(res, binding);
+		
+		return res;
 	}
 
 

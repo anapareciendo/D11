@@ -42,7 +42,7 @@ public class ChorbiController extends AbstractController {
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<Chorbi> chorbis = chorbiService.findAll();
+		Collection<Chorbi> chorbis = chorbiService.findNotBanned();
 		
 		result = new ModelAndView("chorbi/list");
 		result.addObject("chorbi", chorbis);

@@ -18,10 +18,29 @@
 	">
 
 	<util:list id="converters">
-		<!-- 
-			Add your own converters using entries of the following form: 
-			<bean class="converters.Class1ToClass2" /> 
-		-->
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+		
+		<bean class="converters.BannerToStringConverter" />
+		<bean class="converters.StringToBannerConverter" />
+		
+		<bean class="converters.ChirpToStringConverter" />
+		<bean class="converters.StringToChirpConverter" />
+		
+		<bean class="converters.ChorbiToStringConverter" />
+		<bean class="converters.StringToChorbiConverter" />
+		
+		<bean class="converters.ConfigToStringConverter" />
+		<bean class="converters.StringToConfigConverter" />
+		
+		<bean class="converters.LikesToStringConverter" />
+		<bean class="converters.StringToLikesConverter" />
+		
+		<bean class="converters.SearchTemplateToStringConverter" />
+		<bean class="converters.StringToSearchTemplateConverter" />
 	</util:list>
 	
 </beans>

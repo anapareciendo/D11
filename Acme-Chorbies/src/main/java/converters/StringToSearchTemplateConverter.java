@@ -10,7 +10,7 @@ import domain.SearchTemplate;
 
 @Component
 @Transactional
-public class StringToSearchTemplaterConverter implements Converter<String, SearchTemplate>{
+public class StringToSearchTemplateConverter implements Converter<String, SearchTemplate>{
 
 	@Autowired
 	SearchTemplateRepository searchTemplateRepository;
