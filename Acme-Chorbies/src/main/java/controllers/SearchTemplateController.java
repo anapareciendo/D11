@@ -40,7 +40,7 @@ public class SearchTemplateController extends AbstractController {
 		ModelAndView result;
 		TemplateForm res = new TemplateForm();
 		
-		result = new ModelAndView("template/search");
+		result = new ModelAndView("template/template");
 		result.addObject("template", res);
 		
 		return result;

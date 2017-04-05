@@ -63,6 +63,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
+					<li><a href="template/search.do"><spring:message code="master.page.template" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
