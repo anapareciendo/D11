@@ -174,4 +174,26 @@ public class ChorbiService {
 		return this.chorbiRepository.findNotBanned();
 	}
 
+	public Chorbi ban(Chorbi chorbi) {
+		Authority b = new Authority();
+		b.setAuthority(Authority.BANNED);
+		
+		chorbi.setBanned(true);
+		chorbi.getUserAccount().getAuthorities().clear();
+		chorbi.getUserAccount().getAuthorities().add(b);
+		
+		return chorbi;
+	}
+
+	public Chorbi unban(Chorbi chorbi) {
+		Authority b = new Authority();
+		b.setAuthority(Authority.CHORBI);
+		
+		chorbi.setBanned(false);
+		chorbi.getUserAccount().getAuthorities().clear();
+		chorbi.getUserAccount().getAuthorities().add(b);
+		
+		return chorbi;
+	}
+
 }

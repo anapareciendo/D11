@@ -55,8 +55,8 @@ public class ChorbiAdminController extends AbstractController {
 		Collection<Chorbi> chorbis;
 		result = new ModelAndView("chorbi/list");
 		try{
-			chorbi.setBanned(true);
-			chorbiService.save(chorbi);
+			Chorbi res= chorbiService.ban(chorbi);
+			chorbiService.save(res);
 			chorbis = chorbiService.findAll();
 		}catch(Throwable oops){
 			chorbis = chorbiService.findAll();
@@ -73,8 +73,8 @@ public class ChorbiAdminController extends AbstractController {
 		Collection<Chorbi> chorbis;
 		result = new ModelAndView("chorbi/list");
 		try{
-			chorbi.setBanned(false);
-			chorbiService.save(chorbi);
+			Chorbi res = chorbiService.unban(chorbi);
+			chorbiService.save(res);
 			chorbis = chorbiService.findAll();
 		}catch(Throwable oops){
 			chorbis = chorbiService.findAll();
