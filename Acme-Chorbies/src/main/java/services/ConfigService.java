@@ -1,7 +1,9 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,6 +53,13 @@ public class ConfigService {
 	public Config findOne(final int configId) {
 		final Config res = this.configRepository.findOne(configId);
 		return res;
+	}
+	
+	public Config find() {
+		final List<Config> res = new ArrayList<Config>();
+		res.addAll(this.configRepository.findAll());
+		
+		return res.get(0);
 	}
 
 	public Config save(final Config config) {

@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class SearchTemplateService {
 	//Managed repository
 	@Autowired
 	private SearchTemplateRepository	searchTemplateRepository;
+	
+	//Support Services
+	@Autowired
+	private ChorbiService chorbiService;
 
 
 	//Validator
@@ -47,6 +52,7 @@ public class SearchTemplateService {
 		SearchTemplate res;
 		res = new SearchTemplate();
 		res.setResults(new ArrayList<Chorbi>());
+		res.setMoment(Calendar.getInstance().getTime());
 		return res;
 	}
 
@@ -62,7 +68,12 @@ public class SearchTemplateService {
 
 	public SearchTemplate save(final SearchTemplate search) {
 		Assert.notNull(search, "The template to save cannot be null.");
-		final SearchTemplate res = this.searchTemplateRepository.save(search);
+		final SearchTemplate res=this.searchTemplateRepository.save(search);
+		if(search.getId()==0){
+			Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			chorbi.setSearchTemplate(res);
+			chorbiService.save(chorbi);
+		}
 //		searchTemplateRepository.flush();
 		return res;
 	}
@@ -83,7 +94,10 @@ public class SearchTemplateService {
 	
 	//-----------Other Methods----------------
 	public SearchTemplate reconstruct(TemplateForm template, BindingResult binding) {
-		SearchTemplate res = this.create();
+		SearchTemplate res = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId()).getSearchTemplate();
+		if(res==null){
+			res = this.create();
+		}
 		Coordinates coor = new Coordinates(template.getCountry(), template.getCity(), template.getState(), template.getProvince());
 		
 		res.setAproximateAge(template.getAproximateAge());
@@ -111,11 +125,15 @@ public class SearchTemplateService {
 		return res;
 	}
 	
-	public Collection<Chorbi> searchTemplate(int kind, int genre, int age, String country, String city, 
+	public Collection<Chorbi> searchTemplate(KindRelationship kind, Genre genre, int age, 
+			String country, String city, 
 			String state, String province, String keyword){
 		List<Chorbi> res = new ArrayList<Chorbi>();
+		List<Chorbi> aux = new ArrayList<Chorbi>();
+		aux.addAll(chorbiService.findNotBanned());
+		aux.removeAll(searchTemplateRepository.searchTemplate(country, city, state, province));
 		res.addAll(searchTemplateRepository.searchTemplate(kind, genre));
-		res.retainAll(searchTemplateRepository.searchTemplate(country, city, state, province));
+		res.removeAll(aux);
 		
 		return res;
 	}

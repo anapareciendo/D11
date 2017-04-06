@@ -17,6 +17,22 @@ public class TemplateForm{
 	private String state;
 	private String province;
 	
+	public TemplateForm(){
+		super();
+	}
+	
+	public TemplateForm(int kindRelationship, int aproximateAge, int genre,
+			String keyword, String country, String city, String state,
+			String province) {
+		this.kindRelationship = kindRelationship;
+		this.aproximateAge = aproximateAge;
+		this.genre = genre;
+		this.keyword = keyword;
+		this.country = country;
+		this.city = city;
+		this.state = state;
+		this.province = province;
+	}
 	public int getKindRelationship() {
 		return kindRelationship;
 	}

@@ -8,17 +8,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import domain.Chorbi;
+import domain.Genre;
+import domain.KindRelationship;
 import domain.SearchTemplate;
 
 @Repository
 public interface SearchTemplateRepository extends JpaRepository<SearchTemplate, Integer> {
 
-	@Query("select c from Chorbi c where c.kindRelationship=?1 and c.genre=?2") //poner la edad
-	Collection<Chorbi> searchTemplate(int kind, int genre);
+	@Query("select c from Chorbi c where c.kindRelationship=?1 and c.genre=?2 and c.banned=false") //poner la edad
+	Collection<Chorbi> searchTemplate(KindRelationship kind, Genre genre);
 	
 	@Query("select c from Chorbi c where c.coordinates.country like '%'||:country||'%'" +
 			"and c.coordinates.city like '%'||:city||'%' and c.coordinates.state like '%'||:state||'%'" +
-			"and c.coordinates.province like '%'||:province||'%'")
+			"and c.coordinates.province like '%'||:province||'%' and c.banned=false")
 	Collection<Chorbi> searchTemplate(@Param("country") String country, @Param("city") String city, 
 			@Param("state") String state, @Param("province") String province);
 	

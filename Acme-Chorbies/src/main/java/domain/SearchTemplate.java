@@ -1,16 +1,20 @@
 package domain;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.SafeHtml;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,7 +26,18 @@ public class SearchTemplate extends DomainEntity{
 	private Genre genre;
 	private String keyword;
 	private Coordinates coordinates;
+	private Date moment;
 	
+	
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="dd/MM/yyy HH:mm")
+	public Date getMoment() {
+		return moment;
+	}
+	public void setMoment(Date moment) {
+		this.moment = moment;
+	}
 	@Valid
 	public Coordinates getCoordinates() {
 		return coordinates;

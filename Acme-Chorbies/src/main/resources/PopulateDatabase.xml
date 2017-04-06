@@ -104,6 +104,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates1"/>
+		<property name="searchTemplate" ref="searchTemplate1"/>
 		<property name="sendChirps">
 			<list></list>
 		</property>
@@ -249,6 +250,7 @@
 		<property name="keyword" value="perez" />
 		<property name="genre" value="MAN" />
 		<property name="coordinates" ref="coordinates2" />
+		<property name="moment" value="12/12/2016 12:12"/>
 		<property name="results">
 			<list></list>
 		</property>
@@ -283,6 +285,11 @@
 		<property name="expirationYear" value="18" />
 		<property name="cvv" value="200" />
 		<property name="chorbi" ref="chorbi2"/>
+	</bean>
+	
+	<!-- Config -->
+	<bean id="config" class="domain.Config">
+		<property name="cache" value="12"/>
 	</bean>
 	
 </beans>
