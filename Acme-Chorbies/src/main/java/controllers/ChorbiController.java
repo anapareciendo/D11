@@ -14,6 +14,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import security.LoginService;
 import services.ChorbiService;
 import domain.Chorbi;
+import forms.ChorbiForm;
 
 @Controller
 @RequestMapping("/chorbi")
@@ -78,4 +80,69 @@ public class ChorbiController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit() {
+			ModelAndView result;
+			
+			Chorbi chorbi= chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			
+
+			result = new ModelAndView("chorbi/edit");
+			result.addObject("chorbi", chorbi);
+			return result;
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(ChorbiForm chor, BindingResult binding) {
+		ModelAndView result;
+		Chorbi chorbi;
+		chorbi= chorbiService.reconstructEdit(chor, binding);
+
+		if (!binding.hasErrors()) {
+			try{
+				Chorbi edit= new Chorbi();
+				
+				edit.setName(chorbi.getName());
+				edit.setSurname(chorbi.getSurname());
+				edit.setEmail(chorbi.getEmail());
+				edit.setPhone(chorbi.getPhone());
+				edit.setPicture(chorbi.getPicture());
+				edit.setKindRelationship(chorbi.getKindRelationship());
+				edit.setBirthDate(chorbi.getBirthDate());
+				edit.setGenre(chorbi.getGenre());
+				
+				result = new ModelAndView("chorbi/display");
+				result.addObject("chorbi", edit);
+			}catch(Throwable oops){
+				result = new ModelAndView("chorbi/edit");
+				result.addObject("chorbi", chorbi);
+				result.addObject("message", "chorbi.error");
+			}
+		} else {
+			result = new ModelAndView("chorbi/edit");
+			result.addObject("chorbi", chorbi);
+			result.addObject("message", "chorbi.binding");
+		}
+		return result;
+		
+	}
+	
+
+	protected ModelAndView createEditModelAndView(Chorbi chorbi) {
+		ModelAndView result;
+
+		result = createEditModelAndView(chorbi, null);
+		
+		return result;
+	}	
+	
+	protected ModelAndView createEditModelAndView(Chorbi chorbi, String message) {
+		ModelAndView result;
+		
+		result = new ModelAndView("chorbi/edit");
+		result.addObject("chorbi", chorbi);
+		result.addObject("message", message);
+
+		return result;
+	}
 }

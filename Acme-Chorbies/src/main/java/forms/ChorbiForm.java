@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 
 import domain.Coordinates;
+import domain.CreditCard;
 
 @Access(AccessType.PROPERTY)
 public class ChorbiForm {
@@ -25,6 +26,7 @@ public class ChorbiForm {
 	private Integer genre;
 	
 	private Coordinates coordinates;
+	private CreditCard creditCard;
 	
 	private String country;
 	private String city;
@@ -171,6 +173,14 @@ public class ChorbiForm {
 
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
+	}
+
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
 	}
 	
 	

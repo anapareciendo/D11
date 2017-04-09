@@ -25,6 +25,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="chorbi/display.do"><spring:message code="master.page.chorbi.display" /></a></li>
+					<li><a href="chorbi/edit.do"><spring:message code="master.page.chorbi.edit" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
