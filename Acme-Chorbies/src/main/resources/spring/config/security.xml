@@ -53,6 +53,11 @@
 		
 		<security:intercept-url pattern="/likes/chorbi/like.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/likes/chorbi/sayLike.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/likes/list.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/likes/chorbi/listMakeLikes.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/likes/chorbi/listReceivedLikes.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/likes/chorbi/delete.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/likes/delete.do" access="hasRole('CHORBI')" />
 		
 		<security:intercept-url pattern="/template/search.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/template/template.do" access="hasRole('CHORBI')" />

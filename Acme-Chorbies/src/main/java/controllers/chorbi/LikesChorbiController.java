@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.ChorbiService;
 import services.LikesService;
 import controllers.AbstractController;
@@ -41,7 +42,84 @@ public class LikesChorbiController extends AbstractController {
 	public LikesChorbiController() {
 		super();
 	}
+	
+	@RequestMapping(value="/listReceivedLikes", method = RequestMethod.GET)
+	public ModelAndView listReceivedLikes() {
+		ModelAndView result;
+		
+		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		
+		Collection<Likes> makeLikes = chorbi.getReceivedLikes();
+		
+		result = new ModelAndView("likes/list");
+		result.addObject("likes", makeLikes);
+		result.addObject("make", false);
 
+		return result;
+	}
+	
+	
+	@RequestMapping(value="/listMakeLikes", method = RequestMethod.GET)
+	public ModelAndView listMakeLikes() {
+		ModelAndView result;
+		
+		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		
+		Collection<Likes> makeLikes = chorbi.getMakeLikes();
+		
+		result = new ModelAndView("likes/list");
+		result.addObject("likes", makeLikes);
+		result.addObject("make", true);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam int likesId) {
+		ModelAndView result;
+		
+		try {
+			Likes likes = likesService.findOne(likesId);
+			result = new ModelAndView("likes/delete");
+			result.addObject("likes", likes);
+		} catch (Throwable oops) {
+		
+			result = new ModelAndView("redirect:listMakeLikes.do");
+			result.addObject("message", "like.commit.error");
+		}
+
+		return result;
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(Likes likes) {
+		ModelAndView result;
+		
+		try {
+			Likes likesd = likesService.findOne(likes.getId());
+			likesService.delete(likesd);
+			
+			Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			Collection<Likes> makeLikes = chorbi.getMakeLikes();
+			result = new ModelAndView("likes/list");
+			result.addObject("requestURI", "likes/list.do");
+			result.addObject("likes", makeLikes);
+			result.addObject("make", true);
+			result.addObject("message", "like.delete.success");
+		} catch (Throwable oops) {
+		
+			
+			Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			Collection<Likes> makeLikes = chorbi.getMakeLikes();
+			result = new ModelAndView("likes/list");
+			result.addObject("requestURI", "likes/list.do");
+			result.addObject("likes", makeLikes);
+			result.addObject("make", true);
+			result.addObject("message", "like.commit.error");
+		}
+
+		return result;
+	}
 	
 	@RequestMapping(value="/like", method = RequestMethod.GET)
 	public ModelAndView like(@RequestParam int chorbiId) {

@@ -20,5 +20,15 @@
 		<put-attribute name="title" value="You like"/>
 		<put-attribute name="body" value="/views/likes/like.jsp"/>		
 	</definition>
+	
+	<definition name="likes/list" extends="master.page">
+		<put-attribute name="title" value="List of likes"/>
+		<put-attribute name="body" value="/views/likes/list.jsp"/>		
+	</definition>
+	
+	<definition name="likes/delete" extends="master.page">
+		<put-attribute name="title" value="Delete like"/>
+		<put-attribute name="body" value="/views/likes/delete.jsp"/>		
+	</definition>
 
 </tiles-definitions>

@@ -79,7 +79,9 @@ public class LikesService {
 		
 
 		final UserAccount ua = LoginService.getPrincipal();
-		Assert.isTrue(likes.getLiked().getUserAccount().equals(ua),"You are not the owner of the message" );
+		Assert.isTrue(likes.getLiker().getUserAccount().equals(ua),"You are not the owner of the message" );
+		
+		this.likesRepository.delete(likes);
 	}
 
 	//----------------Other Methods---------------
