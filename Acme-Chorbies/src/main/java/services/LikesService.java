@@ -88,10 +88,10 @@ public class LikesService {
 
 	//----------------Other Methods---------------
 	public Likes reconstruct(Likes likes, BindingResult binding) {
-
+		String ms = likes.getComment().replaceAll("([+][0-9]{2,})[ ]*([(][0-9]{3}[)])?[ ]*([0-9][ -]*){4,}", "***").replaceAll("([0-9a-zA-Z][_&$#]*){4,}[@][a-zA-Z]{3,}[.][a-zA-Z]{2,}", "***");
 		Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
 		Likes res = this.create(liker, likes.getLiked());
-		res.setComment(likes.getComment());
+		res.setComment(ms);
 		
 		validator.validate(res, binding);
 		
