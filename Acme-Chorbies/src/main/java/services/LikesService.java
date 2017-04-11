@@ -66,9 +66,11 @@ public class LikesService {
 		Assert.notNull(likes.getLiker(), "The like to save cannot have 'liker' null.");
 		
 		final Likes res = this.likesRepository.save(likes);
+		
 		res.getLiked().getReceivedLikes().add(res);
 		res.getLiker().getMakeLikes().add(res);
 		res.setMoment(Calendar.getInstance().getTime());
+		
 		
 		return res;
 	}
