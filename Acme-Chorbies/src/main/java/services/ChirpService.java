@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
@@ -7,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ChirpRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Chirp;
@@ -24,12 +28,12 @@ public class ChirpService {
 
 
 	//Validator
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
+	@Autowired
+	private Validator validator;
 
 	//Supporting services
+	@Autowired
+	private ChorbiService chorbiService;
 
 	//Constructors
 	public ChirpService() {
@@ -38,11 +42,14 @@ public class ChirpService {
 
 	//Simple CRUD methods
 	public Chirp create(final Chorbi sender, final Chorbi recipient) {
+		Assert.notNull(sender, "The sender cannot be null.");
+		Assert.notNull(recipient, "The recipient cannot be null.");
 		Chirp res;
 		res = new Chirp();
 		res.setSender(sender);
 		res.setRecipient(recipient);
 		res.setMoment(Calendar.getInstance().getTime());
+		res.setAttachments(new ArrayList<String>());
 		return res;
 	}
 
@@ -74,10 +81,82 @@ public class ChirpService {
 	public void delete(final Chirp chirp) {
 		Assert.notNull(chirp, "The chirp to delete cannot be null.");
 		Assert.isTrue(this.chirpRepository.exists(chirp.getId()));
+		Chorbi principal = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		Assert.isTrue(principal.getReceivedChirps().contains(chirp) || principal.getSendChirps().contains(chirp),"You are not the owner of this chirp");
 		
 
 		final UserAccount ua = LoginService.getPrincipal();
-		Assert.isTrue(chirp.getSender().getUserAccount().equals(ua),"You are not the owner of the message");
+		Assert.isTrue(chirp.getSender().getUserAccount().equals(ua) || chirp.getRecipient().getUserAccount().equals(ua),"You are not the owner of the message");
+		
+		chirpRepository.delete(chirp);
+	}
+	
+	//----------Other Methods------------------------
+	public Collection<Chirp> findMyReceivedChirps(int uaId){
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action.");
+		return chirpRepository.findMyReceivedChirps(ua.getId());
+	}
+	
+	public Collection<Chirp> findMySentChirps(int uaId){
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action.");
+		return chirpRepository.findMySentChirps(ua.getId());
+	}
+
+	public Chirp reconstruct(Chirp chirp, BindingResult binding) {
+		String text = chirp.getText().replaceAll("([+][0-9]{2,})[ ]*([(][0-9]{3}[)])?[ ]*([0-9][ -]*){4,}", "***").replaceAll("([0-9a-zA-Z][_&$#]*){4,}[@][a-zA-Z]{3,}[.][a-zA-Z]{2,}", "***");
+		String subject = chirp.getSubject().replaceAll("([+][0-9]{2,})[ ]*([(][0-9]{3}[)])?[ ]*([0-9][ -]*){4,}", "***").replaceAll("([0-9a-zA-Z][_&$#]*){4,}[@][a-zA-Z]{3,}[.][a-zA-Z]{2,}", "***");
+		Chorbi sender = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		
+		Chirp res = this.create(sender, chirp.getRecipient());
+		res.getAttachments().addAll(chirp.getAttachments());
+		res.setMoment(Calendar.getInstance().getTime());
+		res.setSubject(subject);
+		res.setText(text);
+		
+		validator.validate(res, binding);
+		
+		return res;
+	}
+	
+	public Chirp reply(Chirp chirp, String text){
+		Assert.notNull(chirp, "The chirp cannot be null.");
+		Assert.notNull(text, "The text cannot be null.");
+		
+		Chirp aux = chirpRepository.findOne(chirp.getId());
+		Chorbi principal = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		Assert.isTrue(principal.getReceivedChirps().contains(aux) || principal.getSendChirps().contains(aux),"You are not the owner of this chirp");
+		
+		Chirp res = this.create(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId()), aux.getSender());
+		
+		res.getAttachments().addAll(aux.getAttachments());
+		res.setSubject("RE: "+aux.getSubject());
+		res.setText(aux.getText()+"<br/>RE :"+text);
+		
+		return res;
+	}
+	public Chirp forward(Chirp chirp, Chorbi chorbi){
+		Assert.notNull(chirp, "The chirp cannot be null.");
+		Assert.notNull(chorbi, "The chorbi cannot be null.");
+		Chirp aux = chirpRepository.findOne(chirp.getId());
+		
+		Chorbi principal = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		Assert.isTrue(principal.getReceivedChirps().contains(aux) || principal.getSendChirps().contains(aux),"You are not the owner of this chirp");
+		
+		Chirp res = this.create(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId()), chorbi);
+		
+		res.setText(aux.getText());
+		res.setSubject("RE: "+aux.getSubject());
+		res.getAttachments().addAll(aux.getAttachments());
+		
+		return res;
 	}
 
 

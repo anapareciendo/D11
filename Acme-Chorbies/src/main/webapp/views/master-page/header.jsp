@@ -58,9 +58,21 @@
 						<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
 						<li><a href="template/search.do"><spring:message code="master.page.template" /></a></li>
 						<li><a href="template/result.do"><spring:message code="master.page.template.result" /></a></li>
-						<li><a href="likes/chorbi/listMakeLikes.do"><spring:message code="master.page.likes.chorbi.make" /></a></li>
-						<li><a href="likes/chorbi/listReceivedLikes.do"><spring:message code="master.page.likes.chorbi.received" /></a></li>
 					</security:authorize>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.likes" /></a>
+				<ul>
+					<li><a href="likes/chorbi/listMakeLikes.do"><spring:message code="master.page.likes.chorbi.make" /></a></li>
+					<li><a href="likes/chorbi/listReceivedLikes.do"><spring:message code="master.page.likes.chorbi.received" /></a></li>
+				</ul>
+			</li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.chirp" /></a>
+				<ul>
+					<li><a href="chirp/chorbi/received.do"><spring:message code="master.page.chirp.list" /></a></li>
+					<li><a href="chirp/chorbi/sent.do"><spring:message code="master.page.chirp.sent" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

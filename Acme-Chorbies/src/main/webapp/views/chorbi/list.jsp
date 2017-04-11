@@ -55,6 +55,13 @@
 		  		<jstl:out value="${likeHeader}" />
 		 </a>
 	</display:column>
+	
+	<display:column>
+	  	<a href="chirp/chorbi/chirp.do?chorbiId=${chorbi.id}">
+	 			<spring:message code="chorbi.chirp" var="chirpHeader" />
+		  		<jstl:out value="${chirpHeader}" />
+		 </a>
+	</display:column>
 	</security:authorize>
 	
 	<security:authorize access="hasRole('ADMIN')">

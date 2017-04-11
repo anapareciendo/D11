@@ -82,7 +82,7 @@ public class SearchTemplateService {
 		final UserAccount ua = LoginService.getPrincipal();
 		Assert.notNull(ua);
 		final Authority a = new Authority();
-		a.setAuthority(Authority.CUSTOMER);
+		a.setAuthority(Authority.ADMIN);
 		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to delete an actor.");
 		
 		Assert.notNull(search, "The search to delete cannot be null.");
@@ -119,6 +119,8 @@ public class SearchTemplateService {
 		case 2: res.setKindRelationship(KindRelationship.LOVE);
 		break;
 		}
+
+		res.setMoment(Calendar.getInstance().getTime());
 		
 		validator.validate(res, binding);
 		

@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<display:table name="likes" id="likes" requestURI="like/list.do"
+<display:table name="likes" id="likes" requestURI="${requestUri}"
 	pagesize="5" class="displaytag">
 	
 	<spring:message code="likes.moment" var="momentHeader" />

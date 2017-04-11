@@ -44,7 +44,7 @@ public class Chirp extends DomainEntity {
 		this.subject=subject;
 	}
 	
-	@NotBlank
+	@NotNull
 	public String getText() {
 		return text;
 	}

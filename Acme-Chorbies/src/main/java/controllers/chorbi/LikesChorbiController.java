@@ -54,6 +54,7 @@ public class LikesChorbiController extends AbstractController {
 		result = new ModelAndView("likes/list");
 		result.addObject("likes", makeLikes);
 		result.addObject("make", false);
+		result.addObject("requestUri", "/likes/chorbi/listReceivedLikes.do");
 
 		return result;
 	}
@@ -70,6 +71,7 @@ public class LikesChorbiController extends AbstractController {
 		result = new ModelAndView("likes/list");
 		result.addObject("likes", makeLikes);
 		result.addObject("make", true);
+		result.addObject("requestUri", "/likes/chorbi/listMakeLikes.do");
 
 		return result;
 	}
