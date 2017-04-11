@@ -175,6 +175,12 @@ public class ChorbiService {
 	}
 
 	public Chorbi ban(Chorbi chorbi) {
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to delete an actor.");
+		
 		Authority b = new Authority();
 		b.setAuthority(Authority.BANNED);
 		
@@ -186,6 +192,12 @@ public class ChorbiService {
 	}
 
 	public Chorbi unban(Chorbi chorbi) {
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to delete an actor.");
+		
 		Authority b = new Authority();
 		b.setAuthority(Authority.CHORBI);
 		
