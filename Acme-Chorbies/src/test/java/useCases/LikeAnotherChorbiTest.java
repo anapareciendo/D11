@@ -30,7 +30,8 @@ import domain.Likes;
 public class LikeAnotherChorbiTest extends AbstractTest{
 	
 	/* *----Like another chorbi; a like may be cancelled at any time.-----*
-	  -El orden de los parámetros es: Usuario que se va a autenticar, error esperado
+	  -El orden de los parámetros es: Usuario que se va a autenticar,
+	  momento en el que se crea el me gusta, comentario del me gusta, error esperado
 	  
 	  Cobertura del test:
 	  		//El usuario autenticado es un chorbi (test positivo)

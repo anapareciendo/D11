@@ -81,7 +81,7 @@ public class ChorbiService {
 //		Assert.notNull(chorbi.getCoordinates(), "The chorbi to save cannot have 'BirthDate' null.");
 		
 		final Chorbi res = this.chorbiRepository.save(chorbi);
-//		chorbiRepository.flush();
+		chorbiRepository.flush();
 		return res;
 	}
 
