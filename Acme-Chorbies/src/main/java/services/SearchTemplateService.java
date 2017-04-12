@@ -133,8 +133,8 @@ public class SearchTemplateService {
 		List<Chorbi> res = new ArrayList<Chorbi>();
 		List<Chorbi> aux = new ArrayList<Chorbi>();
 		aux.addAll(chorbiService.findNotBanned());
-		aux.removeAll(searchTemplateRepository.searchTemplate(country, city, state, province));
-		res.addAll(searchTemplateRepository.searchTemplate(kind, genre));
+		aux.removeAll(searchTemplateRepository.searchTemplate(country, city, state, province, keyword));
+		res.addAll(searchTemplateRepository.searchTemplate(kind, genre, age));
 		res.removeAll(aux);
 		
 		return res;

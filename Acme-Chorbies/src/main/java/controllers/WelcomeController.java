@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.BannerService;
+import services.ChorbiService;
 import domain.Banner;
+import domain.Chorbi;
 
 @Controller
 @RequestMapping("/welcome")
@@ -32,6 +35,8 @@ public class WelcomeController extends AbstractController {
 	// Services -------------------------------------------------------
 	@Autowired
 	private BannerService bannerService;
+	@Autowired
+	private ChorbiService chorbiService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -59,12 +64,23 @@ public class WelcomeController extends AbstractController {
 		}else{
 			show= "";
 		}
-
+		
+		Chorbi chorbi;
+		try{
+			chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		}catch(Throwable oops){
+			chorbi=null;
+		}
+		
 		result = new ModelAndView("welcome/index");
 		result.addObject("name", name);
 		result.addObject("moment", moment);
 		result.addObject("banner", show);
 
+		if(chorbi!=null && chorbi.getBanned()==true){
+			result.addObject("message", "welcome.banned");
+		}
+		
 		return result;
 	}
 }

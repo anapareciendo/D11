@@ -74,30 +74,37 @@ public class SearchTemplateController extends AbstractController {
 	public ModelAndView user(TemplateForm template, BindingResult binding) {
 		ModelAndView result;
 		SearchTemplate search;
-		search = searchTemplateService.reconstruct(template, binding);
-
-		if (!binding.hasErrors()) {
-			try{
-				List<Chorbi> chorbis = new ArrayList<Chorbi>();
-				chorbis.addAll(searchTemplateService.searchTemplate(search.getKindRelationship(), search.getGenre(), template.getAproximateAge(), template.getCountry(), template.getCity(), template.getState(), template.getProvince(), template.getKeyword()));
-				
-				search.getResults().clear();
-				search.getResults().addAll(chorbis);
-				
-				searchTemplateService.save(search);
-				
-				result = new ModelAndView("chorbi/list");
-				result.addObject("chorbi", chorbis);
-			}catch(Throwable oops){
+		try{
+			search = searchTemplateService.reconstruct(template, binding);
+			if (!binding.hasErrors()) {
+				try{
+					List<Chorbi> chorbis = new ArrayList<Chorbi>();
+					chorbis.addAll(searchTemplateService.searchTemplate(search.getKindRelationship(), search.getGenre(), template.getAproximateAge(), template.getCountry(), template.getCity(), template.getState(), template.getProvince(), template.getKeyword()));
+					
+					search.getResults().clear();
+					search.getResults().addAll(chorbis);
+					
+					searchTemplateService.save(search);
+					
+					result = new ModelAndView("chorbi/list");
+					result.addObject("chorbi", chorbis);
+				}catch(Throwable oops){
+					result = new ModelAndView("template/template");
+					result.addObject("template", template);
+					result.addObject("message", "template.error");
+				}
+			} else {
 				result = new ModelAndView("template/template");
 				result.addObject("template", template);
-				result.addObject("message", "template.error");
+				result.addObject("message", "template.binding");
 			}
-		} else {
+		}catch(Throwable opps){
 			result = new ModelAndView("template/template");
 			result.addObject("template", template);
 			result.addObject("message", "template.binding");
 		}
+
+		
 		return result;
 	}
 	

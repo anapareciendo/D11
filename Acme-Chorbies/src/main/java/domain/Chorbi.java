@@ -56,8 +56,8 @@ public class Chorbi extends Actor{
 	}
 	
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern="dd/MM/yyy HH:mm")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	public Date getBirthDate() {
 		return birthDate;
 	}
