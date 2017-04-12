@@ -13,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import security.LoginService;
 import services.AdministratorService;
+import services.ChirpService;
 import services.ChorbiService;
 import utilities.AbstractTest;
 import domain.Administrator;
+import domain.Chirp;
 import domain.Chorbi;
 
 @ContextConfiguration(locations = {
@@ -24,14 +27,14 @@ import domain.Chorbi;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class ListOfChorbiesTest extends AbstractTest{
+public class ReplyChirpTest extends AbstractTest{
 	
-	/* *----Browse the list of chorbies who have registered to the system.-----*
-	  -El orden de los par·metros es: Usuario que se va a autenticar, error esperado
+	/* *----Browse the list of chirps that he or she‚Äôs got, and reply to any of them.-----*
+	  -El orden de los par√°metros es: Usuario que se va a autenticar, error esperado
 	  
 	  Cobertura del test:
-	  		//El usuario autenticado existe(test positivo)
-			//El usuario no est· autenticado(test negativo)
+	  		//El usuario autenticado es un chorbi(test positivo)
+			//El usuario no est√° autenticado(test negativo)
 				
 	 */
 	
@@ -41,9 +44,12 @@ public class ListOfChorbiesTest extends AbstractTest{
 	@Autowired
 	private AdministratorService adminService;
 	
-
+	@Autowired
+	private ChirpService chirpService;
+	
 	
 	private List<Administrator> admins;
+	private List<Chorbi> chorbies;
 	
 	@Before
     public void setup() {
@@ -51,13 +57,17 @@ public class ListOfChorbiesTest extends AbstractTest{
 		this.admins.addAll(this.adminService.findAll());
 		
 		Collections.shuffle(this.admins);
+		
+		this.chorbies = new ArrayList<Chorbi>();
+		this.chorbies.addAll(this.chorbiService.findAll());
+		
 	}
 	
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
 			{
-				this.admins.get(0).getUserAccount().getUsername(), null
+				this.chorbies.get(0).getUserAccount().getUsername(), null
 			}, {
 				"", IllegalArgumentException.class
 			},
@@ -74,8 +84,14 @@ public class ListOfChorbiesTest extends AbstractTest{
 		try {
 			this.authenticate(username);
 			
-			List<Chorbi> chorbies = new ArrayList<Chorbi>();
-			chorbies.addAll(chorbiService.findAll());
+			
+			Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			
+			Chirp chirp = ((List<Chirp>) chorbi.getReceivedChirps()).get(0);
+						
+			chirpService.reply(chirp, "Hola");
+			
+			
 			
 			this.unauthenticate();
 		} catch (final Throwable oops) {

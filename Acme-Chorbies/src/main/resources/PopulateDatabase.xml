@@ -237,7 +237,7 @@
 		<property name="subject" value="Felicidades" />
 		<property name="text" value="Feliz año" />
 		<property name="sender" ref="chorbi1" />
-		<property name="recipient" ref="chorbi2" />
+		<property name="recipient" ref="chorbi1" />
 		<property name="attachments">
 			<list></list>
 		</property>
