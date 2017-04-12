@@ -71,6 +71,9 @@
 		<security:intercept-url pattern="/template/template.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/template/result.do" access="hasRole('CHORBI')" />
 		
+		<security:intercept-url pattern="/aboutUs/acme.do" access="permitAll" />
+		
+		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

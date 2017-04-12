@@ -33,6 +33,8 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="security/signin.do"><spring:message code="master.page.signin" /></a></li>
+			<li><a class="fNiv" href="aboutUs/acme.do"><spring:message code="master.page.about" /></a></li>
+		
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
@@ -45,6 +47,8 @@
 					<li class="arrow"></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
+				<li><a class="fNiv" href="aboutUs/acme.do"><spring:message code="master.page.about" /></a></li>
+				
 			</li>
 			
 			<li><a class="fNiv"><spring:message	code="master.page.chorbi" /></a>
@@ -77,7 +81,11 @@
 				</ul>
 			</li>
 			</security:authorize>
+			
 		</security:authorize>
+		
+		
+		
 	</ul>
 </div>
 
