@@ -49,7 +49,6 @@
 				</ul>
 				<li><a class="fNiv" href="aboutUs/acme.do"><spring:message code="master.page.about" /></a></li>
 				
-			</li>
 			
 			<li><a class="fNiv"><spring:message	code="master.page.chorbi" /></a>
 				<ul>
@@ -90,6 +89,6 @@
 </div>
 
 <div>
-	<a href="?language=en">en</a> | <a href="?language=es">es</a>
+	<a href="?language=en">en</a> | <a href="?language=es">es</a> 
 </div>
 
