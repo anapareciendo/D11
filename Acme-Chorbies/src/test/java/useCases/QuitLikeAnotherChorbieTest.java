@@ -1,6 +1,7 @@
 package useCases;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,10 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import security.LoginService;
 import services.AdministratorService;
 import services.ChorbiService;
+import services.LikesService;
 import utilities.AbstractTest;
-import domain.Administrator;
 import domain.Chorbi;
 
 @ContextConfiguration(locations = {
@@ -40,6 +42,7 @@ public class QuitLikeAnotherChorbieTest extends AbstractTest{
 	
 	@Autowired
 	private AdministratorService adminService;
+	private LikesService likeService;
 	
 	private List<Chorbi> chorbies;
 	
@@ -72,9 +75,14 @@ public class QuitLikeAnotherChorbieTest extends AbstractTest{
 		try {
 			this.authenticate(username);
 			
-			chorbiService.findMyLikes(likedId)
-			List<Chorbi> chorbies = new ArrayList<Chorbi>();
-			chorbies.addAll(chorbiService.findAll());
+			Chorbi c= chorbiService.findOne(LoginService.getPrincipal().getId());
+			Collection<Chorbi> likes = chorbiService.findMyLikes(c.getId());
+			
+			
+			Chorbi unlike = ((List<Chorbi>) likes).get(0);
+			likeService.delete(unlike);
+			
+			
 			
 			this.unauthenticate();
 		} catch (final Throwable oops) {
