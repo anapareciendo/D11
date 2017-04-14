@@ -126,6 +126,7 @@ public class AdministratorService {
 			return res;
 		}
 		
+//		The ratios of chorbies who search for activities
 		public Double ratioChorbisWhoSearchActivities(){
 			Double res = this.cero();
 			if(res>0.0){
@@ -133,6 +134,8 @@ public class AdministratorService {
 			}
 			return res;
 		}
+		
+//		The ratios of chorbies who search for friendship
 		public Double ratioChorbisWhoSearchFriendship(){
 			Double res = this.cero();
 			if(res>0.0){
@@ -140,6 +143,8 @@ public class AdministratorService {
 			}
 			return res;
 		}
+		
+//		The ratios of chorbies who search for love.
 		public Double ratioChorbisWhoSearchLove(){
 			Double res = this.cero();
 			if(res>0.0){
