@@ -23,11 +23,10 @@ public class BannerService {
 	private BannerRepository	bannerRepository;
 
 
-	//Validator
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
+//	//Validator
+//	@Autowired
+//	private Validator validator;
+
 
 	//Supporting services
 
@@ -94,5 +93,5 @@ public class BannerService {
 		banner.setDisplay(true);
 		return banner;
 	}
-
+	
 }

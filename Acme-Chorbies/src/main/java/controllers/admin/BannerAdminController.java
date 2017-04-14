@@ -12,8 +12,11 @@ package controllers.admin;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -94,6 +97,46 @@ public class BannerAdminController extends AbstractController {
 		}
 
 		
+		return result;
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam int bannerId) {
+		ModelAndView result;
+		
+		try{
+			Banner banner = bannerService.findOne(bannerId);
+			result = new ModelAndView("banner/edit");
+			result.addObject("banner", banner);
+		}catch(Throwable oops){
+			result = new ModelAndView("welcome/index");
+			result.addObject("message","banner.commit.error");
+
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid Banner banner, BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors()) {
+			result = new ModelAndView("banner/edit");
+			result.addObject("banner", banner);
+		} else {
+			try {
+				bannerService.save(banner);				
+				result = new ModelAndView("banner/list");
+				Collection<Banner> banners = bannerService.findAll();
+				result.addObject("banner", banners);
+				result.addObject("message","banner.commit.ok");
+			} catch (Throwable oops) {
+				result = new ModelAndView("banner/edit");
+				result.addObject("banner", banner);		
+				result.addObject("message", "banner.commit.error");
+			}
+		}
+
 		return result;
 	}
 	

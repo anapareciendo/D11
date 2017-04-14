@@ -26,8 +26,8 @@ public class Banner extends DomainEntity {
 	}
 	
 	
-	public boolean isDisplay() {
-		return display;
+	public boolean getDisplay() {
+		return this.display;
 	}
 	public void setDisplay(boolean display) {
 		this.display = display;

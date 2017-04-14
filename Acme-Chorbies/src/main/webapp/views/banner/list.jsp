@@ -49,6 +49,15 @@
   	</jstl:if>
 
   	</display:column>
+  	
+  	<display:column>
+		<div>
+			<a href="banner/admin/edit.do?bannerId=${banner.id}">
+				<spring:message code="banner.edit" var="editHeader" />
+				<jstl:out value="${editHeader}" />
+			</a>
+		</div>
+	</display:column>
 	
 	<%-- <jstl:if test="${make == true }">
 	<display:column>
