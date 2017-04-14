@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.ConfigRepository;
 import security.Authority;
@@ -26,11 +28,9 @@ public class ConfigService {
 
 
 	//Validator
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
-
+	@Autowired
+	private Validator validator;
+	
 	//Supporting services
 
 	//Constructors
@@ -42,6 +42,7 @@ public class ConfigService {
 	public Config create() {
 		Config res;
 		res = new Config();
+		res.setCache(12);
 		return res;
 	}
 
@@ -73,6 +74,15 @@ public class ConfigService {
 
 		final Config res = this.configRepository.save(config);
 
+		return res;
+	}
+
+	public Config reconstruct(Config config, BindingResult binding) {
+		Config res = find();
+		res.setCache(config.getCache());
+		
+		validator.validate(res, binding);
+		
 		return res;
 	}
 

@@ -10,40 +10,70 @@
 
 package controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import services.ConfigService;
+import domain.Config;
 
 @Controller
 @RequestMapping("/administrator")
 public class AdministratorController extends AbstractController {
 
+	//Services
+	@Autowired
+	private ConfigService configService;
+	
 	// Constructors -----------------------------------------------------------
 
 	public AdministratorController() {
 		super();
 	}
-
-	// Action-1 ---------------------------------------------------------------		
-
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
+	
+	//Config
+	@RequestMapping(value = "/config", method = RequestMethod.GET)
+	public ModelAndView config() {
 		ModelAndView result;
-
-		result = new ModelAndView("administrator/action-1");
+		
+		Config config = configService.find();
+		
+		result = new ModelAndView("administrator/config");
+		result.addObject("config", config);
 
 		return result;
 	}
-
-	// Action-2 ---------------------------------------------------------------
-
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
+	
+	@RequestMapping(value = "/config", method = RequestMethod.POST, params = "save")
+	public ModelAndView replyChirp(Config config, BindingResult binding) {
 		ModelAndView result;
-
-		result = new ModelAndView("administrator/action-2");
-
+		
+		Config res = configService.reconstruct(config, binding);
+		
+		if(!binding.hasErrors()){
+			try{
+				configService.save(res);
+				
+				result = new ModelAndView("administrator/config");
+				result.addObject("config", res);
+				result.addObject("message", "admin.commit.success");
+			}catch(Throwable oops){
+				result = new ModelAndView("administrator/config");
+				result.addObject("config", res);
+				result.addObject("message", "admin.commit.error");
+			}
+		}else{
+			result = new ModelAndView("administrator/config");
+			result.addObject("config", res);
+			result.addObject("message", "admin.commit.error");
+		}
+		
 		return result;
+		
 	}
+
 
 }
