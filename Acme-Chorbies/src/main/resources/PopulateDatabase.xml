@@ -175,14 +175,22 @@
 	
 	<bean id="banner1" class="domain.Banner">
 		<property name="logo" value="No todos son sábanas, Acme Bed'n Breakfast" />
+		<property name="display" value = "true" />
 	</bean>
 	
 	<bean id="banner2" class="domain.Banner">
 		<property name="logo" value="Acme Car'n Go!, porque cambiar una rueda entre dos es mas fácil" />
+		<property name="display" value = "true" />
 	</bean>
 	
 	<bean id="banner3" class="domain.Banner">
 		<property name="logo" value="Ven a comer con nosotros y con tu espíritu, restaurante Acme Pad Thai" />
+		<property name="display" value = "false" />
+	</bean>
+	
+	<bean id="banner4" class="domain.Banner">
+		<property name="logo" value="Acaba con el aburrimiento, conoce a gente interesante en Acme Chorbies" />
+		<property name="display" value = "true" />
 	</bean>
 	
 	<!-- Likes -->

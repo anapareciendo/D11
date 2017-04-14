@@ -56,7 +56,7 @@ public class WelcomeController extends AbstractController {
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
 		
-		List<Banner> banners = new ArrayList<Banner>(bannerService.findAll());
+		List<Banner> banners = new ArrayList<Banner>(bannerService.findBannersDisplay());
 		if(!banners.isEmpty()){
 			Collections.shuffle(banners);
 			Banner banner = banners.get(0);

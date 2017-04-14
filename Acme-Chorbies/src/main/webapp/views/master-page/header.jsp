@@ -65,6 +65,15 @@
 				</ul>
 			</li>
 			
+			<security:authorize access="hasRole('ADMIN')">
+				<li><a class="fNiv"><spring:message	code="master.page.banner" /></a>
+					<ul>
+					<li class="arrow"></li>
+						<li><a href="banner/admin/list.do"><spring:message code="master.page.banner.list" /></a></li>
+					</ul>
+				</li>
+			</security:authorize>
+			
 			<security:authorize access="hasRole('CHORBI')">
 			<li><a class="fNiv"><spring:message	code="master.page.likes" /></a>
 				<ul>

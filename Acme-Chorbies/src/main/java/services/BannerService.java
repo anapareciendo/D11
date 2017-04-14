@@ -66,5 +66,33 @@ public class BannerService {
 
 		return res;
 	}
+	
+	//Utilities methods
+	
+	public Collection<Banner> findBannersDisplay(){
+		return this.bannerRepository.findBannersDisplay();
+	}
+	
+	public Banner hide(Banner banner){
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to hide a banner.");
+		
+		banner.setDisplay(false);
+		return banner;
+	}
+	
+	public Banner show(Banner banner){
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to show a banner.");
+		
+		banner.setDisplay(true);
+		return banner;
+	}
 
 }
