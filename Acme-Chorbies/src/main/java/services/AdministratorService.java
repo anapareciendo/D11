@@ -13,6 +13,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
 import domain.Chorbi;
+import forms.Dashboard;
 
 @Service
 @Transactional
@@ -232,5 +233,34 @@ public class AdministratorService {
 		public Collection<Chorbi> chorbiesMoreChirpsSent(){
 			this.isAdministrator();
 			return this.administratorRepository.chorbiesMoreChirpsSent();
+		}
+		
+		public Dashboard dashboard(){
+			this.isAdministrator();
+			Dashboard res = new Dashboard();
+			
+			res.setNumChorbiesPerCity(this.numChorbiesPerCity());
+			res.setNumChorbiesPerCountry(this.numChorbiesPerCountry());
+			res.setMinAgeChorbies(this.minAgeChorbies());
+			res.setMaxAgeChorbies(this.maxAgeChorbies());
+			res.setAvgAgeChorbies(this.avgAgeChorbies());
+			res.setRatioChorbiesCreditCard(this.ratioChorbiesCreditCard());
+			res.setRatioChorbisWhoSearchActivities(this.ratioChorbisWhoSearchActivities());
+			res.setRatioChorbisWhoSearchFriendship(this.ratioChorbisWhoSearchFriendship());
+			res.setRatioChorbisWhoSearchLove(this.ratioChorbisWhoSearchLove());
+			res.setChorbiesSortedByLikes(this.chorbiesSortedByLikes());
+			res.setMinLikesPerChorbi(this.minLikesPerChorbi());
+			res.setMaxLikesPerChorbi(this.maxLikesPerChorbi());
+			res.setAvgLikesPerChorbi(this.avgLikesPerChorbi());
+			res.setMinChirpsReceived(this.minChirpsReceived());
+			res.setMaxChirpsReceived(this.maxChirpsReceived());
+			res.setAvgChirpsReceived(this.avgChirpsReceived());
+			res.setMinChirpsSend(this.minChirpsSend());
+			res.setMaxChirpsSend(this.maxChirpsSend());
+			res.setAvgChirpsSend(this.avgChirpsSend());
+			res.setChorbiesMoreChirpsReceived(this.chorbiesMoreChirpsReceived());
+			res.setChorbiesMoreChirpsSent(this.chorbiesMoreChirpsSent());
+			
+			return res;
 		}
 }

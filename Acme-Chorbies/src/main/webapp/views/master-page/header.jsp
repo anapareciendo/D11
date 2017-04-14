@@ -47,6 +47,7 @@
 					<li class="arrow"></li>
 					<security:authorize access="hasRole('ADMIN')">
 					<li><a href="administrator/config.do"><spring:message code="master.page.config" /> </a></li>
+					<li><a href="dashboard/dashboard.do"><spring:message code="master.page.dashboard" /> </a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('CHORBI')">
 					<li><a href="chorbi/creditCard.do"><spring:message code="master.page.card" /> </a></li>
