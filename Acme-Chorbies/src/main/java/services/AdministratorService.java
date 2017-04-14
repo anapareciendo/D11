@@ -86,7 +86,7 @@ public class AdministratorService {
 	//---LEVEL C---
 	
 		//A listing with the number of chorbies per city
-		public Collection<Integer> numChorbiesPerCity(){
+		public Collection<Object[]> numChorbiesPerCity(){
 			this.isAdministrator();
 			return this.administratorRepository.numChorbiesPerCity();
 		}

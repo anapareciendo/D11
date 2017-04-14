@@ -1,6 +1,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,8 +19,8 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	//---LEVEL C---
 	
 		//A listing with the number of chorbies per city
-		@Query("select count(c) from Chorbi c group by c.coordinates.city")
-		Collection<Integer> numChorbiesPerCity();
+		@Query("select c.coordinates.city, count(c) from Chorbi c group by c.coordinates.city")
+		List<Object[]> numChorbiesPerCity();
 		
 		//A listing with the number of chorbies per country
 		@Query("select count(c) from Chorbi c group by c.coordinates.country")

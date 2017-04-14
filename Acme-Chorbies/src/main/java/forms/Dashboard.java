@@ -5,19 +5,13 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import services.AdministratorService;
 import domain.Chorbi;
 
 @Access(AccessType.PROPERTY)
 public class Dashboard {
 
-	@Autowired
-	private AdministratorService adminService;
-	
 	//---LEVEL C---
-	private Collection<Integer> numChorbiesPerCity;
+	private Collection<Object[]> numChorbiesPerCity;
 	private Collection<Integer> numChorbiesPerCountry;
 	private Integer minAgeChorbies;
 	private Integer maxAgeChorbies;
@@ -43,16 +37,11 @@ public class Dashboard {
 	private Collection<Chorbi> chorbiesMoreChirpsReceived;
 	private Collection<Chorbi> chorbiesMoreChirpsSent;
 	
-	public AdministratorService getAdminService() {
-		return adminService;
-	}
-	public void setAdminService(AdministratorService adminService) {
-		this.adminService = adminService;
-	}
-	public Collection<Integer> getNumChorbiesPerCity() {
+	
+	public Collection<Object[]> getNumChorbiesPerCity() {
 		return numChorbiesPerCity;
 	}
-	public void setNumChorbiesPerCity(Collection<Integer> numChorbiesPerCity) {
+	public void setNumChorbiesPerCity(Collection<Object[]> numChorbiesPerCity) {
 		this.numChorbiesPerCity = numChorbiesPerCity;
 	}
 	public Collection<Integer> getNumChorbiesPerCountry() {
