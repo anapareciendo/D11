@@ -71,3 +71,10 @@
   	</jstl:if> --%>
 	
 </display:table>
+
+<div>
+	<a href="banner/admin/create.do">
+		<spring:message code="banner.create" var="createHeader" />
+		<jstl:out value="${createHeader}" />
+	</a>
+</div>

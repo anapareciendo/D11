@@ -140,5 +140,20 @@ public class BannerAdminController extends AbstractController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView result;
+		
+		try{
+			Banner banner = bannerService.create();
+			result = new ModelAndView("banner/edit");
+			result.addObject("banner", banner);
+		}catch(Throwable oops){
+			result = new ModelAndView("welcome/index");
+			result.addObject("message","banner.commit.error");
+
+		}
+		return result;
+	}
 	
 }
