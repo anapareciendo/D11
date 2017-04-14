@@ -159,8 +159,9 @@ public class Chorbi extends Actor{
 		this.receivedLikes = receivedLikes;
 	}
 	
-	
-	
-	
+	//Utility Methods
+	public String toString(){
+		return this.getName()+" "+this.getSurname();
+	}
 	
 }
