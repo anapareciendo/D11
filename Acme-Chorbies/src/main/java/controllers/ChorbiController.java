@@ -22,7 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
 import services.ChorbiService;
+import services.CreditCardService;
 import domain.Chorbi;
+import domain.CreditCard;
 import forms.ChorbiForm;
 
 @Controller
@@ -32,6 +34,8 @@ public class ChorbiController extends AbstractController {
 	// Services -------------------------------------------------------
 	@Autowired
 	private ChorbiService chorbiService;
+	@Autowired
+	private CreditCardService creditService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -122,6 +126,45 @@ public class ChorbiController extends AbstractController {
 			result = new ModelAndView("chorbi/edit");
 			result.addObject("chorbi", chorbi);
 			result.addObject("message", "chorbi.binding");
+		}
+		return result;
+		
+	}
+	
+	@RequestMapping(value = "/creditCard", method = RequestMethod.GET)
+	public ModelAndView creditCard() {
+			ModelAndView result;
+			
+			Chorbi chorbi= chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			CreditCard res = chorbi.getCreditCard();
+			if(res==null){
+				res=creditService.create(chorbi);
+			}
+			
+			result = new ModelAndView("chorbi/creditCard");
+			result.addObject("card", res);
+			return result;
+	}
+	
+	@RequestMapping(value = "/creditCard", method = RequestMethod.POST, params = "save")
+	public ModelAndView creditCard(CreditCard card, BindingResult binding) {
+		ModelAndView result;
+		CreditCard creditCard = creditService.reconstruct(card, binding);
+		if (!binding.hasErrors()) {
+			try{
+				CreditCard res=creditService.save(creditCard);
+				result = new ModelAndView("chorbi/creditCard");
+				result.addObject("card", res);
+				result.addObject("message", "chorbi.card.success");
+			}catch(Throwable oops){
+				result = new ModelAndView("chorbi/creditCard");
+				result.addObject("card", card);
+				result.addObject("message", "chorbi.card.error");
+			}
+		} else {
+			result = new ModelAndView("chorbi/creditCard");
+			result.addObject("card", card);
+			result.addObject("message", "chorbi.card.error");
 		}
 		return result;
 		
