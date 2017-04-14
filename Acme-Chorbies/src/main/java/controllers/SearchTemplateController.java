@@ -86,8 +86,26 @@ public class SearchTemplateController extends AbstractController {
 					
 					searchTemplateService.save(search);
 					
-					result = new ModelAndView("chorbi/list");
-					result.addObject("chorbi", chorbis);
+					Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+					if(chorbi.getCreditCard()==null){
+						result = new ModelAndView("template/template");
+						result.addObject("template", template);
+						result.addObject("message", "template.creditCard.error");
+					}else{
+						int years=(chorbi.getCreditCard().getExpirationYear()+2000)-1970;
+						int month=chorbi.getCreditCard().getExpirationMonth();
+						long exp = years*31540000000l+month*2628000000l;
+						long finaleC = exp-Calendar.getInstance().getTime().getTime();
+						if(finaleC<0){
+							result = new ModelAndView("template/template");
+							result.addObject("template", template);
+							result.addObject("message", "template.creditCard.error");
+						}else{
+							chorbis.addAll(search.getResults());
+							result = new ModelAndView("chorbi/list");
+							result.addObject("chorbi", chorbis);
+						}
+					}
 				}catch(Throwable oops){
 					result = new ModelAndView("template/template");
 					result.addObject("template", template);
@@ -121,6 +139,14 @@ public class SearchTemplateController extends AbstractController {
 			result = new ModelAndView("template/template");
 			result.addObject("template", res);
 			result.addObject("message", "template.void");
+		}else if(chorbi.getCreditCard()==null){
+			res = new TemplateForm(search.getKindRelationship().getValue(), search.getAproximateAge(), 
+					search.getGenre().getValue(), search.getKeyword(), search.getCoordinates().getCountry(), 
+					search.getCoordinates().getCity(), search.getCoordinates().getState(), 
+					search.getCoordinates().getProvince());
+			result = new ModelAndView("template/template");
+			result.addObject("template", res);
+			result.addObject("message", "template.creditCard.error");
 		}else{ 
 			long st = search.getMoment().getTime(); //ms del SearchTemplate
 			long now = Calendar.getInstance().getTime().getTime(); //ms Curren Date
@@ -138,9 +164,23 @@ public class SearchTemplateController extends AbstractController {
 				result.addObject("template", res);
 				result.addObject("message", "template.expired");
 			}else{
-				chorbis.addAll(search.getResults());
-				result = new ModelAndView("chorbi/list");
-				result.addObject("chorbi", chorbis);
+				int years=(chorbi.getCreditCard().getExpirationYear()+2000)-1970;
+				int month=chorbi.getCreditCard().getExpirationMonth();
+				long exp = years*31540000000l+month*2628000000l;
+				long finaleC = exp-Calendar.getInstance().getTime().getTime();
+				if(finaleC<0){
+					res = new TemplateForm(search.getKindRelationship().getValue(), search.getAproximateAge(), 
+							search.getGenre().getValue(), search.getKeyword(), search.getCoordinates().getCountry(), 
+							search.getCoordinates().getCity(), search.getCoordinates().getState(), 
+							search.getCoordinates().getProvince());
+					result = new ModelAndView("template/template");
+					result.addObject("template", res);
+					result.addObject("message", "template.creditCard.error");
+				}else{
+					chorbis.addAll(search.getResults());
+					result = new ModelAndView("chorbi/list");
+					result.addObject("chorbi", chorbis);
+				}
 			}
 		}
 

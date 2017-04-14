@@ -58,10 +58,6 @@ public class SigninController extends AbstractController {
 		long actual = Calendar.getInstance().getTimeInMillis();
 		long finale = actual-edad;
 		long dieciocho = 567600000000l;
-//		int years=(actor.getCreditCard().getExpirationYear()+2000)-1970;
-//		int month=actor.getCreditCard().getExpirationMonth();
-//		long exp = years*31540000000l+month*2628000000l;
-//		long finale = exp-Calendar.getInstance().getTime().getTime();
 		
 		if (binding.hasErrors() || chorbi.getName().equals("Pass") || chorbi.getName().equals("Cond") || finale<dieciocho) {
 			result = new ModelAndView("security/signin");
