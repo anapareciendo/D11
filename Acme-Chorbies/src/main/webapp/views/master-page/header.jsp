@@ -45,7 +45,9 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
+					<security:authorize access="hasRole('CHORBI')">
 					<li><a href="administrator/config.do"><spring:message code="master.page.config" /> </a></li>
+					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

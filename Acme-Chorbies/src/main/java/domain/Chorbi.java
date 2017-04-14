@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -26,6 +27,7 @@ public class Chorbi extends Actor{
 	private String picture;
 	private KindRelationship kindRelationship;
 	private Date birthDate;
+	private long age;
 	private Genre genre;
 	private Coordinates coordinates;
 	private boolean banned;
@@ -83,8 +85,14 @@ public class Chorbi extends Actor{
 		this.coordinates = coordinates;
 	}
 
-
-
+	
+	@Min(18)
+	public long getAge() {
+		return age;
+	}
+	public void setAge(long age) {
+		this.age = age;
+	}
 
 	//---------------------Relationships--------------------------
 	private Collection<Chirp> sendChirps;
@@ -95,7 +103,7 @@ public class Chorbi extends Actor{
 	private CreditCard creditCard;
 	
 	@Valid
-	@OneToOne(optional=true)
+	@OneToOne(optional=true, mappedBy="chorbi")
 	public CreditCard getCreditCard() {
 		return creditCard;
 	}

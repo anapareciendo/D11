@@ -2,8 +2,8 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +57,7 @@ public class ChorbiService {
 		res.setMakeLikes(new ArrayList<Likes>());
 		res.setReceivedLikes(new ArrayList<Likes>());
 		res.setReceivedChirps(new ArrayList<Chirp>());
+		res.setAge(18);
 		res.setBanned(false);
 		res.setUserAccount(ua);
 		return res;
@@ -80,6 +81,12 @@ public class ChorbiService {
 //		Assert.notNull(chorbi.getGenre(), "The chorbi to save cannot have 'Genre' null.");
 //		Assert.notNull(chorbi.getBirthDate(), "The chorbi to save cannot have 'BirthDate' null.");
 //		Assert.notNull(chorbi.getCoordinates(), "The chorbi to save cannot have 'BirthDate' null.");
+		long edad = chorbi.getBirthDate().getTime();
+		long actual = Calendar.getInstance().getTimeInMillis();
+		long finale = actual-edad;
+		long real = finale/31540000000l;//3,154e+10 ms -> 1 año
+		Assert.isTrue(real>=18, "You must be over 18 years old");
+		chorbi.setAge(real); 
 		
 		final Chorbi res = this.chorbiRepository.save(chorbi);
 		chorbiRepository.flush();
@@ -252,89 +259,4 @@ public class ChorbiService {
 		return res;
 	}
 	
-	//---LEVEL C---
-	
-	//A listing with the number of chorbies per city
-	public Collection<Integer> numChorbiesPerCity(){
-		return this.chorbiRepository.numChorbiesPerCity();
-	}
-	
-	//A listing with the number of chorbies per country
-	public Collection<Integer> numChorbiesPerCountry(){
-		return this.chorbiRepository.numChorbiesPerCountry();
-	}
-	
-	//The minimum ages of the chorbies
-	public Date minAgeChorbies(){
-		return this.chorbiRepository.minAgeChorbies();
-	}
-
-	//The maximum ages of the chorbies
-	public Date maxAgeChorbies(){
-		return this.chorbiRepository.maxAgeChorbies();
-	}
-	
-	//---LEVEL B---
-	
-	//List of chorbies, sorted by the number of likes the have got
-	public Collection<Chorbi> chorbiesSortedByLikes(){
-		return this.chorbiRepository.chorbiesSortedByLikes();
-	}
-	
-	//The minimum number of likes per chorbi
-	public Integer minLikesPerChorbi(){
-		return this.chorbiRepository.minLikesPerChorbi();
-	}
-	
-	//The maximum number of likes per chorbi
-	public Integer maxLikesPerChorbi(){
-		return this.chorbiRepository.maxLikesPerChorbi();
-	}
-	
-	//The avg number of likes per chorbi
-	public Double avgLikesPerChorbi(){
-		return this.chorbiRepository.avgLikesPerChorbi();
-	}
-	
-	//---LEVEL A---
-	
-	//The minimum number of chirps that a chorbi receives from other chorbies
-	public Integer minChirpsReceived(){
-		return this.chorbiRepository.minChirpsReceived();
-	}
-	
-	//The maximum number of chirps that a chorbi receives from other chorbies
-	public Integer maxChirpsReceived(){
-		return this.chorbiRepository.maxChirpsReceived();
-	}
-	
-	//The avg number of chirps that a chorbi receives from other chorbies
-	public Double avgChirpsReceived(){
-		return this.chorbiRepository.avgChirpsReceived();
-	}
-	
-	//The minimum number of chirps that a chorbi send to other chorbies
-	public Integer minChirpsSend(){
-		return this.chorbiRepository.minChirpsSend();
-	}
-		
-	//The maximum number of chirps that a chorbi send to other chorbies
-	public Integer maxChirpsSend(){
-		return this.chorbiRepository.maxChirpsSend();
-	}
-		
-	//The avg number of chirps that a chorbi send to other chorbies
-	public Double avgChirpsSend(){
-		return this.chorbiRepository.avgChirpsSend();
-	}
-	
-	//The chorbies who have got more chirps
-	public Collection<Chorbi> chorbiesMoreChirpsReceived(){
-		return this.chorbiRepository.chorbiesMoreChirpsReceived();
-	}
-	
-	//The chorbies who have sent more chirps
-	public Collection<Chorbi> chorbiesMoreChirpsSent(){
-		return this.chorbiRepository.chorbiesMoreChirpsSent();
-	}
 }

@@ -80,7 +80,7 @@ public class CreditCard extends DomainEntity{
 
 	@Valid
 	@NotNull
-	@OneToOne(optional=false, mappedBy="creditCard")
+	@OneToOne(optional=false)
 	public Chorbi getChorbi() {
 		return chorbi;
 	}

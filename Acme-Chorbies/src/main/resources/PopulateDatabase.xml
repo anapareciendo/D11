@@ -101,6 +101,7 @@
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="1991/12/5"/>
+		<property name="age" value="25"/>
 		<property name="genre" value="MAN"/>
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates1"/>
@@ -127,7 +128,8 @@
 		<property name="phone" value="+34872532254" />	
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="ACTIVITIES" />
-		<property name="birthDate" value="1998/10/9"/>
+		<property name="birthDate" value="1997/10/09"/>
+		<property name="age" value="18"/>
 		<property name="genre" value="OTHER"/>
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates2"/>
@@ -145,7 +147,7 @@
 		</property>
 	</bean>	
 	
-		<bean id="chorbi3" class="domain.Chorbi">
+	<bean id="chorbi3" class="domain.Chorbi">
 		<property name="name" value="Alicia" />
 		<property name="surname" value="Gonzalez" />
 		<property name="email" value="dagona@gmail.com" />
@@ -153,7 +155,8 @@
 		<property name="phone" value="+34872532251" />	
 		<property name="picture" value="http://www.guapo.es" />
 		<property name="kindRelationship" value="LOVE" />
-		<property name="birthDate" value="1989/11/7"/>
+		<property name="birthDate" value="1989/11/07"/>
+		<property name="age" value="26"/>
 		<property name="genre" value="WOMEN"/>
 		<property name="banned" value="true"/>
 		<property name="coordinates" ref="coordinates1"/>
@@ -292,7 +295,7 @@
 		<property name="expirationMonth" value="11" />
 		<property name="expirationYear" value="18" />
 		<property name="cvv" value="200" />
-		<property name="chorbi" ref="chorbi2"/>
+		<property name="chorbi" ref="chorbi3"/>
 	</bean>
 	
 	<!-- Config -->
