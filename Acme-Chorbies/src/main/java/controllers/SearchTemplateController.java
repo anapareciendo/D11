@@ -12,7 +12,9 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,7 +80,7 @@ public class SearchTemplateController extends AbstractController {
 			search = searchTemplateService.reconstruct(template, binding);
 			if (!binding.hasErrors()) {
 				try{
-					List<Chorbi> chorbis = new ArrayList<Chorbi>();
+					Set<Chorbi> chorbis = new HashSet<Chorbi>();
 					chorbis.addAll(searchTemplateService.searchTemplate(search.getKindRelationship(), search.getGenre(), template.getAproximateAge(), template.getCountry(), template.getCity(), template.getState(), template.getProvince(), template.getKeyword()));
 					
 					search.getResults().clear();
