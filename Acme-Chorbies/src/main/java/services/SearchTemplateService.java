@@ -83,7 +83,7 @@ public class SearchTemplateService {
 		Assert.notNull(ua);
 		final Authority a = new Authority();
 		a.setAuthority(Authority.ADMIN);
-		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to delete an actor.");
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a admin to delete an template.");
 		
 		Assert.notNull(search, "The search to delete cannot be null.");
 		Assert.isTrue(this.searchTemplateRepository.exists(search.getId()));
@@ -130,6 +130,19 @@ public class SearchTemplateService {
 	public Collection<Chorbi> searchTemplate(KindRelationship kind, Genre genre, int age, 
 			String country, String city, 
 			String state, String province, String keyword){
+
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action");
+		Chorbi chorbi = chorbiService.findByUserAccountId(ua.getId());
+		int years=(chorbi.getCreditCard().getExpirationYear()+2000)-1970;
+		int month=chorbi.getCreditCard().getExpirationMonth();
+		long exp = years*31540000000l+month*2628000000l;
+		long finale = exp-Calendar.getInstance().getTime().getTime();
+		Assert.isTrue(finale>0,"You need a valid credit card");
+		
 		List<Chorbi> res = new ArrayList<Chorbi>();
 		List<Chorbi> aux = new ArrayList<Chorbi>();
 		aux.addAll(chorbiService.findNotBanned());
@@ -139,14 +152,4 @@ public class SearchTemplateService {
 		
 		return res;
 	}
-
-	//Para el dashboard
-	/* private void isAdministrator(){
-	  UserAccount ua = LoginService.getPrincipal();
-	  Assert.notNull(ua);
-	  Authority a = new Authority();
-	  a.setAuthority(Authority.ADMIN);
-	  Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a administrator for this action.");
-	 }
-	 */
 }

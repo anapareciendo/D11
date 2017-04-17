@@ -66,9 +66,13 @@ public class ChirpService {
 	public Chirp save(final Chirp chirp) {
 		Assert.notNull(chirp, "The chirp to save cannot be null.");
 		
+		Assert.isTrue(chirp.getSender().getUserAccount().equals(LoginService.getPrincipal()), "You are not the owner of this chirp");
+		
 		Assert.notNull(chirp.getMoment(), "The like to save cannot have 'moment' null.");
 		Assert.notNull(chirp.getSubject(), "The like to save cannot have 'subject' null.");
+		Assert.isTrue(chirp.getSubject()!="", "The like to save cannot have 'subject' blank.");
 		Assert.notNull(chirp.getText(), "The like to save cannot have 'text' null.");
+		Assert.notNull(chirp.getAttachments(), "The like to save cannot have 'attachments' null.");
 		
 		final Chirp res = this.chirpRepository.save(chirp);
 		res.getRecipient().getReceivedChirps().add(res);

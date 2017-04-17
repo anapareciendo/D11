@@ -27,7 +27,7 @@ import domain.Chorbi;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class ReSendChirpTest extends AbstractTest{
+public class ForwardChirpTest extends AbstractTest{
 	
 	/* *----Browse the list of chirps that he or she’s got, and reply to any of them.-----*
 	  -El orden de los parámetros es: Usuario que se va a autenticar, error esperado
