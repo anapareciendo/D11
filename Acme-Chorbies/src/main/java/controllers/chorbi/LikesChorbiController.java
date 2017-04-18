@@ -80,15 +80,27 @@ public class LikesChorbiController extends AbstractController {
 	public ModelAndView delete(@RequestParam int likesId) {
 		ModelAndView result;
 		
-		try {
+//		try {
 			Likes likes = likesService.findOne(likesId);
-			result = new ModelAndView("likes/delete");
-			result.addObject("likes", likes);
-		} catch (Throwable oops) {
-		
-			result = new ModelAndView("redirect:listMakeLikes.do");
-			result.addObject("message", "like.commit.error");
-		}
+			if(likes==null){
+				Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+				
+				Collection<Likes> makeLikes = chorbi.getMakeLikes();
+				
+				result = new ModelAndView("likes/list");
+				result.addObject("likes", makeLikes);
+				result.addObject("make", true);
+				result.addObject("requestUri", "/likes/chorbi/listMakeLikes.do");
+				result.addObject("message", "like.commit.error");
+			}else{
+				result = new ModelAndView("likes/delete");
+				result.addObject("likes", likes);
+			}
+//		} catch (Throwable oops) {
+//		
+//			result = new ModelAndView("redirect:listMakeLikes.do");
+//			result.addObject("message", "like.commit.error");
+//		}
 
 		return result;
 	}

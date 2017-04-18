@@ -198,8 +198,18 @@ public class ChirpChorbiController extends AbstractController {
 	public ModelAndView delete(@RequestParam int chirpId) {
 		ModelAndView result;
 		Chirp chirp = chirpService.findOne(chirpId);
-		result = new ModelAndView("chirp/delete");
-		result.addObject("chirp", chirp);
+		if(chirp==null){
+			Collection<Chirp> chirps = chirpService.findMyReceivedChirps(LoginService.getPrincipal().getId());
+			
+			result = new ModelAndView("chirp/list");
+			result.addObject("chirps", chirps);
+			result.addObject("requestUri", "/chirp/chorbi/received.do");
+			result.addObject("received", true);
+			result.addObject("message", "chirp.commit.error");
+		}else{
+			result = new ModelAndView("chirp/delete");
+			result.addObject("chirp", chirp);
+		}
 		return result;
 	}
 	
