@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
-import org.springframework.core.convert.Property;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -97,7 +96,7 @@ public class Event extends DomainEntity{
 	@ManyToMany(
 			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE},
 			mappedBy="events",
-			targetEntity=Property.class
+			targetEntity=Chorbi.class
 			)
 	public Collection<Chorbi> getChorbies() {
 		return chorbies;
