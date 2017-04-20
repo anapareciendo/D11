@@ -7,6 +7,9 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,7 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(indexes = { @Index(columnList = "banned")})
-public class Chorbi extends Actor{
+public class Chorbi extends SuperUser{
 
 	//----------------------Attributes-------------------------
 	private String picture;
@@ -98,21 +101,12 @@ public class Chorbi extends Actor{
 	}
 
 	//---------------------Relationships--------------------------
-	private Collection<Chirp> sendChirps;
 	private Collection<Chirp> receivedChirps;
 	private Collection<Likes> makeLikes;
 	private Collection<Likes> receivedLikes;
 	private SearchTemplate searchTemplate;
-	private CreditCard creditCard;
+	private Collection<Event> events;
 	
-	@Valid
-	@OneToOne(optional=true, mappedBy="chorbi")
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
 	@Valid
 	@OneToOne(optional=true)
 	public SearchTemplate getSearchTemplate() {
@@ -120,16 +114,6 @@ public class Chorbi extends Actor{
 	}
 	public void setSearchTemplate(SearchTemplate searchTemplate) {
 		this.searchTemplate = searchTemplate;
-	}
-	
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy="sender")
-	public Collection<Chirp> getSendChirps() {
-		return sendChirps;
-	}
-	public void setSendChirps(Collection<Chirp> sendChirps) {
-		this.sendChirps = sendChirps;
 	}
 	
 	@NotNull
@@ -160,6 +144,24 @@ public class Chorbi extends Actor{
 	}
 	public void setReceivedLikes(Collection<Likes> receivedLikes) {
 		this.receivedLikes = receivedLikes;
+	}
+	
+	@Valid
+	@NotNull
+	@ManyToMany(
+			targetEntity=Event.class, 
+			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE}
+			)
+	@JoinTable(
+			name="chorbi_event",
+			joinColumns=@JoinColumn(name="chorbi_id"),
+			inverseJoinColumns=@JoinColumn(name="event_id")
+			)
+	public Collection<Event> getEvents() {
+		return events;
+	}
+	public void setEvents(Collection<Event> events) {
+		this.events = events;
 	}
 	
 	//Utility Methods

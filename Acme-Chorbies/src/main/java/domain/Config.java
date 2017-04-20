@@ -10,6 +10,7 @@ public class Config extends DomainEntity{
 
 	//----------------------Attributes-------------------------
 	private int cache;
+	private double fee;
 
 	public int getCache() {
 		return cache;
@@ -18,6 +19,16 @@ public class Config extends DomainEntity{
 	public void setCache(int cache) {
 		this.cache = cache;
 	}
+
+	public Double getFee() {
+		return fee;
+	}
+
+	public void setFee(Double fee) {
+		this.fee = fee;
+	}
+	
+	
 	
 	
 }

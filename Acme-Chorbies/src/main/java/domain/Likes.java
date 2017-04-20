@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.SafeHtml;
@@ -21,6 +23,7 @@ public class Likes extends DomainEntity{
 	//----------------------Attributes-------------------------
 	private Date moment;
 	private String comment;
+	private int stars;
 		
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -40,7 +43,17 @@ public class Likes extends DomainEntity{
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-		
+	
+	@Min(value=0)
+	@Max(value=3)
+	public int getStars() {
+		return stars;
+	}
+	public void setStars(int stars) {
+		this.stars = stars;
+	}
+
+
 	//---------------------Relationships--------------------------
 	private Chorbi liker;
 	private Chorbi liked;
