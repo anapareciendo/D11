@@ -64,16 +64,16 @@ public class Chirp extends DomainEntity {
 
 
 	//---------------------Relationships--------------------------
-	private Chorbi sender;
+	private SuperUser sender;
 	private Chorbi recipient;
 
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	public Chorbi getSender() {
+	public SuperUser getSender() {
 		return sender;
 	}
-	public void setSender(Chorbi sender) {
+	public void setSender(SuperUser sender) {
 		this.sender = sender;
 	}
 	

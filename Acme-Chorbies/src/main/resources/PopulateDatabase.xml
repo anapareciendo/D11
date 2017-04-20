@@ -66,6 +66,43 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="manager1" />
+		<property name="password" value="c240642ddef994358c96da82c0361a58" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="manager2" />
+		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="manager3" />
+		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MANAGER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	
 	<!-- Coordinates -->
 	
 	<bean id="coordinates1" class="domain.Coordinates">
@@ -90,7 +127,6 @@
 		<property name="userAccount" ref="userAccount1" />
 		<property name="phone" value="+34122332687" />	
 	</bean>	
-	
 	<!-- Chorbi -->
 	<bean id="chorbi1" class="domain.Chorbi">
 		<property name="name" value="Pedro" />
@@ -118,8 +154,14 @@
 		<property name="receivedLikes">
 			<list></list>
 		</property>
+		<property name="events">
+			<list>
+			<ref bean="event1"/>
+			</list>
+		</property>
 	</bean>	
 	
+		
 	<bean id="chorbi2" class="domain.Chorbi">
 		<property name="name" value="Martina" />
 		<property name="surname" value="Ramos" />
@@ -144,6 +186,11 @@
 		</property>
 		<property name="receivedLikes">
 			<list></list>
+		</property>
+		<property name="events">
+			<list>
+			<ref bean="event2"/>
+			</list>
 		</property>
 	</bean>	
 	
@@ -172,7 +219,63 @@
 		<property name="receivedLikes">
 			<list></list>
 		</property>
+		<property name="events">
+			<list></list>
+		</property>
 	</bean>	
+	
+	<!-- Manager -->
+	
+	<bean id="manager1" class="domain.Manager">
+		<property name="name" value="Alicia" />
+		<property name="surname" value="Gonzalez" />
+		<property name="email" value="dagona@gmail.com" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="phone" value="+34872532251" />	
+		<property name="company" value="meetic" />
+		<property name="VATNumber" value="ABCD-120899-5H9" />
+		<property name="Amount" value="3.2" />
+		<property name="events">
+			<list></list>
+		</property>
+			<property name="sendChirps">
+			<list></list>
+		</property>
+	</bean>	
+	
+	<bean id="manager2" class="domain.Manager">
+		<property name="name" value="Pepe Juan" />
+		<property name="surname" value="Gonzalez" />
+		<property name="email" value="pepejuan@gmail.com" />
+		<property name="userAccount" ref="userAccount6" />
+		<property name="phone" value="+34872535482" />	
+		<property name="company" value="Adopta a un tio" />
+		<property name="VATNumber" value="CDFG-120899-5HS" />
+		<property name="Amount" value="3.2" />
+		<property name="events">
+			<list></list>
+		</property>
+			<property name="sendChirps">
+			<list></list>
+		</property>
+	</bean>
+	
+		<bean id="manager3" class="domain.Manager">
+		<property name="name" value="Iván" />
+		<property name="surname" value="Díaz" />
+		<property name="email" value="pepejuan@gmail.com" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="phone" value="+34872535482" />	
+		<property name="company" value="Tinder" />
+		<property name="VATNumber" value="CWSV-120899-J5S" />
+		<property name="Amount" value="3.2" />
+		<property name="events">
+			<list></list>
+		</property>
+			<property name="sendChirps">
+			<list></list>
+		</property>
+	</bean>
 	
 	<!-- Banner -->
 	
@@ -219,6 +322,7 @@
 		<property name="liker" ref="chorbi2" />
 	</bean>
 	
+	
 	<!-- Chirp -->
 	
 	<bean id="chirp1" class="domain.Chirp">
@@ -254,7 +358,18 @@
 		</property>
 	</bean>
 	
-	<!-- Search template -->
+	<bean id="chirp4" class="domain.Chirp">
+		<property name="moment" value="2017/01/20 01:12" />
+		<property name="subject" value="Cambios" />
+		<property name="text" value="Existe un cambio en el evento Conoceme. " />
+		<property name="sender" ref="manager1" />
+		<property name="recipient" ref="chorbi2" />
+		<property name="attachments">
+			<list></list>
+		</property>
+	</bean>
+	
+		<!-- Search template -->
 	<bean id="searchTemplate1" class="domain.SearchTemplate">
 		<property name="kindRelationship" value="LOVE" />
 		<property name="aproximateAge" value="24" />
@@ -267,6 +382,7 @@
 		</property>
 	</bean>
 	
+	
 	<!-- Credit Card -->
 	<bean id="creditCard1" class="domain.CreditCard">
 		<property name="holder" value="Roberto Pardo" />
@@ -275,7 +391,7 @@
 		<property name="expirationMonth" value="06" />
 		<property name="expirationYear" value="19" />
 		<property name="cvv" value="305" />
-		<property name="chorbi" ref="chorbi1"/>
+		<property name="superUser" ref="chorbi1"/>
 	</bean>
 	
 	<bean id="creditCard2" class="domain.CreditCard">
@@ -285,22 +401,69 @@
 		<property name="expirationMonth" value="12" />
 		<property name="expirationYear" value="18" />
 		<property name="cvv" value="408" />
-		<property name="chorbi" ref="chorbi2"/>
+		<property name="superUser" ref="chorbi2"/>
 	</bean>
 	
-		<bean id="creditCard3" class="domain.CreditCard">
+	<bean id="creditCard3" class="domain.CreditCard">
 		<property name="holder" value="Ana Rosa" />
 		<property name="brand" value="VISA" />
 		<property name="number" value="4716186058170469" />
 		<property name="expirationMonth" value="11" />
 		<property name="expirationYear" value="18" />
 		<property name="cvv" value="200" />
-		<property name="chorbi" ref="chorbi3"/>
+		<property name="superUser" ref="chorbi3"/>
+	</bean>
+	
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holder" value="Ana Rosa" />
+		<property name="brand" value="VISA" />
+		<property name="number" value="4485949886281843" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="18" />
+		<property name="cvv" value="200" />
+		<property name="superUser" ref="manager3"/>
 	</bean>
 	
 	<!-- Config -->
 	<bean id="config" class="domain.Config">
 		<property name="cache" value="12"/>
+	</bean>
+	
+	<!-- Event -->
+	<bean id="event1" class="domain.Event">
+		<property name="title" value="Conoceme"/>
+		<property name="moment" value="10/12/2017 12:12"/>
+		<property name="description" value="Conoce a tu alma gemela"/>
+		<property name="picture" value="http://conoceme.com"/>
+		<property name="seatsffered" value="12"/>
+		<property name="manager" ref="manager1"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event2" class="domain.Event">
+		<property name="title" value="Bailale a la vida"/>
+		<property name="moment" value="20/10/2017 12:12"/>
+		<property name="description" value="Aprende a bailar riendote"/>
+		<property name="picture" value="http://bailale.com"/>
+		<property name="seatsffered" value="2"/>
+		<property name="manager" ref="manager1"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event3" class="domain.Event">
+		<property name="title" value="Diviertete"/>
+		<property name="moment" value="01/01/2001 12:12"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsffered" value="2"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
 	</bean>
 	
 </beans>

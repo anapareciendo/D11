@@ -5,17 +5,14 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
-@Table(indexes = { @Index(columnList = "banned")})
-public class SuperUser extends Actor{
+public abstract class SuperUser extends Actor{
 
 	//----------------------Attributes-------------------------
 
@@ -24,7 +21,7 @@ public class SuperUser extends Actor{
 	private CreditCard creditCard;
 	
 	@Valid
-	@OneToOne(optional=true, mappedBy="chorbi")
+	@OneToOne(optional=true)
 	public CreditCard getCreditCard() {
 		return creditCard;
 	}
