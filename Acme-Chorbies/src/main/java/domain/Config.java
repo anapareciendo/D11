@@ -20,11 +20,11 @@ public class Config extends DomainEntity{
 		this.cache = cache;
 	}
 
-	public Double getFee() {
+	public double getFee() {
 		return fee;
 	}
 
-	public void setFee(Double fee) {
+	public void setFee(double fee) {
 		this.fee = fee;
 	}
 	
