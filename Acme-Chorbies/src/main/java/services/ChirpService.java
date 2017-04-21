@@ -17,6 +17,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Chirp;
 import domain.Chorbi;
+import domain.SuperUser;
 
 @Service
 @Transactional
@@ -34,6 +35,8 @@ public class ChirpService {
 	//Supporting services
 	@Autowired
 	private ChorbiService chorbiService;
+	@Autowired
+	private ManagerService managerService;
 
 	//Constructors
 	public ChirpService() {
@@ -41,7 +44,7 @@ public class ChirpService {
 	}
 
 	//Simple CRUD methods
-	public Chirp create(final Chorbi sender, final Chorbi recipient) {
+	public Chirp create(final SuperUser sender, final Chorbi recipient) {
 		Assert.notNull(sender, "The sender cannot be null.");
 		Assert.notNull(recipient, "The recipient cannot be null.");
 		Chirp res;
@@ -110,7 +113,9 @@ public class ChirpService {
 		Assert.notNull(ua);
 		final Authority a = new Authority();
 		a.setAuthority(Authority.CHORBI);
-		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action.");
+		final Authority b = new Authority();
+		b.setAuthority(Authority.MANAGER);
+		Assert.isTrue(ua.getAuthorities().contains(a) || ua.getAuthorities().contains(b) , "You must to be a chorbi or a manager for this action.");
 		return chirpRepository.findMySentChirps(ua.getId());
 	}
 
@@ -135,10 +140,14 @@ public class ChirpService {
 		Assert.notNull(text, "The text cannot be null.");
 		
 		Chirp aux = chirpRepository.findOne(chirp.getId());
-		Chorbi principal = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
-		Assert.isTrue(principal.getReceivedChirps().contains(aux) || principal.getSendChirps().contains(aux),"You are not the owner of this chirp");
+		SuperUser principal = managerService.findByUserAccountId(LoginService.getPrincipal().getId());
+		if(principal == null){
+			principal = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+			
+		}
 		
-		Chirp res = this.create(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId()), aux.getSender());
+		Assert.isTrue(principal.getSendChirps().contains(aux),"You are not the owner of this chirp");
+		Chirp res = this.create(principal, aux.getRecipient());
 		
 		res.getAttachments().addAll(aux.getAttachments());
 		res.setSubject("RE: "+aux.getSubject());

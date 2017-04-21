@@ -16,6 +16,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Chorbi;
 import domain.CreditCard;
+import domain.SuperUser;
 
 @Service
 @Transactional
@@ -40,10 +41,10 @@ public class CreditCardService {
 	}
 
 	//Simple CRUD methods
-	public CreditCard create(Chorbi chorbi) {
+	public CreditCard create(SuperUser superUser) {
 		CreditCard res;
 		res = new CreditCard();
-		res.setChorbi(chorbi);
+		res.setSuperUser(superUser);
 		return res;
 	}
 
@@ -65,7 +66,7 @@ public class CreditCardService {
 
 		final UserAccount ua = LoginService.getPrincipal();
 		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be an Chorbi for this action");
-		Assert.isTrue(creditCard.getChorbi().getUserAccount().equals(ua), "You are not the owner of this Credit Card");
+		Assert.isTrue(creditCard.getSuperUser().getUserAccount().equals(ua), "You are not the owner of this Credit Card");
 
 		final CreditCard res = this.creditCardRepository.save(creditCard);
 
