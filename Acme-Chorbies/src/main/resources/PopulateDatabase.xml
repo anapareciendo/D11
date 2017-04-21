@@ -156,7 +156,7 @@
 		</property>
 		<property name="events">
 			<list>
-			<ref bean="event1"/>
+			<ref bean="event5"/>
 			</list>
 		</property>
 	</bean>	
@@ -189,7 +189,7 @@
 		</property>
 		<property name="events">
 			<list>
-			<ref bean="event2"/>
+			<ref bean="event5"/>
 			</list>
 		</property>
 	</bean>	
@@ -435,7 +435,7 @@
 		<property name="moment" value="10/12/2017 12:12"/>
 		<property name="description" value="Conoce a tu alma gemela"/>
 		<property name="picture" value="http://conoceme.com"/>
-		<property name="seatsffered" value="12"/>
+		<property name="seatsOffered" value="12"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
@@ -444,10 +444,10 @@
 	
 	<bean id="event2" class="domain.Event">
 		<property name="title" value="Bailale a la vida"/>
-		<property name="moment" value="20/10/2017 12:12"/>
+		<property name="moment" value="10/20/2017 12:12"/>
 		<property name="description" value="Aprende a bailar riendote"/>
 		<property name="picture" value="http://bailale.com"/>
-		<property name="seatsffered" value="2"/>
+		<property name="seatsOffered" value="2"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
@@ -459,11 +459,48 @@
 		<property name="moment" value="01/01/2001 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
-		<property name="seatsffered" value="2"/>
+		<property name="seatsOffered" value="2"/>
 		<property name="manager" ref="manager3"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
 	</bean>
 	
+	<bean id="event4" class="domain.Event">
+		<property name="title" value="Menos de un mes"/>
+		<property name="moment" value="04/17/2017 12:12"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="2"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event5" class="domain.Event">
+		<property name="title" value="Mismo dia"/>
+		<property name="moment" value="04/21/2017 12:12"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="2"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event6" class="domain.Event">
+		<property name="title" value="Mes y un dia"/>
+		<property name="moment" value="04/22/2017 12:12"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="2"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<!-- select e from Event e where year(current_Date)=year(e.moment) and (month(current_Date)=month(e.moment)or month(current_Date)=month(e.moment)-1) and abs(day(current_Date)-day(e.moment))<=30; -->
 </beans>

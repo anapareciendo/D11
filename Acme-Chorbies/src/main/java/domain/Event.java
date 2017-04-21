@@ -29,7 +29,7 @@ public class Event extends DomainEntity{
 	private Date moment;
 	private String description;
 	private String picture;
-	private int seatsffered;
+	private int seatsOffered;
 	
 	@NotBlank
 	@SafeHtml
@@ -69,11 +69,11 @@ public class Event extends DomainEntity{
 		this.picture = picture;
 	}
 	@Min(value=0)
-	public int getSeatsffered() {
-		return seatsffered;
+	public int getSeatsOffered() {
+		return seatsOffered;
 	}
-	public void setSeatsffered(int seatsffered) {
-		this.seatsffered = seatsffered;
+	public void setSeatsOffered(int seatsffered) {
+		this.seatsOffered = seatsffered;
 	}
 
 
