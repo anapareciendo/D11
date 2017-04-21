@@ -122,7 +122,11 @@ public class ChirpService {
 	public Chirp reconstruct(Chirp chirp, BindingResult binding) {
 		String text = chirp.getText().replaceAll("([+][0-9]{2,})[ ]*([(][0-9]{3}[)])?[ ]*([0-9][ -]*){4,}", "***").replaceAll("([0-9a-zA-Z][_&$#]*){4,}[@][a-zA-Z]{3,}[.][a-zA-Z]{2,}", "***");
 		String subject = chirp.getSubject().replaceAll("([+][0-9]{2,})[ ]*([(][0-9]{3}[)])?[ ]*([0-9][ -]*){4,}", "***").replaceAll("([0-9a-zA-Z][_&$#]*){4,}[@][a-zA-Z]{3,}[.][a-zA-Z]{2,}", "***");
-		Chorbi sender = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		int uaId=LoginService.getPrincipal().getId();
+		SuperUser sender = chorbiService.findByUserAccountId(uaId);
+		if(sender ==null){
+			sender=managerService.findByUserAccountId(uaId);
+		}
 		
 		Chirp res = this.create(sender, chirp.getRecipient());
 		res.getAttachments().addAll(chirp.getAttachments());
