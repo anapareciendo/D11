@@ -19,4 +19,7 @@ public interface EventRepository extends JpaRepository<Event, Integer>{
 		
 	@Query("select e from Event e where (year(current_Date)>year(e.moment)) or (year(current_Date)>year(e.moment) and month(current_Date)>month(e.moment)) or (year(current_Date)>year(e.moment) and month(current_Date)>month(e.moment) and day(current_Date)>day(e.moment))")
 	Collection<Event> pastEvents();
+	
+	//@Query("select e from Event e where e.seatsOffered>e.chorbies.size")
+	//Collection<Event> pastEvents();
 }

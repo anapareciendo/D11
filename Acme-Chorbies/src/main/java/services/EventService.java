@@ -85,5 +85,18 @@ public class EventService {
 	
 	//----------Other Methods------------------------
 	
+	public Collection<Event> eventOrganisedLessMonth(){
+		return this.eventRepository.eventOrganisedLessMonth();
+	}
+	
+	public Collection<Event> eventOrganisedLessMonthAndSeatsAvailable(){
+		return this.eventRepository.eventOrganisedLessMonthAndSeatsAvailable();
+	}
+	
+	public Collection<Event> pastEvents(){
+		return this.eventRepository.pastEvents();
+	}
+	
+	
 
 }

@@ -32,6 +32,7 @@
 		<value>/views/template/messages</value>
 		<value>/views/chirp/messages</value>
 		<value>/views/banner/messages</value>
+		<value>/views/event/messages</value>
 	</util:list>
 
 </beans>

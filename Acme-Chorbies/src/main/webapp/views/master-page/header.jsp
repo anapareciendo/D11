@@ -34,7 +34,13 @@
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv" href="security/signin.do"><spring:message code="master.page.signin" /></a></li>
 			<li><a class="fNiv" href="aboutUs/acme.do"><spring:message code="master.page.about" /></a></li>
-		
+			<li><a class="fNiv"><spring:message	code="master.page.event" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="event/listAvailable.do"><spring:message code="master.page.event.available" /></a></li>
+					<li><a href="event/listAll.do"><spring:message code="master.page.event.all" /></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
@@ -96,6 +102,14 @@
 			</li>
 			</security:authorize>
 			<li><a class="fNiv" href="aboutUs/acme.do"><spring:message code="master.page.about" /></a></li>
+			
+			<li><a class="fNiv"><spring:message	code="master.page.event" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="event/listAvailable.do"><spring:message code="master.page.event.available" /></a></li>
+					<li><a href="event/listAll.do"><spring:message code="master.page.event.all" /></a></li>
+				</ul>
+			</li>
 			
 		</security:authorize>
 		
