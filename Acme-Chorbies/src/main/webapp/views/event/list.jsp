@@ -18,9 +18,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%-- <%@taglib prefix="display" uri="http://displaytag.sf.net"%> --%>
 <%@ taglib uri="/WEB-INF/jmesa.tld" prefix="jmesa" %>
-
 
 <jmesa:tableFacade
         id="tag"
@@ -30,7 +29,7 @@
         <jmesa:htmlTable>
             <jmesa:htmlRow>
                 <jmesa:htmlColumn property="title"/>
-                <jmesa:htmlColumn property="moment" title="Descripción"/>
+                <jmesa:htmlColumn property="moment"/>
                 <jmesa:htmlColumn property="desription"/>
                 <jmesa:htmlColumn property="seatsOffered"/>
  
