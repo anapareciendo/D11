@@ -44,6 +44,7 @@ public class EventController extends AbstractController {
 		ModelAndView result;
 		Collection<Event> event;
 		event = eventService.findAll();
+		//Creo que aquí hay que crear un objeto TableFacade
 		
 		result = new ModelAndView("event/list");
 		result.addObject("requestURI", "event/list.do");
