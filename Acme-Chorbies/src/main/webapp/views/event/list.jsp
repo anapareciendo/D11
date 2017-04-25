@@ -40,5 +40,3 @@
 	</jstl:if>
 	
 </display:table>
-
-
