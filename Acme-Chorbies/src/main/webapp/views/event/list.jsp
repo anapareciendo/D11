@@ -19,24 +19,21 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib uri="/WEB-INF/jmesa.tld" prefix="jmesa" %>
 
-<display:table name="event" id="event" requestURI="${requestUri}" pagesize="5" class="displaytag">
-	
-	<spring:message code="event.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="false" />
-	
-	<spring:message code="event.moment" var="momentHeader" />
-	<display:column property="moment" title="${momentHeader }" sortable="false" />
-	
-	<spring:message code="event.description" var="descriptionHeader" />
-	<display:column property="description" title="${descriptionHeader }" sortable="true" />
-	
-	<spring:message code="event.seatsOffered" var="seatsOfferedHeader" />
-	<display:column property="seatsOffered" title="${seatsOfferedHeader}" sortable="true" />
-	
-	<jstl:if test="${available == true }">
-	<spring:message code="event.seatsAvailable" var="seatsAvailableHeader" />
-	<display:column value="${seatsAvailable}" title="${seatsAvailableHeader}" sortable="true" />
-	</jstl:if>
-	
-</display:table>
+
+<jmesa:tableFacade
+        id="tag"
+        items="${event}"
+        var="bean"
+        >
+        <jmesa:htmlTable>
+            <jmesa:htmlRow>
+                <jmesa:htmlColumn property="title"/>
+                <jmesa:htmlColumn property="moment" title="Descripción"/>
+                <jmesa:htmlColumn property="desription"/>
+                <jmesa:htmlColumn property="seatsOffered"/>
+ 
+            </jmesa:htmlRow>
+        </jmesa:htmlTable>
+    </jmesa:tableFacade>
