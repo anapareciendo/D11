@@ -29,13 +29,11 @@
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jquery-ui.js"></script>
 <script type="text/javascript" src="scripts/jmenu.js"></script>
-<script type="text/javascript" src="scripts/jmesa.js"></script>
 
 <link rel="stylesheet" href="styles/common.css" type="text/css">
 <link rel="stylesheet" href="styles/jmenu.css" media="screen"
 	type="text/css" />
 <link rel="stylesheet" href="styles/displaytag.css" type="text/css">
-<link rel="stylesheet" href="styles/jmesa.css" type="text/css">
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
