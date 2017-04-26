@@ -44,13 +44,4 @@
     <error-code>403</error-code>
     <location>/views/misc/403.jsp</location>
   </error-page>
-  
-  
-  
-  
-  
-  <context-param>
-    <param-name>jmesaPreferencesLocation</param-name>
-    <param-value>WEB-INF/jmesa.properties</param-value>
-</context-param>
 </web-app>
