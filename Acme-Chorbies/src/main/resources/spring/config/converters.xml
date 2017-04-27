@@ -41,6 +41,12 @@
 		
 		<bean class="converters.SearchTemplateToStringConverter" />
 		<bean class="converters.StringToSearchTemplateConverter" />
+		
+		<bean class="converters.ManagerToStringConverter" />
+		<bean class="converters.StringToManagerConverter" />
+		
+		<bean class="converters.EventToStringConverter" />
+		<bean class="converters.StringToEventConverter" />
 	</util:list>
 	
 </beans>

@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<display:table name="event" id="event" requestURI="${requestUri}" pagesize="5" class="displaytag">
+<display:table name="event" id="event" requestURI="${requestURI}" pagesize="5" class="displaytag">
 	
 	<spring:message code="event.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />

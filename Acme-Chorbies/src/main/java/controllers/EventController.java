@@ -31,7 +31,7 @@ public class EventController extends AbstractController {
 		boolean available= true;
 		
 		result = new ModelAndView("event/list");
-		result.addObject("requestURI", "event/list.do");
+		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
 		result.addObject("available", available);
 		
@@ -46,7 +46,7 @@ public class EventController extends AbstractController {
 		event = eventService.findAll();
 		
 		result = new ModelAndView("event/list");
-		result.addObject("requestURI", "event/list.do");
+		result.addObject("requestURI", "event/listAll.do");
 		result.addObject("event", event);
 
 		return result;
