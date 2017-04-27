@@ -40,3 +40,10 @@
 	</jstl:if>
 	
 </display:table>
+
+<div>
+	<a href="event/manager/create.do">
+		<spring:message code="event.create" var="createHeader" />
+		<jstl:out value="${createHeader}" />
+	</a>
+</div>

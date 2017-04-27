@@ -50,7 +50,7 @@ public class Event extends DomainEntity{
 		this.moment = moment;
 	}
 	
-	@NotBlank
+	@NotNull
 	@SafeHtml
 	public String getDescription() {
 		return description;
@@ -68,6 +68,7 @@ public class Event extends DomainEntity{
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+	
 	@Min(value=0)
 	public int getSeatsOffered() {
 		return seatsOffered;

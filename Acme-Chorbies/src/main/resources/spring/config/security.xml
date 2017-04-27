@@ -84,9 +84,10 @@
 		
 		<security:intercept-url pattern="/event/listAvailable.do" access="permitAll" />
 		<security:intercept-url pattern="/event/listAll.do" access="permitAll" />
-
 		
-		
+		<security:intercept-url pattern="/event/manager/list.do" access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/event/manager/create.do" access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/event/manager/edit.do" access="hasRole('MANAGER')" />
 		
 		<security:intercept-url pattern="/aboutUs/acme.do" access="permitAll" />
 		

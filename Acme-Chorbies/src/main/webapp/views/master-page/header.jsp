@@ -94,14 +94,6 @@
 			</li>
 			</security:authorize>
 			
-			<li><a class="fNiv"><spring:message	code="master.page.event" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="event/listAvailable.do"><spring:message code="master.page.event.available" /></a></li>
-					<li><a href="event/listAll.do"><spring:message code="master.page.event.all" /></a></li>
-				</ul>
-			</li>
-			
 		</security:authorize>
 		
 		<li><a class="fNiv"><spring:message	code="master.page.event" /></a>
@@ -109,6 +101,10 @@
 				<li class="arrow"></li>
 				<li><a href="event/listAvailable.do"><spring:message code="master.page.event.available" /></a></li>
 				<li><a href="event/listAll.do"><spring:message code="master.page.event.all" /></a></li>
+				<security:authorize access="hasRole('MANAGER')">
+					<li><a href="event/manager/list.do"><spring:message code="master.page.manager.list" /></a></li>
+					<li><a href="event/manager/create.do"><spring:message code="master.page.manager.create" /></a></li>
+				</security:authorize>
 			</ul>
 		</li>
 			
