@@ -33,6 +33,7 @@
 		<value>/views/chirp/messages</value>
 		<value>/views/banner/messages</value>
 		<value>/views/event/messages</value>
+		<value>/views/manager/messages</value>
 	</util:list>
 
 </beans>

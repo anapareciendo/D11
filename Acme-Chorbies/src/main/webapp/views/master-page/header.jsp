@@ -50,6 +50,9 @@
 					<security:authorize access="hasRole('CHORBI')">
 					<li><a href="chorbi/creditCard.do"><spring:message code="master.page.card" /> </a></li>
 					</security:authorize>
+					<security:authorize access="hasRole('MANAGER')">
+					<li><a href="manager/display.do"><spring:message code="master.page.manager.display" /></a></li>
+					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
