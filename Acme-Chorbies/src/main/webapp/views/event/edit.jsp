@@ -31,6 +31,11 @@
 	
 	
 	<input type="submit" name="save" value="<spring:message code="event.save" />" />
+	
+	<jstl:if test="${event.id != 0}">
+		<input type="submit" name="delete" value="<spring:message code="event.delete" />" onclick="return confirm('<spring:message code="event.confirm.delete" />')" />&nbsp;
+	</jstl:if>
+	
 	<input type="button" name="cancel" value="<spring:message code="event.cancel" />" onclick="window.location='event/manager/list.do'" /> <br />
 	
 	<div>

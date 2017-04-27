@@ -99,4 +99,20 @@ public class EventManagerController extends AbstractController {
 		return result;
 	}
 	
+	@RequestMapping(value="/edit", method = RequestMethod.POST, params="delete")
+	public ModelAndView delete(Event event) {
+		ModelAndView result;
+		
+		try{
+			Event res = eventService.findOne(event.getId());
+			eventService.delete(res);
+			result = new ModelAndView("redirect:list.do");
+		}catch (Throwable opps){
+			result = new ModelAndView("event/edit");
+			result.addObject("event", event);
+			result.addObject("message","event.commit.error");
+		}
+		return result;
+	}
+	
 }
