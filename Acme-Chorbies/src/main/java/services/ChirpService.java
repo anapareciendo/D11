@@ -3,6 +3,7 @@ package services;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,8 @@ public class ChirpService {
 	private ChorbiService chorbiService;
 	@Autowired
 	private ManagerService managerService;
+	@Autowired
+	private EventService eventService;
 
 	//Constructors
 	public ChirpService() {
@@ -176,6 +179,22 @@ public class ChirpService {
 		return res;
 	}
 
-
-
+	public void broadcast(Chirp chirp) {
+		UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		Authority a = new Authority();
+		a.setAuthority(Authority.MANAGER);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a manager for this action.");
+		
+		List<Chorbi> chorbies = new ArrayList<Chorbi>();
+		chorbies.addAll(eventService.findMyAssistants());
+		
+		for(Chorbi c:chorbies){
+			Chirp s = this.create(managerService.findByUserAccountId(ua.getId()), c);
+			s.setSubject(chirp.getSubject());
+			s.setText(chirp.getText());
+			s.getAttachments().addAll(chirp.getAttachments());
+			this.save(s);
+		}
+	}
 }

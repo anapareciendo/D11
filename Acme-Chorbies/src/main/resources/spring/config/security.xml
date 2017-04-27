@@ -88,6 +88,7 @@
 		<security:intercept-url pattern="/event/manager/list.do" access="hasRole('MANAGER')" />
 		<security:intercept-url pattern="/event/manager/create.do" access="hasRole('MANAGER')" />
 		<security:intercept-url pattern="/event/manager/edit.do" access="hasRole('MANAGER')" />
+		<security:intercept-url pattern="/event/manager/broadcast.do" access="hasRole('MANAGER')" />
 		
 		<security:intercept-url pattern="/manager/display.do" access="hasRole('MANAGER')" />
 		<security:intercept-url pattern="/manager/pay.do" access="hasRole('MANAGER')" />

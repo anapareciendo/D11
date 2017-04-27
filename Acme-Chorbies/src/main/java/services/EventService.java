@@ -109,6 +109,15 @@ public class EventService {
 		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a manager for this action.");
 		return this.eventRepository.findMyEvents(ua.getId());
 	}
+	
+	public Collection<Chorbi> findMyAssistants(){
+		UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		Authority a = new Authority();
+		a.setAuthority(Authority.MANAGER);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a manager for this action.");
+		return this.eventRepository.findMyAssistants(ua.getId());
+	}
 
 	public Event reconstruct(Event event, BindingResult binding) {
 		Event res = null;

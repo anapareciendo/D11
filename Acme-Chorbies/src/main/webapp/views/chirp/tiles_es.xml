@@ -30,5 +30,10 @@
 		<put-attribute name="title" value="Borrar Flechazo"/>
 		<put-attribute name="body" value="/views/chirp/delete.jsp"/>		
 	</definition>
+	
+	<definition name="chirp/event" extends="master.page">
+		<put-attribute name="title" value="Emitir un Flechazo Chirp"/>
+		<put-attribute name="body" value="/views/chirp/event.jsp"/>		
+	</definition>
 
 </tiles-definitions>

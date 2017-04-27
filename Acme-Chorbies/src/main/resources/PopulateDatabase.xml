@@ -156,7 +156,12 @@
 		</property>
 		<property name="events">
 			<list>
-			<ref bean="event5"/>
+				<ref bean="event1"/>
+				<ref bean="event2"/>
+				<ref bean="event3"/>
+				<ref bean="event4"/>
+				<ref bean="event5"/>
+				<ref bean="event6"/>
 			</list>
 		</property>
 	</bean>	
@@ -189,7 +194,9 @@
 		</property>
 		<property name="events">
 			<list>
-			<ref bean="event5"/>
+				<ref bean="event5"/>
+				<ref bean="event3"/>
+				<ref bean="event2"/>
 			</list>
 		</property>
 	</bean>	
@@ -220,7 +227,12 @@
 			<list></list>
 		</property>
 		<property name="events">
-			<list></list>
+			<list>
+				<ref bean="event5"/>
+				<ref bean="event4"/>
+				<ref bean="event3"/>
+				<ref bean="event6"/>
+			</list>
 		</property>
 	</bean>	
 	
