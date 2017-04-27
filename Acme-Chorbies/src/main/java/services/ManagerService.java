@@ -30,6 +30,8 @@ public class ManagerService {
 //	private Validator validator;
 	
 	//Supporting services
+	@Autowired
+	private	ConfigService configService;
 	
 	//Constructors
 	public ManagerService() {
@@ -67,7 +69,7 @@ public class ManagerService {
 	
 		
 		final Manager res = this.managerRepository.save(manager);
-		managerRepository.flush();
+//		managerRepository.flush();
 		return res;
 	}
 
@@ -91,5 +93,11 @@ public class ManagerService {
 		Assert.notNull(id);
 		return this.managerRepository.findByUserAccountId(id);
 		}
+
+	public void eventFee() {
+		Manager manager = this.findByUserAccountId(LoginService.getPrincipal().getId());
+		manager.setAmount(manager.getAmount()+configService.find().getFee());
+		this.save(manager);
+	}
 
 }

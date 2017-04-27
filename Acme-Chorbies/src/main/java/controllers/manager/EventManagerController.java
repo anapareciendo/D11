@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
@@ -54,26 +55,46 @@ public class EventManagerController extends AbstractController {
 		return result;
 	}
 	
+	@RequestMapping(value="/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam int eventId) {
+		ModelAndView result;
+		
+		Event res = eventService.findOne(eventId);
+		
+		result = new ModelAndView("event/edit");
+		result.addObject("event", res);
+
+		return result;
+	}
+	
 	@RequestMapping(value="/edit", method = RequestMethod.POST, params="save")
 	public ModelAndView saveEvent(Event event, BindingResult binding) {
 		ModelAndView result;
-		Event res = eventService.reconstruct(event, binding);
 		
-		if(!binding.hasErrors()){
-			try{
-				eventService.save(res);
-				result = new ModelAndView("redirect:list.do");
-			}catch (Throwable opps){
+		try{
+			Event res = eventService.reconstruct(event, binding);
+			if(!binding.hasErrors()){
+				try{
+					eventService.save(res);
+					if(event.getId()==0){
+						managerService.eventFee();
+					}
+					result = new ModelAndView("redirect:list.do");
+				}catch (Throwable opps){
+					result = new ModelAndView("event/edit");
+					result.addObject("event", event);
+					result.addObject("message","event.commit.error");
+				}
+			}else{
 				result = new ModelAndView("event/edit");
 				result.addObject("event", event);
-				result.addObject("message","event.commit.error");
+				result.addObject("message","event.commit.incomplete");
 			}
-		}else{
+		}catch(Throwable oops){
 			result = new ModelAndView("event/edit");
 			result.addObject("event", event);
 			result.addObject("message","event.commit.incomplete");
 		}
-		
 		
 		return result;
 	}

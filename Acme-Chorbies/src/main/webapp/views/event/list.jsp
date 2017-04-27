@@ -39,6 +39,13 @@
 	<display:column value="${seatsAvailable}" title="${seatsAvailableHeader}" sortable="true" />
 	</jstl:if>
 	
+	<display:column>
+	  	<a href="event/manager/edit.do?eventId=${event.id}">
+	 			<spring:message code="event.edit" var="editHeader" />
+		  		<jstl:out value="${editHeader}" />
+		 </a>
+	</display:column>
+	
 </display:table>
 
 <div>

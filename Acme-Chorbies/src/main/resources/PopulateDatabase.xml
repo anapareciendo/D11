@@ -234,7 +234,7 @@
 		<property name="phone" value="+34872532251" />	
 		<property name="company" value="meetic" />
 		<property name="VATNumber" value="ABCD-120899-5H9" />
-		<property name="Amount" value="3.2" />
+		<property name="Amount" value="0.0" />
 		<property name="events">
 			<list></list>
 		</property>
@@ -268,7 +268,7 @@
 		<property name="phone" value="+34872535482" />	
 		<property name="company" value="Tinder" />
 		<property name="VATNumber" value="CWSV-120899-J5S" />
-		<property name="Amount" value="3.2" />
+		<property name="Amount" value="1.2" />
 		<property name="events">
 			<list></list>
 		</property>
@@ -427,6 +427,7 @@
 	<!-- Config -->
 	<bean id="config" class="domain.Config">
 		<property name="cache" value="12"/>
+		<property name="fee" value="1.00"/>
 	</bean>
 	
 	<!-- Event -->
