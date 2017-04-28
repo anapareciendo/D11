@@ -80,6 +80,8 @@ public class ConfigService {
 	public Config reconstruct(Config config, BindingResult binding) {
 		Config res = find();
 		res.setCache(config.getCache());
+		res.setFee(config.getFee());
+		res.setRegistrationFee(config.getRegistrationFee());
 		
 		validator.validate(res, binding);
 		

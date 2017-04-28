@@ -38,9 +38,11 @@ public class EventController extends AbstractController {
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
 		result.addObject("available", available);
-		if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
-			result.addObject("all", true);
-		}
+		try{
+			if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
+				result.addObject("all", true);
+			}
+		}catch(Throwable oops){}
 
 		return result;
 	}

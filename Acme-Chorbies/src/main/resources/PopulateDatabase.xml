@@ -228,9 +228,7 @@
 		</property>
 		<property name="events">
 			<list>
-				<ref bean="event5"/>
 				<ref bean="event4"/>
-				<ref bean="event3"/>
 				<ref bean="event6"/>
 			</list>
 		</property>

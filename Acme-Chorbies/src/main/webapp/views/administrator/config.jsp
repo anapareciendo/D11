@@ -24,6 +24,8 @@
 <form:form action="administrator/config.do" modelAttribute="config">
 	
 	<acme:textbox code="admin.cache" path="cache"/>
+	<acme:textbox code="admin.fee" path="fee"/>
+	<acme:textbox code="admin.registrationFee" path="registrationFee"/>
 	
 	<input type="submit" name="save" value="<spring:message code="like.save" />" />
 	
