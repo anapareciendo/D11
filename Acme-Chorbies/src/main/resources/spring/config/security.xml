@@ -95,6 +95,7 @@
 		
 		<security:intercept-url pattern="/event/chorbi/list.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/event/chorbi/unregister.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/event/chorbi/register.do" access="hasRole('CHORBI')" />
 		
 		<security:intercept-url pattern="/aboutUs/acme.do" access="permitAll" />
 		

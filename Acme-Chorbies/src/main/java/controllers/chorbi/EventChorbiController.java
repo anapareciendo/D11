@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
 import services.ChorbiService;
+import services.EventService;
 import controllers.AbstractController;
 import domain.Event;
 
@@ -21,6 +22,8 @@ public class EventChorbiController extends AbstractController {
 
 	@Autowired
 	private ChorbiService chorbiService;
+	@Autowired
+	private EventService eventService;
 
 	public EventChorbiController() {
 		super();
@@ -40,25 +43,44 @@ public class EventChorbiController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "/unregister", method = RequestMethod.GET)
-	public ModelAndView register(@RequestParam int eventId) {
+	public ModelAndView unregister(@RequestParam int eventId) {
 		ModelAndView result;
 		
-		
 		result = new ModelAndView("event/list");
-		
-		
 		try{
-			chorbiService.register(eventId);
+			eventService.unregister(eventId);
 			result.addObject("message", "event.unregister.success");
 		}catch(Throwable oops){
 			result.addObject("message", "event.commit.error");
 		}
-		
 		Collection<Event> event = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId()).getEvents();
 		
 		result.addObject("requestURI", "event/chorbi/list.do");
 		result.addObject("event", event);
 		result.addObject("own", true);
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(@RequestParam int eventId) {
+		ModelAndView result;
+		
+		result = new ModelAndView("event/list");
+		
+		try{
+			eventService.register(eventId);
+			result.addObject("message", "event.register.success");
+		}catch(Throwable oops){
+			result.addObject("message", "event.commit.error");
+		}
+		
+		Collection<Event> events = eventService.eventOrganisedLessMonthAndSeatsAvailable();
+		
+		result.addObject("requestURI", "event/listAvailable.do");
+		result.addObject("event", events);
+		result.addObject("available", true);
+		result.addObject("all", true);
 		
 		return result;
 	}

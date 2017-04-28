@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
+import services.ChorbiService;
 import services.EventService;
 import domain.Event;
 
@@ -18,6 +20,8 @@ public class EventController extends AbstractController {
 
 	@Autowired
 	private EventService	eventService;
+	@Autowired
+	private ChorbiService chorbiService;
 
 	public EventController() {
 		super();
@@ -34,7 +38,9 @@ public class EventController extends AbstractController {
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
 		result.addObject("available", available);
-		
+		if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
+			result.addObject("all", true);
+		}
 
 		return result;
 	}

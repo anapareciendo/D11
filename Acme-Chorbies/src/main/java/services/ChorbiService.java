@@ -22,7 +22,6 @@ import security.UserAccountService;
 import domain.Chirp;
 import domain.Chorbi;
 import domain.Coordinates;
-import domain.Event;
 import domain.Genre;
 import domain.KindRelationship;
 import domain.Likes;
@@ -44,8 +43,6 @@ public class ChorbiService {
 	//Supporting services
 	@Autowired
 	private UserAccountService userAccountService;
-	@Autowired
-	private EventService eventService;
 
 	//Constructors
 	public ChorbiService() {
@@ -261,18 +258,4 @@ public class ChorbiService {
 		
 		return res;
 	}
-
-	public void register(int eventId) {
-		final UserAccount ua = LoginService.getPrincipal();
-		Assert.notNull(ua);
-		final Authority a = new Authority();
-		a.setAuthority(Authority.CHORBI);
-		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action");
-		
-		Event event = eventService.findOne(eventId);
-		Chorbi chorbi = chorbiRepository.findByUserAccountId(LoginService.getPrincipal().getId());
-		chorbi.getEvents().remove(event);
-		this.save(chorbi);
-	}
-	
 }

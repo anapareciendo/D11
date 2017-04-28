@@ -48,13 +48,14 @@
 			 </a>
 		</display:column>
 	</jstl:if>
-	
-		<%-- <display:column>
-	  		<a href="event/manager/edit.do?eventId=${event.id}">
-	 			<spring:message code="event.edit" var="editHeader" />
-		  		<jstl:out value="${editHeader}" />
+	<jstl:if test="${all == true }">
+		<display:column>
+	  		<a href="event/chorbi/register.do?eventId=${event.id}">
+	 			<spring:message code="event.register" var="registerHeader" />
+		  		<jstl:out value="${registerHeader}" />
 			 </a>
-		</display:column> --%>
+		</display:column>
+	</jstl:if>
 	</security:authorize>
 	
 	

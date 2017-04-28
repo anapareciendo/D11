@@ -35,6 +35,8 @@ public class EventService {
 	//Supporting services
 	@Autowired
 	private ManagerService managerService;
+	@Autowired
+	private ChorbiService chorbiService;
 
 	//Constructors
 	public EventService() {
@@ -136,6 +138,33 @@ public class EventService {
 		return res;
 	}
 	
+	public void unregister(int eventId) {
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action");
+		
+		Event event = eventRepository.findOne(eventId);
+		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		chorbi.getEvents().remove(event);
+		chorbiService.save(chorbi);
+	}
+
+	public void register(int eventId) {
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi for this action");
+		
+		Event event = eventRepository.findOne(eventId);
+		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
+		if(!chorbi.getEvents().contains(event)){
+			chorbi.getEvents().add(event);
+			chorbiService.save(chorbi);
+		}
+	}
 	
 
 }

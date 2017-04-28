@@ -440,6 +440,7 @@
 	<bean id="config" class="domain.Config">
 		<property name="cache" value="12"/>
 		<property name="fee" value="1.00"/>
+		<property name="registrationFee" value="2.5"/>
 	</bean>
 	
 	<!-- Event -->
