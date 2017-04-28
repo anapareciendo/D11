@@ -93,6 +93,9 @@
 		<security:intercept-url pattern="/manager/display.do" access="hasRole('MANAGER')" />
 		<security:intercept-url pattern="/manager/pay.do" access="hasRole('MANAGER')" />
 		
+		<security:intercept-url pattern="/event/chorbi/list.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/event/chorbi/unregister.do" access="hasRole('CHORBI')" />
+		
 		<security:intercept-url pattern="/aboutUs/acme.do" access="permitAll" />
 		
 		

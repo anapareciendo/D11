@@ -65,7 +65,7 @@ public class EventService {
 	public Event save(final Event event) {
 		Assert.notNull(event, "The evenet to save cannot be null.");
 		
-		Assert.isTrue(event.getManager().getUserAccount().equals(LoginService.getPrincipal()), "You are not the owner of this chirp");
+		Assert.isTrue(event.getManager().getUserAccount().equals(LoginService.getPrincipal()), "You are not the owner of this event");
 		
 //		Assert.notNull(event.getMoment(), "The evenet to save cannot have 'moment' null.");
 //		Assert.notNull(event.getTitle(), "The evenet to save cannot have 'title' null.");

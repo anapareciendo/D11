@@ -26,6 +26,7 @@
 	<form:hidden path="liked"/>
 
 	<acme:textarea code="likes.comment" path="comment"/>
+	<acme:textbox code="likes.stars" path="stars"/>
 	
 	<input type="submit" name="save" value="<spring:message code="like.save" />" />
 	

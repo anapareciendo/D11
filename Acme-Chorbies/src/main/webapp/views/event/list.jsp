@@ -39,18 +39,32 @@
 	<display:column value="${seatsAvailable}" title="${seatsAvailableHeader}" sortable="true" />
 	</jstl:if>
 	
+	<security:authorize access="hasRole('CHORBI')">
+	<jstl:if test="${own == true }">
+		<display:column>
+	  		<a href="event/chorbi/unregister.do?eventId=${event.id}">
+	 			<spring:message code="event.unregister" var="unregisterHeader" />
+		  		<jstl:out value="${unregisterHeader}" />
+			 </a>
+		</display:column>
+	</jstl:if>
+	
+		<%-- <display:column>
+	  		<a href="event/manager/edit.do?eventId=${event.id}">
+	 			<spring:message code="event.edit" var="editHeader" />
+		  		<jstl:out value="${editHeader}" />
+			 </a>
+		</display:column> --%>
+	</security:authorize>
+	
+	
+	<security:authorize access="hasRole('MANAGER')">
 	<display:column>
 	  	<a href="event/manager/edit.do?eventId=${event.id}">
 	 			<spring:message code="event.edit" var="editHeader" />
 		  		<jstl:out value="${editHeader}" />
 		 </a>
 	</display:column>
+	</security:authorize>
 	
 </display:table>
-
-<div>
-	<a href="event/manager/create.do">
-		<spring:message code="event.create" var="createHeader" />
-		<jstl:out value="${createHeader}" />
-	</a>
-</div>

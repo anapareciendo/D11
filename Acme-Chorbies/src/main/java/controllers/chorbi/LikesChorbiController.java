@@ -169,7 +169,7 @@ public class LikesChorbiController extends AbstractController {
 			}else{
 				result = new ModelAndView("likes/like");
 				result.addObject("likes", res);
-				result.addObject("message","like.commit.error");
+				result.addObject("message","like.commit.incomplete");
 			}
 			
 			

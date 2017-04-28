@@ -92,6 +92,7 @@ public class LikesService {
 		Chorbi liker = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
 		Likes res = this.create(liker, likes.getLiked());
 		res.setComment(ms);
+		res.setStars(likes.getStars());
 		
 		validator.validate(res, binding);
 		

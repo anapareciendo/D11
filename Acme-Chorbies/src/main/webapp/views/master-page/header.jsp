@@ -109,6 +109,9 @@
 					<li><a href="event/manager/create.do"><spring:message code="master.page.manager.create" /></a></li>
 					<li><a href="event/manager/broadcast.do"><spring:message code="master.page.manager.broadcast" /></a></li>
 				</security:authorize>
+				<security:authorize access="hasRole('CHORBI')">
+				<li><a href="event/chorbi/list.do"><spring:message code="master.page.manager.list" /></a></li>
+				</security:authorize>
 			</ul>
 		</li>
 			
