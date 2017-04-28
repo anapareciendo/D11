@@ -19,6 +19,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <display:table name="event" id="event" requestURI="${requestURI}" pagesize="5" class="displaytag">
 	
@@ -36,7 +37,9 @@
 	
 	<jstl:if test="${available == true }">
 	<spring:message code="event.seatsAvailable" var="seatsAvailableHeader" />
-	<display:column value="${seatsAvailable}" title="${seatsAvailableHeader}" sortable="true" />
+	<jstl:set var="off" value="${event.seatsOffered }"/>
+	<jstl:set var="on" value="${fn:length(event.chorbies)}"/>
+	<display:column value="${off-on }" title="${seatsAvailableHeader}" sortable="true" />
 	</jstl:if>
 	
 	<security:authorize access="hasRole('CHORBI')">

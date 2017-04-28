@@ -127,6 +127,7 @@
 		<property name="userAccount" ref="userAccount1" />
 		<property name="phone" value="+34122332687" />	
 	</bean>	
+	
 	<!-- Chorbi -->
 	<bean id="chorbi1" class="domain.Chorbi">
 		<property name="name" value="Pedro" />
@@ -157,10 +158,8 @@
 		<property name="events">
 			<list>
 				<ref bean="event1"/>
-				<ref bean="event2"/>
 				<ref bean="event3"/>
 				<ref bean="event4"/>
-				<ref bean="event5"/>
 				<ref bean="event6"/>
 			</list>
 		</property>
@@ -195,7 +194,6 @@
 		<property name="events">
 			<list>
 				<ref bean="event5"/>
-				<ref bean="event3"/>
 				<ref bean="event2"/>
 			</list>
 		</property>
@@ -227,10 +225,7 @@
 			<list></list>
 		</property>
 		<property name="events">
-			<list>
-				<ref bean="event4"/>
-				<ref bean="event6"/>
-			</list>
+			<list></list>
 		</property>
 	</bean>	
 	
@@ -459,7 +454,7 @@
 		<property name="moment" value="10/20/2017 12:12"/>
 		<property name="description" value="Aprende a bailar riendote"/>
 		<property name="picture" value="http://bailale.com"/>
-		<property name="seatsOffered" value="2"/>
+		<property name="seatsOffered" value="5"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
@@ -471,7 +466,7 @@
 		<property name="moment" value="01/01/2001 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
-		<property name="seatsOffered" value="2"/>
+		<property name="seatsOffered" value="6"/>
 		<property name="manager" ref="manager3"/>
 		<property name="chorbies">
 			<list></list>
@@ -483,7 +478,7 @@
 		<property name="moment" value="04/17/2017 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
-		<property name="seatsOffered" value="2"/>
+		<property name="seatsOffered" value="4"/>
 		<property name="manager" ref="manager3"/>
 		<property name="chorbies">
 			<list></list>
@@ -495,7 +490,7 @@
 		<property name="moment" value="04/21/2017 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
-		<property name="seatsOffered" value="2"/>
+		<property name="seatsOffered" value="7"/>
 		<property name="manager" ref="manager3"/>
 		<property name="chorbies">
 			<list></list>
@@ -507,7 +502,7 @@
 		<property name="moment" value="04/22/2017 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
-		<property name="seatsOffered" value="2"/>
+		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager3"/>
 		<property name="chorbies">
 			<list></list>

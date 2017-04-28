@@ -79,8 +79,8 @@ public class EventChorbiController extends AbstractController {
 		
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", events);
-		result.addObject("available", true);
 		result.addObject("all", true);
+		result.addObject("available", true);
 		
 		return result;
 	}

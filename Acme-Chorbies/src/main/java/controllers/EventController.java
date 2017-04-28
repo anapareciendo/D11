@@ -32,12 +32,11 @@ public class EventController extends AbstractController {
 		ModelAndView result;
 		Collection<Event> event;
 		event = eventService.eventOrganisedLessMonthAndSeatsAvailable();
-		boolean available= true;
 		
 		result = new ModelAndView("event/list");
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
-		result.addObject("available", available);
+		result.addObject("available", true);
 		try{
 			if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
 				result.addObject("all", true);
