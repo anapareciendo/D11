@@ -474,9 +474,9 @@
 	</bean>
 	
 	<bean id="event4" class="domain.Event">
-		<property name="title" value="Menos de un mes"/>
+		<property name="title" value="Fiesta ibicenca"/>
 		<property name="moment" value="04/17/2017 12:12"/>
-		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="4"/>
 		<property name="manager" ref="manager3"/>
@@ -486,9 +486,9 @@
 	</bean>
 	
 	<bean id="event5" class="domain.Event">
-		<property name="title" value="Mismo dia"/>
-		<property name="moment" value="04/21/2017 12:12"/>
-		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="title" value="Pool party"/>
+		<property name="moment" value="09/23/2017 12:12"/>
+		<property name="description" value="Calle la botica número 9"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="7"/>
 		<property name="manager" ref="manager3"/>
@@ -498,9 +498,106 @@
 	</bean>
 	
 	<bean id="event6" class="domain.Event">
-		<property name="title" value="Mes y un dia"/>
+		<property name="title" value="Gamers"/>
 		<property name="moment" value="04/22/2017 12:12"/>
-		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
+		<property name="description" value="Juega sin parar"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+		<bean id="event7" class="domain.Event">
+		<property name="title" value="Mini citas"/>
+		<property name="moment" value="05/29/2017 12:12"/>
+		<property name="description" value="Lo bueno si breve, dos veces bueno"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event8" class="domain.Event">
+		<property name="title" value="Evento 8"/>
+		<property name="moment" value="04/30/2017 12:12"/>
+		<property name="description" value=""/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event9" class="domain.Event">
+		<property name="title" value="Sobre rueda"/>
+		<property name="moment" value="06/21/2017 12:12"/>
+		<property name="description" value="Apuntate a la carrera popular de tu ciudad en patines"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event10" class="domain.Event">
+		<property name="title" value="Fiesta de la espuma"/>
+		<property name="moment" value="01/22/2005 12:12"/>
+		<property name="description" value=""/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	<bean id="event11" class="domain.Event">
+		<property name="title" value="Evento 11"/>
+		<property name="moment" value="09/05/2009 12:12"/>
+		<property name="description" value="Ven a disfrutar con nosotros"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+	
+	<bean id="event12" class="domain.Event">
+		<property name="title" value="Evento 12"/>
+		<property name="moment" value="10/05/2015 12:12"/>
+		<property name="description" value="No te lo pienses"/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+		<bean id="event13" class="domain.Event">
+		<property name="title" value="Evento 13"/>
+		<property name="moment" value="12/07/2014 12:12"/>
+		<property name="description" value=""/>
+		<property name="picture" value="http://diviertete.com"/>
+		<property name="seatsOffered" value="21"/>
+		<property name="manager" ref="manager3"/>
+		<property name="chorbies">
+			<list></list>
+		</property>
+	</bean>
+	
+		<bean id="event14" class="domain.Event">
+		<property name="title" value="Evento 14"/>
+		<property name="moment" value="14/13/2017 12:12"/>
+		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager3"/>
