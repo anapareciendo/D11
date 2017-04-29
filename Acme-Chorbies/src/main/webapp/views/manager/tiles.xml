@@ -21,4 +21,9 @@
 		<put-attribute name="body" value="/views/manager/display.jsp"/>		
 	</definition>
 	
+	<definition name="manager/creditCard" extends="master.page">
+		<put-attribute name="title" value="Credit Card"/>
+		<put-attribute name="body" value="/views/manager/creditCard.jsp"/>		
+	</definition>
+	
 </tiles-definitions>
