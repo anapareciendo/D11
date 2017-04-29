@@ -63,12 +63,14 @@
 	
 	
 	<security:authorize access="hasRole('MANAGER')">
+	<jstl:if test="${edit == true }">
 	<display:column>
 	  	<a href="event/manager/edit.do?eventId=${event.id}">
 	 			<spring:message code="event.edit" var="editHeader" />
 		  		<jstl:out value="${editHeader}" />
 		 </a>
 	</display:column>
+	</jstl:if>
 	</security:authorize>
 	
 </display:table>

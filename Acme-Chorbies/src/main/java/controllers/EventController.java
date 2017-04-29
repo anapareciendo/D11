@@ -37,6 +37,7 @@ public class EventController extends AbstractController {
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
 		result.addObject("available", true);
+		result.addObject("edit",true);
 		try{
 			if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
 				result.addObject("all", true);
