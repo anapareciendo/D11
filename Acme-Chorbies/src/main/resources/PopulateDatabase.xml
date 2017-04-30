@@ -439,7 +439,11 @@
 	<!-- Event -->
 	<bean id="event1" class="domain.Event">
 		<property name="title" value="Conoceme"/>
-		<property name="moment" value="10/12/2017 12:12"/>
+		<property name="day" value="10"/>
+		<property name="month" value="12"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="12"/>
+		<property name="minutes" value="12"/>
 		<property name="description" value="Conoce a tu alma gemela"/>
 		<property name="picture" value="http://conoceme.com"/>
 		<property name="seatsOffered" value="12"/>
@@ -451,7 +455,11 @@
 	
 	<bean id="event2" class="domain.Event">
 		<property name="title" value="Bailale a la vida"/>
-		<property name="moment" value="10/20/2017 12:12"/>
+		<property name="day" value="10"/>
+		<property name="month" value="08"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="15"/>
+		<property name="minutes" value="21"/>
 		<property name="description" value="Aprende a bailar riendote"/>
 		<property name="picture" value="http://bailale.com"/>
 		<property name="seatsOffered" value="5"/>
@@ -463,7 +471,11 @@
 	
 	<bean id="event3" class="domain.Event">
 		<property name="title" value="Diviertete"/>
-		<property name="moment" value="01/01/2001 12:12"/>
+		<property name="day" value="01"/>
+		<property name="month" value="01"/>
+		<property name="year" value="2001"/>
+		<property name="hour" value="12"/>
+		<property name="minutes" value="12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="6"/>
@@ -474,9 +486,13 @@
 	</bean>
 	
 	<bean id="event4" class="domain.Event">
-		<property name="title" value="Fiesta ibicenca"/>
-		<property name="moment" value="04/17/2017 12:12"/>
-		<property name="description" value=""/>
+		<property name="title" value="Menos de un mes"/>
+		<property name="day" value="04"/>
+		<property name="month" value="10"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="12"/>
+		<property name="minutes" value="12"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="4"/>
 		<property name="manager" ref="manager3"/>
@@ -486,9 +502,13 @@
 	</bean>
 	
 	<bean id="event5" class="domain.Event">
-		<property name="title" value="Pool party"/>
-		<property name="moment" value="09/23/2017 12:12"/>
-		<property name="description" value="Calle la botica número 9"/>
+		<property name="title" value="Mismo dia"/>
+		<property name="day" value="21"/>
+		<property name="month" value="04"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="12"/>
+		<property name="minutes" value="59"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="7"/>
 		<property name="manager" ref="manager3"/>
@@ -498,9 +518,13 @@
 	</bean>
 	
 	<bean id="event6" class="domain.Event">
-		<property name="title" value="Gamers"/>
-		<property name="moment" value="04/22/2017 12:12"/>
-		<property name="description" value="Juega sin parar"/>
+		<property name="title" value="Mes y un dia"/>
+		<property name="day" value="22"/>
+		<property name="month" value="01"/>
+		<property name="year" value="2018"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
+		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager3"/>
@@ -511,7 +535,11 @@
 	
 		<bean id="event7" class="domain.Event">
 		<property name="title" value="Mini citas"/>
-		<property name="moment" value="05/29/2017 12:12"/>
+		<property name="day" value="29"/>
+		<property name="month" value="05"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value="Lo bueno si breve, dos veces bueno"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -523,7 +551,11 @@
 	
 	<bean id="event8" class="domain.Event">
 		<property name="title" value="Evento 8"/>
-		<property name="moment" value="04/30/2017 12:12"/>
+		<property name="day" value="30"/>
+		<property name="month" value="04"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -535,7 +567,11 @@
 	
 	<bean id="event9" class="domain.Event">
 		<property name="title" value="Sobre rueda"/>
-		<property name="moment" value="06/21/2017 12:12"/>
+		<property name="day" value="21"/>
+		<property name="month" value="06"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value="Apuntate a la carrera popular de tu ciudad en patines"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -547,7 +583,11 @@
 	
 	<bean id="event10" class="domain.Event">
 		<property name="title" value="Fiesta de la espuma"/>
-		<property name="moment" value="01/22/2005 12:12"/>
+		<property name="day" value="22"/>
+		<property name="month" value="01"/>
+		<property name="year" value="2005"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -559,7 +599,11 @@
 	
 	<bean id="event11" class="domain.Event">
 		<property name="title" value="Evento 11"/>
-		<property name="moment" value="09/05/2009 12:12"/>
+		<property name="day" value="05"/>
+		<property name="month" value="09"/>
+		<property name="year" value="2009"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value="Ven a disfrutar con nosotros"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -572,7 +616,11 @@
 	
 	<bean id="event12" class="domain.Event">
 		<property name="title" value="Evento 12"/>
-		<property name="moment" value="10/05/2015 12:12"/>
+		<property name="day" value="05"/>
+		<property name="month" value="10"/>
+		<property name="year" value="2015"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value="No te lo pienses"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -584,7 +632,11 @@
 	
 		<bean id="event13" class="domain.Event">
 		<property name="title" value="Evento 13"/>
-		<property name="moment" value="12/07/2014 12:12"/>
+		<property name="day" value="07"/>
+		<property name="month" value="12"/>
+		<property name="year" value="2014"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
@@ -596,7 +648,11 @@
 	
 		<bean id="event14" class="domain.Event">
 		<property name="title" value="Evento 14"/>
-		<property name="moment" value="14/13/2017 12:12"/>
+		<property name="day" value="13"/>
+		<property name="month" value="12"/>
+		<property name="year" value="2017"/>
+		<property name="hour" value="21"/>
+		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>

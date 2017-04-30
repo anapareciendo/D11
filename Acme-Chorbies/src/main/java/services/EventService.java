@@ -49,7 +49,17 @@ public class EventService {
 		Event res;
 		res = new Event();
 		res.setManager(manager);
-		res.setMoment(Calendar.getInstance().getTime());
+		Calendar date =Calendar.getInstance();
+		int day=date.get(Calendar.DAY_OF_MONTH);
+		int month=date.get(Calendar.MONTH);
+		int year=date.get(Calendar.YEAR);
+		int hour=date.get(Calendar.HOUR);
+		int minutes=date.get(Calendar.MINUTE);
+		res.setDay(day);
+		res.setMonth(month);
+		res.setYear(year);
+		res.setHour(hour);
+		res.setMinutes(minutes);
 		res.setChorbies(new ArrayList<Chorbi>());
 		return res;
 	}
@@ -75,7 +85,18 @@ public class EventService {
 		
 		final Event res = this.eventRepository.save(event);
 		res.getManager().getEvents().add(res);
-		res.setMoment(Calendar.getInstance().getTime());
+
+		Calendar date =Calendar.getInstance();
+		int day=date.get(Calendar.DAY_OF_MONTH);
+		int month=date.get(Calendar.MONTH);
+		int year=date.get(Calendar.YEAR);
+		int hour=date.get(Calendar.HOUR);
+		int minutes=date.get(Calendar.MINUTE);
+		res.setDay(day);
+		res.setMonth(month);
+		res.setYear(year);
+		res.setHour(hour);
+		res.setMinutes(minutes);
 		
 		return res;
 	}
