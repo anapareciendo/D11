@@ -61,6 +61,7 @@ public class EventController extends AbstractController {
 		result.addObject("month", date.get(Calendar.MONTH)+1);
 		result.addObject("year", date.get(Calendar.YEAR));
 		result.addObject("day", date.get(Calendar.DAY_OF_MONTH));
+		result.addObject("allEvents", true);
 
 		return result;
 	}

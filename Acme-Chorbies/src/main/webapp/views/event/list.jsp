@@ -25,6 +25,7 @@
 	<jstl:set var="off" value="${event.seatsOffered }"/>
 	<jstl:set var="on" value="${fn:length(event.chorbies)}"/>
 	
+	<jstl:if test="${allEvents == true }">
 	<display:column>
 		<jstl:if test="${off-on>0 && year==event.year && ((month==event.month && day<=event.day) || month+1==event.month)}">
 			<img src="./images/star.png" alt="Highlighted" width="25">
@@ -33,6 +34,7 @@
 			<img src="./images/skull.png" alt="Greyed" width="25">
 		</jstl:if>
 	</display:column>
+	</jstl:if>
 	
 	
 	<spring:message code="event.title" var="titleHeader" />
