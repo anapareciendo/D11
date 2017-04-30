@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class EventController extends AbstractController {
 		Collection<Event> event;
 		event = eventService.eventOrganisedLessMonthAndSeatsAvailable();
 		
-		result = new ModelAndView("event/list");
+		result = new ModelAndView("event/list/available");
 		result.addObject("requestURI", "event/listAvailable.do");
 		result.addObject("event", event);
 		result.addObject("available", true);
@@ -53,9 +54,13 @@ public class EventController extends AbstractController {
 		Collection<Event> event;
 		event = eventService.findAll();
 		
-		result = new ModelAndView("event/list");
+		result = new ModelAndView("event/list/all");
 		result.addObject("requestURI", "event/listAll.do");
 		result.addObject("event", event);
+		Calendar date = Calendar.getInstance();
+		result.addObject("month", date.get(Calendar.MONTH)+1);
+		result.addObject("year", date.get(Calendar.YEAR));
+		result.addObject("day", date.get(Calendar.DAY_OF_MONTH));
 
 		return result;
 	}

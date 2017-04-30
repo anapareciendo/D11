@@ -21,24 +21,36 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<display:table name="event" id="event" requestURI="${requestURI}" pagesize="5" class="displaytag">
+<display:table name="event" id="event" requestURI="${requestURI}" pagesize="8" class="displaytag">
+	<jstl:set var="off" value="${event.seatsOffered }"/>
+	<jstl:set var="on" value="${fn:length(event.chorbies)}"/>
+	
+	<display:column>
+		<jstl:if test="${off-on>0 && year==event.year && ((month==event.month && day<=event.day) || month+1==event.month)}">
+			<img src="./images/star.png" alt="Highlighted" width="25">
+		</jstl:if>
+		<jstl:if test="${year>event.year || (year==event.year && month>event.month) }">
+			<img src="./images/skull.png" alt="Greyed" width="25">
+		</jstl:if>
+	</display:column>
+	
 	
 	<spring:message code="event.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />
 	
 	<spring:message code="event.moment" var="momentHeader" />
-	<display:column property="moment" title="${momentHeader }" sortable="false" />
+	<jstl:set var="moment" value="${event.day } / ${event.month} / ${event.year } - ${event.hour }:${event.minutes }"/>
+	<display:column value="${moment}" title="${momentHeader}" sortable="false" />
+	
 	
 	<spring:message code="event.description" var="descriptionHeader" />
-	<display:column property="description" title="${descriptionHeader }" sortable="true" />
+	<display:column property="description" title="${descriptionHeader }" sortable="false" />
 	
 	<spring:message code="event.seatsOffered" var="seatsOfferedHeader" />
 	<display:column property="seatsOffered" title="${seatsOfferedHeader}" sortable="true" />
 	
 	<jstl:if test="${available == true }">
 	<spring:message code="event.seatsAvailable" var="seatsAvailableHeader" />
-	<jstl:set var="off" value="${event.seatsOffered }"/>
-	<jstl:set var="on" value="${fn:length(event.chorbies)}"/>
 	<display:column value="${off-on }" title="${seatsAvailableHeader}" sortable="true" />
 	</jstl:if>
 	

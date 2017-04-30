@@ -51,7 +51,7 @@ public class EventService {
 		res.setManager(manager);
 		Calendar date =Calendar.getInstance();
 		int day=date.get(Calendar.DAY_OF_MONTH);
-		int month=date.get(Calendar.MONTH);
+		int month=date.get(Calendar.MONTH)+1;
 		int year=date.get(Calendar.YEAR);
 		int hour=date.get(Calendar.HOUR);
 		int minutes=date.get(Calendar.MINUTE);
