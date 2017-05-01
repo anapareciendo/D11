@@ -262,6 +262,7 @@
 	<bean id="like1" class="domain.Likes">
 		<property name="moment" value="2017/03/1" />
 		<property name="comment" value="Hola guapo" />
+		<property name="stars" value ="3" />
 		<property name="liked" ref="chorbi1" />
 		<property name="liker" ref="chorbi3" />
 	</bean>
@@ -269,6 +270,7 @@
 	<bean id="like2" class="domain.Likes">
 		<property name="moment" value="2017/04/2" />
 		<property name="comment" value="¿Te gusta patinar?" />
+		<property name="stars" value ="1" />
 		<property name="liked" ref="chorbi2" />
 		<property name="liker" ref="chorbi1" />
 	</bean>
@@ -276,6 +278,7 @@
 	<bean id="like3" class="domain.Likes">
 		<property name="moment" value="2017/02/1" />
 		<property name="comment" value="¿Te apatece ir al cine?" />
+		<property name="stars" value ="2" />
 		<property name="liked" ref="chorbi1" />
 		<property name="liker" ref="chorbi2" />
 	</bean>

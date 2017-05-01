@@ -46,7 +46,15 @@
 			<spring:message code="dashboard.chorbiesMoreChirpsReceived"/>: <jstl:out value="${dashboard.chorbiesMoreChirpsReceived}" /><br>
 			<spring:message code="dashboard.chorbiesMoreChirpsSent"/>: <jstl:out value="${dashboard.chorbiesMoreChirpsSent}" /><br>
 			
+			<spring:message code="dashboard.listManagersOrderByEvents"/>: <jstl:out value="${dashboard.listManagersOrderByEvents}" /><br>
+			<spring:message code="dashboard.listManagersOrderByAmount"/>: <jstl:out value="${dashboard.listManagersOrderByAmount}" /><br>
+			<spring:message code="dashboard.listChorbiesOrderyByEvents"/>: <jstl:out value="${dashboard.listChorbiesOrderyByEvents}" /><br>
 			<spring:message code="dashboard.listChorbiesOrderByAmount"/>: <jstl:out value="${dashboard.listChorbiesOrderByAmount}" /><br>
+			
+			<spring:message code="dashboard.minStars"/>: <jstl:out value="${dashboard.minStars}" /><br>
+			<spring:message code="dashboard.maxStars"/>: <jstl:out value="${dashboard.maxStars}" /><br>
+			<spring:message code="dashboard.avgStars"/>: <jstl:out value="${dashboard.avgStars}" /><br>
+			<spring:message code="dashboard.chorbiesOrderByStars"/>: <jstl:out value="${dashboard.chorbiesOrderByStars}" /><br>
 		
 		</p>
 	</div>

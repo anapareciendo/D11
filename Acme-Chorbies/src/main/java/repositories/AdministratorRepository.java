@@ -1,7 +1,6 @@
 package repositories;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,8 +19,8 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	//---LEVEL C.1---
 	
 		//A listing with the number of chorbies per city
-		@Query("select c.coordinates.city, count(c) from Chorbi c group by c.coordinates.city")
-		List<Object[]> numChorbiesPerCity();
+		@Query("select count(c) from Chorbi c group by c.coordinates.city")
+		Collection<Integer> numChorbiesPerCity();
 		
 		//A listing with the number of chorbies per country
 		@Query("select count(c) from Chorbi c group by c.coordinates.country")
@@ -71,8 +70,8 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 		Collection<Chorbi> listChorbiesOrderyByEvents();
 		
 		//A listing of chorbies that includes the amount that they due in fees
-		@Query("select c, sum(m.amount) from Chorbi c join c.monthlyFee m group by c")
-		Collection<String> listChorbiesOrderByAmount();
+		@Query("select sum(m.amount) from Chorbi c join c.monthlyFee m group by c")
+		Collection<Double> listChorbiesOrderByAmount();
 		
 	//---LEVEL B.1---
 		

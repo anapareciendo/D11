@@ -87,7 +87,7 @@ public class AdministratorService {
 	//---LEVEL C.1---
 	
 		//A listing with the number of chorbies per city
-		public Collection<Object[]> numChorbiesPerCity(){
+		public Collection<Integer> numChorbiesPerCity(){
 			this.isAdministrator();
 			return this.administratorRepository.numChorbiesPerCity();
 		}
@@ -177,8 +177,8 @@ public class AdministratorService {
 		}
 		
 		//A listing of chorbies that includes the amount that they due in fees
-		public Collection<String> listChorbiesOrderByAmount(){
-			return administratorRepository.listChorbiesOrderByAmount();
+		public Collection<Double> listChorbiesOrderByAmount(){
+			return this.administratorRepository.listChorbiesOrderByAmount();
 		}
 
 		//---LEVEL B.1---
@@ -301,6 +301,16 @@ public class AdministratorService {
 			res.setAvgChirpsSend(this.avgChirpsSend());
 			res.setChorbiesMoreChirpsReceived(this.chorbiesMoreChirpsReceived());
 			res.setChorbiesMoreChirpsSent(this.chorbiesMoreChirpsSent());
+			
+			res.setListManagersOrderByEvents(this.listManagersOrderByEvents());
+			res.setListManagersOrderByAmount(this.listManagersOrderByAmount());
+			res.setListChorbiesOrderyByEvents(this.listChorbiesOrderyByEvents());
+			res.setListChorbiesOrderByAmount(this.listChorbiesOrderByAmount());
+			
+			res.setMinStars(this.minStars());
+			res.setMaxStars(this.maxStars());
+			res.setAvgStars(this.avgStars());
+			res.setChorbiesOrderByStars(this.chorbiesOrderByStars());
 			
 			return res;
 		}
