@@ -36,7 +36,6 @@
 	</display:column>
 	</jstl:if>
 	
-	
 	<spring:message code="event.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="false" />
 	
@@ -55,6 +54,10 @@
 	<spring:message code="event.seatsAvailable" var="seatsAvailableHeader" />
 	<display:column value="${off-on }" title="${seatsAvailableHeader}" sortable="true" />
 	</jstl:if>
+	
+	<display:column>
+		<img src="${event.picture }" alt="${event.title }" width="50">
+	</display:column>
 	
 	<security:authorize access="hasRole('CHORBI')">
 	<jstl:if test="${own == true }">

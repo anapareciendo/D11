@@ -400,7 +400,7 @@
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
 		<property name="description" value="Conoce a tu alma gemela"/>
-		<property name="picture" value="http://conoceme.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="12"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -416,7 +416,7 @@
 		<property name="hour" value="15"/>
 		<property name="minutes" value="21"/>
 		<property name="description" value="Aprende a bailar riendote"/>
-		<property name="picture" value="http://bailale.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="5"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -432,7 +432,7 @@
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="6"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -448,7 +448,7 @@
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="4"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -464,7 +464,7 @@
 		<property name="hour" value="12"/>
 		<property name="minutes" value="59"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="7"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -480,7 +480,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -496,7 +496,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value="Lo bueno si breve, dos veces bueno"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -512,7 +512,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -528,7 +528,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value="Apuntate a la carrera popular de tu ciudad en patines"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -544,7 +544,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -560,7 +560,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value="Ven a disfrutar con nosotros"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -577,7 +577,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value="No te lo pienses"/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -593,7 +593,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
@@ -609,7 +609,7 @@
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
 		<property name="description" value=""/>
-		<property name="picture" value="http://diviertete.com"/>
+		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
