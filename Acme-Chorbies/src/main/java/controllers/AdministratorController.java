@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ConfigService;
+import services.MonthlyFeeService;
 import domain.Config;
 
 @Controller
@@ -27,6 +28,8 @@ public class AdministratorController extends AbstractController {
 	//Services
 	@Autowired
 	private ConfigService configService;
+	@Autowired
+	private MonthlyFeeService monthlyFeeService;
 	
 	// Constructors -----------------------------------------------------------
 
@@ -72,7 +75,24 @@ public class AdministratorController extends AbstractController {
 		}
 		
 		return result;
+	}
+	
+	@RequestMapping(value = "/monthlyFee", method = RequestMethod.GET)
+	public ModelAndView monthlyFee() {
+		ModelAndView result;
 		
+		Boolean fee=monthlyFeeService.generateFees();
+		
+		Config config = configService.find();
+		result = new ModelAndView("administrator/config");
+		result.addObject("config", config);
+		if(fee){
+			result.addObject("message", "admin.monthly.fee.success");
+		}else{
+			result.addObject("message", "admin.monthly.fee.void");
+		}
+
+		return result;
 	}
 
 

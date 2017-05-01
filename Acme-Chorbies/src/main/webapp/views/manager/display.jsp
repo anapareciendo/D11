@@ -29,7 +29,7 @@
 			<strong><spring:message code="manager.company"/>:</strong> <jstl:out value="${manager.company}" /><br>
 			<strong><spring:message code="manager.VATNumber"/>:</strong> <jstl:out value="${manager.VATNumber}" /><br>
 			<strong><spring:message code="manager.amount"/>:</strong> <jstl:out value="${manager.amount}" />
-			<jstl:if test="${manager.amount != 0.0 }">
+			<jstl:if test="${manager.amount > 0.0 }">
 			<a href="manager/pay.do">
 	 			<spring:message code="manager.pay" var="payHeader" />
 		  		<jstl:out value="${payHeader}" />

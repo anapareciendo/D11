@@ -106,6 +106,7 @@ public class Chorbi extends SuperUser{
 	private Collection<Likes> receivedLikes;
 	private SearchTemplate searchTemplate;
 	private Collection<Event> events;
+	private Collection<MonthlyFee> monthlyFee;
 	
 	@Valid
 	@OneToOne(optional=true)
@@ -164,6 +165,15 @@ public class Chorbi extends SuperUser{
 		this.events = events;
 	}
 	
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy="chorbi")
+	public Collection<MonthlyFee> getMonthlyFee() {
+		return monthlyFee;
+	}
+	public void setMonthlyFee(Collection<MonthlyFee> monthlyFee) {
+		this.monthlyFee = monthlyFee;
+	}
 	//Utility Methods
 	public String toString(){
 		return this.getName()+" "+this.getSurname();

@@ -25,6 +25,7 @@ import domain.Coordinates;
 import domain.Genre;
 import domain.KindRelationship;
 import domain.Likes;
+import domain.MonthlyFee;
 import forms.ChorbiForm;
 
 @Service
@@ -57,6 +58,7 @@ public class ChorbiService {
 		res.setMakeLikes(new ArrayList<Likes>());
 		res.setReceivedLikes(new ArrayList<Likes>());
 		res.setReceivedChirps(new ArrayList<Chirp>());
+		res.setMonthlyFee(new ArrayList<MonthlyFee>());
 		res.setAge(18);
 		res.setBanned(false);
 		res.setUserAccount(ua);

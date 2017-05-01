@@ -163,6 +163,9 @@
 				<ref bean="event6"/>
 			</list>
 		</property>
+		<property name="monthlyFee">
+			<list></list>
+		</property>
 	</bean>	
 	
 		
@@ -197,6 +200,9 @@
 				<ref bean="event2"/>
 			</list>
 		</property>
+		<property name="monthlyFee">
+			<list></list>
+		</property>
 	</bean>	
 	
 	<bean id="chorbi3" class="domain.Chorbi">
@@ -225,6 +231,9 @@
 			<list></list>
 		</property>
 		<property name="events">
+			<list></list>
+		</property>
+		<property name="monthlyFee">
 			<list></list>
 		</property>
 	</bean>	
@@ -646,7 +655,7 @@
 		</property>
 	</bean>
 	
-		<bean id="event14" class="domain.Event">
+	<bean id="event14" class="domain.Event">
 		<property name="title" value="Evento 14"/>
 		<property name="day" value="13"/>
 		<property name="month" value="12"/>
@@ -662,5 +671,20 @@
 		</property>
 	</bean>
 	
-	<!-- select e from Event e where year(current_Date)=year(e.moment) and (month(current_Date)=month(e.moment)or month(current_Date)=month(e.moment)-1) and abs(day(current_Date)-day(e.moment))<=30; -->
+	<!-- Monthly Fee -->
+	<bean id="mf1" class="domain.MonthlyFee">
+		<property name="moment" value="05/05/2016 21:00"/>
+		<property name="amount" value="2.5"/>
+		<property name="chorbi" ref="chorbi1"/>
+	</bean>
+	<bean id="mf2" class="domain.MonthlyFee">
+		<property name="moment" value="05/05/2017 21:00"/>
+		<property name="amount" value="2.5"/>
+		<property name="chorbi" ref="chorbi2"/>
+	</bean>
+	<bean id="mf3" class="domain.MonthlyFee">
+		<property name="moment" value="05/05/2016 21:00"/>
+		<property name="amount" value="2.5"/>
+		<property name="chorbi" ref="chorbi3"/>
+	</bean>
 </beans>
