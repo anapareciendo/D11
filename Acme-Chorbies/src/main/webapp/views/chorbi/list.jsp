@@ -23,6 +23,10 @@
 <display:table name="chorbi" id="chorbi" requestURI="chorbi/list.do"
 	pagesize="5" class="displaytag">
 	
+	<display:column>
+		<img src="${chorbi.picture }" alt="${chorbi.name }" width="100">
+	</display:column>
+	
 	<spring:message code="chorbi.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader }" sortable="true" />
 	

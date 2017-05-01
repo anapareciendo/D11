@@ -111,7 +111,7 @@
 		<property name="email" value="guti@gmail.com" />
 		<property name="userAccount" ref="userAccount2" />
 		<property name="phone" value="+34872532287" />	
-		<property name="picture" value="http://www.guapo.es" />
+		<property name="picture" value="https://static.comicvine.com/uploads/original/11112/111120069/3911767-4644260797-Frank.png" />
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="1991/12/5"/>
 		<property name="age" value="25"/>
@@ -152,7 +152,7 @@
 		<property name="email" value="perez@gmail.com" />
 		<property name="userAccount" ref="userAccount3" />
 		<property name="phone" value="+34872532254" />	
-		<property name="picture" value="http://www.guapo.es" />
+		<property name="picture" value="https://pbs.twimg.com/profile_images/719834468131975169/wz_1kbwp.jpg" />
 		<property name="kindRelationship" value="ACTIVITIES" />
 		<property name="birthDate" value="1997/10/09"/>
 		<property name="age" value="18"/>
@@ -189,7 +189,7 @@
 		<property name="email" value="dagona@gmail.com" />
 		<property name="userAccount" ref="userAccount4" />
 		<property name="phone" value="+34872532251" />	
-		<property name="picture" value="http://www.guapo.es" />
+		<property name="picture" value="https://myanimelist.cdn-dena.com/images/characters/7/235823.jpg" />
 		<property name="kindRelationship" value="LOVE" />
 		<property name="birthDate" value="1989/11/07"/>
 		<property name="age" value="26"/>

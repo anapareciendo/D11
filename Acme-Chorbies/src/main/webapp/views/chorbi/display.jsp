@@ -22,7 +22,7 @@
 
 <div>
 		<p>
-			<spring:message code="chorbi.picture"/>: <jstl:out value="${chorbi.picture}" /><br>
+			<img src="${chorbi.picture }" alt="${chorbi.name }" width="150"><br>
 			<spring:message code="chorbi.name"/>: <jstl:out value="${chorbi.name}"/><br>
 			<spring:message code="chorbi.surname"/>: <jstl:out value="${chorbi.surname}" /><br>
 			<spring:message code="chorbi.email"/>: <jstl:out value="${chorbi.email}" /><br>
