@@ -27,6 +27,14 @@
 	<acme:textbox code="event.title" path="title"/>
 	<acme:textbox code="event.description" path="description"/>
 	<acme:textbox code="event.picture" path="picture"/>
+	<spring:message code="event.moment" var="momentHeader" />
+	<jstl:out value="${momentHeader}" />
+	<acme:textbox code="event.day" path="day"/>
+	<acme:textbox code="event.month" path="month"/>
+	<acme:textbox code="event.year" path="year"/>
+	<acme:textbox code="event.hour" path="hour"/>
+	<acme:textbox code="event.minutes" path="minutes"/>
+	
 	<acme:textbox code="event.seatsOffered" path="seatsOffered"/>
 	
 	

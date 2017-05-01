@@ -53,7 +53,7 @@ public class EventService {
 		int day=date.get(Calendar.DAY_OF_MONTH);
 		int month=date.get(Calendar.MONTH)+1;
 		int year=date.get(Calendar.YEAR);
-		int hour=date.get(Calendar.HOUR);
+		int hour=date.get(Calendar.HOUR_OF_DAY);
 		int minutes=date.get(Calendar.MINUTE);
 		res.setDay(day);
 		res.setMonth(month);
@@ -90,7 +90,7 @@ public class EventService {
 		int day=date.get(Calendar.DAY_OF_MONTH);
 		int month=date.get(Calendar.MONTH);
 		int year=date.get(Calendar.YEAR);
-		int hour=date.get(Calendar.HOUR);
+		int hour=date.get(Calendar.HOUR_OF_DAY);
 		int minutes=date.get(Calendar.MINUTE);
 		res.setDay(day);
 		res.setMonth(month);
