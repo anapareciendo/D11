@@ -27,6 +27,6 @@
 	<acme:textbox code="banner.logo" path="logo"/>
 	
 	<input type="submit" name="save" value="<spring:message code="banner.save" />" />
-	<input type="button" name="cancel" value="<spring:message code="banner.cancel" />" onclick="window.location='welcome/index.do'" /> <br />
+	<input type="button" name="cancel" value="<spring:message code="banner.cancel" />" onclick="window.location='banner/admin/list.do'" /> <br />
 	
 </form:form>
