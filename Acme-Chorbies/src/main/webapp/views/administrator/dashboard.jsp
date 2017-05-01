@@ -45,5 +45,8 @@
 			<spring:message code="dashboard.avgChirpsSend"/>: <jstl:out value="${dashboard.avgChirpsSend}" /><br>
 			<spring:message code="dashboard.chorbiesMoreChirpsReceived"/>: <jstl:out value="${dashboard.chorbiesMoreChirpsReceived}" /><br>
 			<spring:message code="dashboard.chorbiesMoreChirpsSent"/>: <jstl:out value="${dashboard.chorbiesMoreChirpsSent}" /><br>
+			
+			<spring:message code="dashboard.listChorbiesOrderByAmount"/>: <jstl:out value="${dashboard.listChorbiesOrderByAmount}" /><br>
+		
 		</p>
 	</div>

@@ -13,6 +13,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
 import domain.Chorbi;
+import domain.Manager;
 import forms.Dashboard;
 
 @Service
@@ -83,7 +84,7 @@ public class AdministratorService {
 		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a administrator for this action.");
 	 }
 	
-	//---LEVEL C---
+	//---LEVEL C.1---
 	
 		//A listing with the number of chorbies per city
 		public Collection<Object[]> numChorbiesPerCity(){
@@ -158,8 +159,29 @@ public class AdministratorService {
 			this.isAdministrator();
 			return (double)administratorRepository.chorbisNotBannedRatio();
 		}
+		
+		//---LEVEL C.2---
+		//A listing of managers sorted by the number of events that they organise
+		public Collection<Manager> listManagersOrderByEvents(){
+			return administratorRepository.listManagersOrderByEvents();
+		}
+		
+		//A listing of managers that includes the amount that they due in fees
+		public Collection<Manager> listManagersOrderByAmount(){
+			return administratorRepository.listManagersOrderByAmount();
+		}
+		
+		//A listing of chorbies sorted by the number of events to which they have registered
+		public Collection<Chorbi> listChorbiesOrderyByEvents(){
+			return administratorRepository.listChorbiesOrderyByEvents();
+		}
+		
+		//A listing of chorbies that includes the amount that they due in fees
+		public Collection<String> listChorbiesOrderByAmount(){
+			return administratorRepository.listChorbiesOrderByAmount();
+		}
 
-		//---LEVEL B---
+		//---LEVEL B.1---
 		
 		//List of chorbies, sorted by the number of likes the have got
 		public Collection<Chorbi> chorbiesSortedByLikes(){
@@ -183,6 +205,25 @@ public class AdministratorService {
 		public Double avgLikesPerChorbi(){
 			this.isAdministrator();
 			return this.administratorRepository.avgLikesPerChorbi();
+		}
+		
+		//---LEVEL B.2---
+		//The minimum, the maximum, and the average number of stars per chorbi
+		public Collection<Integer> minStars(){
+			return administratorRepository.minStars();
+		}
+		
+		public Collection<Integer> maxStars(){
+			return administratorRepository.maxStars();
+		}
+		
+		public Collection<Double> avgStars(){
+			return administratorRepository.avgStars();
+		}
+		
+		//The list of chorbies, sorted by the average number of stars that they've got
+		public Collection<Chorbi> chorbiesOrderByStars(){
+			return administratorRepository.chorbiesOrderByStars();
 		}
 		
 		//---LEVEL A---

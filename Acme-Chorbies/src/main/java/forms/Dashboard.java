@@ -20,6 +20,7 @@ public class Dashboard {
 	private Double ratioChorbisWhoSearchActivities;
 	private Double ratioChorbisWhoSearchFriendship;
 	private Double ratioChorbisWhoSearchLove;
+	private Collection<String> listChorbiesOrderByAmount;
 		
 	//---LEVEL B---
 	private Collection<Chorbi> chorbiesSortedByLikes;
@@ -167,5 +168,14 @@ public class Dashboard {
 	public void setChorbiesMoreChirpsSent(Collection<Chorbi> chorbiesMoreChirpsSent) {
 		this.chorbiesMoreChirpsSent = chorbiesMoreChirpsSent;
 	}
+	
+	public Collection<String> getListChorbiesOrderByAmount() {
+		return listChorbiesOrderByAmount;
+	}
+	public void setListChorbiesOrderByAmount(
+			Collection<String> listChorbiesOrderByAmount) {
+		this.listChorbiesOrderByAmount = listChorbiesOrderByAmount;
+	}
+	
 
 }

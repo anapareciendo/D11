@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import domain.Administrator;
 import domain.Chorbi;
+import domain.Manager;
 
 @Repository
 public interface AdministratorRepository extends JpaRepository<Administrator, Integer> {
@@ -16,7 +17,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select a from Administrator a where a.userAccount.id = ?1")
 	Administrator findByUserAccountId(int id);
 	
-	//---LEVEL C---
+	//---LEVEL C.1---
 	
 		//A listing with the number of chorbies per city
 		@Query("select c.coordinates.city, count(c) from Chorbi c group by c.coordinates.city")
@@ -55,7 +56,25 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 		@Query("select count(c) from Chorbi c where c.banned=false")
 		Integer chorbisNotBannedRatio();
 		
-		//---LEVEL B---
+	//---LEVEL C.2---
+		
+		//A listing of managers sorted by the number of events that they organise
+		@Query("select m from Manager m order by m.events.size")
+		Collection<Manager> listManagersOrderByEvents();
+		
+		//A listing of managers that includes the amount that they due in fees
+		@Query("select m from Manager m order by m.amount")
+		Collection<Manager> listManagersOrderByAmount();
+		
+		//A listing of chorbies sorted by the number of events to which they have registered
+		@Query("select c from Chorbi c order by c.events.size DESC")
+		Collection<Chorbi> listChorbiesOrderyByEvents();
+		
+		//A listing of chorbies that includes the amount that they due in fees
+		@Query("select c, sum(m.amount) from Chorbi c join c.monthlyFee m group by c")
+		Collection<String> listChorbiesOrderByAmount();
+		
+	//---LEVEL B.1---
 		
 		//List of chorbies, sorted by the number of likes the have got
 		@Query("select c from Chorbi c order by c.receivedLikes.size DESC")
@@ -73,7 +92,23 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 		@Query("select avg(c.receivedLikes.size) from Chorbi c")
 		Double avgLikesPerChorbi();
 		
-		//---LEVEL A---
+	//---LEVEL B.2---
+		
+		//The minimum, the maximum, and the average number of stars per chorbi
+		@Query("select min(l.stars) from Chorbi c join c.receivedLikes l group by c")
+		Collection<Integer> minStars();
+		
+		@Query("select max(l.stars) from Chorbi c join c.receivedLikes l group by c")
+		Collection<Integer> maxStars();
+		
+		@Query("select avg(l.stars) from Chorbi c join c.receivedLikes l group by c")
+		Collection<Double> avgStars();
+		
+		//The list of chorbies, sorted by the average number of stars that they've got
+		@Query("select c from Chorbi c join c.receivedLikes l order by l.stars DESC")
+		Collection<Chorbi> chorbiesOrderByStars();
+		
+	//---LEVEL A---
 		
 		//The minimum number of chirps that a chorbi receives from other chorbies
 		@Query("select min(c.receivedChirps.size) from Chorbi c")
