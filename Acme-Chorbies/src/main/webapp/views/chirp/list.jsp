@@ -64,5 +64,3 @@
   	</display:column>
 	
 </display:table>
-
-

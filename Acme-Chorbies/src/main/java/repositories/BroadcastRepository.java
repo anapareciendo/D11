@@ -7,5 +7,5 @@ import domain.Broadcast;
 
 @Repository
 public interface BroadcastRepository extends JpaRepository<Broadcast, Integer> {
-
+	
 }
