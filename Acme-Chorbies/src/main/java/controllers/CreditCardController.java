@@ -21,7 +21,9 @@ import security.LoginService;
 import services.ChorbiService;
 import services.CreditCardService;
 import services.ManagerService;
+import domain.Chorbi;
 import domain.CreditCard;
+import domain.Manager;
 import domain.SuperUser;
 
 @Controller
@@ -64,22 +66,33 @@ public class CreditCardController extends AbstractController {
 	@RequestMapping(value = "/creditCard", method = RequestMethod.POST, params = "save")
 	public ModelAndView creditCard(CreditCard card, BindingResult binding) {
 		ModelAndView result;
-		CreditCard creditCard = creditService.reconstruct(card, binding);
-		if (!binding.hasErrors()) {
+		try{
+			CreditCard creditCard = creditService.reconstruct(card, binding);
 			try{
 				CreditCard res=creditService.save(creditCard);
-				result = new ModelAndView("chorbi/creditCard");
+				int id = LoginService.getPrincipal().getId();
+				SuperUser owner = chorbiService.findByUserAccountId(id);
+				if(owner!=null){
+					Chorbi c = chorbiService.findOne(owner.getId());
+					c.setCreditCard(res);
+					chorbiService.save(c);
+				}else{
+					Manager m = managerService.findByUserAccountId(id);
+					m.setCreditCard(res);
+					managerService.save(m);
+				}
+				result = new ModelAndView("creditCard/creditCard");
 				result.addObject("card", res);
-				result.addObject("message", "chorbi.card.success");
+				result.addObject("message", "creditcard.success");
 			}catch(Throwable oops){
-				result = new ModelAndView("chorbi/creditCard");
+				result = new ModelAndView("creditCard/creditCard");
 				result.addObject("card", card);
-				result.addObject("message", "chorbi.card.error");
+				result.addObject("message", "creditcard.incomplete");
 			}
-		} else {
-			result = new ModelAndView("chorbi/creditCard");
+		}catch(Throwable opps){
+			result = new ModelAndView("creditCard/creditCard");
 			result.addObject("card", card);
-			result.addObject("message", "chorbi.card.error");
+			result.addObject("message", "creditcard.incomplete");
 		}
 		return result;
 	}

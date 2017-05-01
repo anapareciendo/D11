@@ -20,7 +20,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-<form:form action="chorbi/creditCard.do" modelAttribute="card">
+<form:form action="creditCard/creditCard.do" modelAttribute="card">
 	
 	<form:hidden path="id" />
 	
@@ -37,12 +37,12 @@
 		<option value="AMEX">Amex</option>
 	</form:select>
 	
-	<acme:textbox code="chorbi.card.expirationMonth" path="expirationMonth"/>
-	<acme:textbox code="chorbi.card.expirationYear" path="expirationYear"/>
-	<acme:textbox code="chorbi.card.cvv" path="cvv"/>
+	<acme:textbox code="creditcard.expirationMonth" path="expirationMonth"/>
+	<acme:textbox code="creditcard.expirationYear" path="expirationYear"/>
+	<acme:textbox code="creditcard.cvv" path="cvv"/>
 	
-	<input type="submit" name="save" value="<spring:message code="chorbi.save" />" />
-	<input type="button" name="cancel" value="<spring:message code="chorbi.cancel" />" onclick="window.location='welcome/index.do'" /> <br />
+	<input type="submit" name="save" value="<spring:message code="creditcard.save" />" />
+	<input type="button" name="cancel" value="<spring:message code="creditcard.cancel" />" onclick="window.location='welcome/index.do'" /> <br />
 	
 	<div>
 		<jstl:out value="${errors}"/>

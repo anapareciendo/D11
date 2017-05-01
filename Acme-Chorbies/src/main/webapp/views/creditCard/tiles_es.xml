@@ -15,7 +15,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
        
 <tiles-definitions>
-	<definition name="chorbi/creditCard" extends="master.page">
+	<definition name="creditCard/creditCard" extends="master.page">
 		<put-attribute name="title" value="Credit Card"/>
 		<put-attribute name="body" value="/views/creditCard/creditCard.jsp"/>		
 	</definition>	

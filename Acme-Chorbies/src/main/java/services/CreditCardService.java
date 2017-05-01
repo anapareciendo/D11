@@ -91,7 +91,6 @@ public class CreditCardService {
 		}
 		
 		res.setBrand(creditCard.getBrand());
-		
 		res.setCvv(creditCard.getCvv());
 		res.setExpirationMonth(creditCard.getExpirationMonth());
 		res.setExpirationYear(creditCard.getExpirationYear());

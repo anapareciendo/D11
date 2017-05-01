@@ -158,6 +158,7 @@
 		<property name="genre" value="OTHER"/>
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates2"/>
+		<property name="creditCard" ref="creditCard2" />
 		<property name="sendChirps">
 			<list></list>
 		</property>
