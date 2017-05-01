@@ -15,9 +15,15 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
        
 <tiles-definitions>
+
 	<definition name="creditCard/creditCard" extends="master.page">
-		<put-attribute name="title" value="Credit Card"/>
+		<put-attribute name="title" value="Tarjeta de Credito"/>
 		<put-attribute name="body" value="/views/creditCard/creditCard.jsp"/>		
 	</definition>	
+	
+	<definition name="creditCard/display" extends="master.page">
+		<put-attribute name="title" value="Tarjeta de Credito"/>
+		<put-attribute name="body" value="/views/creditCard/display.jsp"/>		
+	</definition>
 
 </tiles-definitions>

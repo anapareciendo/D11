@@ -52,6 +52,7 @@
 		<security:intercept-url pattern="/chorbi/edit.do" access="hasRole('CHORBI')" />
 		
 		<security:intercept-url pattern="/creditCard/creditCard.do" access="hasRole('CHORBI') or hasRole('MANAGER')" />
+		<security:intercept-url pattern="/creditCard/display.do" access="hasRole('CHORBI') or hasRole('MANAGER')" />
 		
 		<security:intercept-url pattern="/likes/chorbi/like.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/likes/chorbi/sayLike.do" access="hasRole('CHORBI')" />

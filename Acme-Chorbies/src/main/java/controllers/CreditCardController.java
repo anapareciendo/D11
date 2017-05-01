@@ -81,7 +81,7 @@ public class CreditCardController extends AbstractController {
 					m.setCreditCard(res);
 					managerService.save(m);
 				}
-				result = new ModelAndView("creditCard/creditCard");
+				result = new ModelAndView("creditCard/display");
 				result.addObject("card", res);
 				result.addObject("message", "creditcard.success");
 			}catch(Throwable oops){
