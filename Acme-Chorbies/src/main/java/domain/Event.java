@@ -7,6 +7,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -111,7 +112,16 @@ public class Event extends DomainEntity{
 	//---------------------Relationships--------------------------
 	private Manager manager;
 	private Collection<Chorbi> chorbies;
-
+	private Broadcast broadcast;
+	
+	@Valid
+	@OneToOne(optional=true)
+	public Broadcast getBroadcast() {
+		return broadcast;
+	}
+	public void setBroadcast(Broadcast broadcast) {
+		this.broadcast = broadcast;
+	}
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)

@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
+import services.BroadcastService;
 import services.ChirpService;
 import services.EventService;
 import services.ManagerService;
 import controllers.AbstractController;
+import domain.Broadcast;
 import domain.Chirp;
 import domain.Chorbi;
 import domain.Event;
@@ -33,6 +35,8 @@ public class EventManagerController extends AbstractController {
 	private ManagerService managerService;
 	@Autowired
 	private ChirpService chirpService;
+	@Autowired
+	private BroadcastService broadcastService;
 
 	public EventManagerController() {
 		super();
@@ -127,11 +131,10 @@ public class EventManagerController extends AbstractController {
 	@RequestMapping(value="/broadcast", method = RequestMethod.GET)
 	public ModelAndView broadcast() {
 		ModelAndView result;
-		Chirp chirp = chirpService.create(new Manager(), new Chorbi());
+		Broadcast bm = broadcastService.create();
 		
-		result = new ModelAndView("chirp/event");
-		result.addObject("chirp", chirp);
-		result.addObject("mode", "send");
+		result = new ModelAndView("broadcast/broadcast");
+		result.addObject("broadcast", bm);
 
 		return result;
 	}

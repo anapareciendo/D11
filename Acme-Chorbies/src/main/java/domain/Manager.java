@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -49,6 +50,16 @@ public class Manager extends SuperUser{
 
 	//---------------------Relationships--------------------------
 	private Collection<Event> events;
+	private Broadcast broadcast;
+	
+	@Valid
+	@OneToOne(optional=true)
+	public Broadcast getBroadcast() {
+		return broadcast;
+	}
+	public void setBroadcast(Broadcast broadcast) {
+		this.broadcast = broadcast;
+	}
 	
 	@NotNull
 	@Valid
