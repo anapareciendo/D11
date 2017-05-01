@@ -14,7 +14,6 @@ import repositories.CreditCardRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
-import domain.Chorbi;
 import domain.CreditCard;
 import domain.SuperUser;
 
@@ -34,6 +33,9 @@ public class CreditCardService {
 	//Supporting services
 	@Autowired
 	private ChorbiService chorbiServie;
+	
+	@Autowired
+	private ManagerService managerService;
 
 	//Constructors
 	public CreditCardService() {
@@ -63,9 +65,10 @@ public class CreditCardService {
 
 		final Authority a = new Authority();
 		a.setAuthority(Authority.CHORBI);
-
+		final Authority b = new Authority();
+		b.setAuthority(Authority.MANAGER);
 		final UserAccount ua = LoginService.getPrincipal();
-		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be an Chorbi for this action");
+		Assert.isTrue(ua.getAuthorities().contains(a) || ua.getAuthorities().contains(b), "You must to be an Chorbi or a Manager for this action");
 		Assert.isTrue(creditCard.getSuperUser().getUserAccount().equals(ua), "You are not the owner of this Credit Card");
 
 		final CreditCard res = this.creditCardRepository.save(creditCard);
@@ -76,10 +79,13 @@ public class CreditCardService {
 	public CreditCard reconstruct(CreditCard creditCard, BindingResult binding) {
 		
 		CreditCard res;
-		Chorbi chorbi = chorbiServie.findByUserAccountId(LoginService.getPrincipal().getId());
+		SuperUser superUser = chorbiServie.findByUserAccountId(LoginService.getPrincipal().getId());
+		
+		if(superUser == null)
+			superUser = managerService.findByUserAccountId(LoginService.getPrincipal().getId());
 		
 		if(creditCard.getId()==0){
-			res=this.create(chorbi);
+			res=this.create(superUser);
 		}else{
 			res=this.findOne(creditCard.getId());
 		}

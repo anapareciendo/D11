@@ -77,30 +77,6 @@
 			</list>
 		</property>
 	</bean>
-	
-	<bean id="userAccount6" class="security.UserAccount">
-		<property name="username" value="manager2" />
-		<property name="password" value="8df5127cd164b5bc2d2b78410a7eea0c" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="MANAGER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="userAccount7" class="security.UserAccount">
-		<property name="username" value="manager3" />
-		<property name="password" value="2d3a5db4a2a9717b43698520a8de57d0" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="MANAGER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
 
 	
 	<!-- Coordinates -->
@@ -143,6 +119,7 @@
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates1"/>
 		<property name="searchTemplate" ref="searchTemplate1"/>
+		<property name="creditCard" ref="creditCard1" />
 		<property name="sendChirps">
 			<list></list>
 		</property>
@@ -182,6 +159,7 @@
 		<property name="genre" value="OTHER"/>
 		<property name="banned" value="false"/>
 		<property name="coordinates" ref="coordinates2"/>
+		<property name="creditCard" ref="creditCard2" />
 		<property name="sendChirps">
 			<list></list>
 		</property>
@@ -218,6 +196,7 @@
 		<property name="genre" value="WOMEN"/>
 		<property name="banned" value="true"/>
 		<property name="coordinates" ref="coordinates1"/>
+		<property name="creditCard" ref="creditCard3" />
 		<property name="sendChirps">
 			<list></list>
 		</property>
@@ -240,49 +219,16 @@
 	
 	<!-- Manager -->
 	
-	<bean id="manager1" class="domain.Manager">
-		<property name="name" value="Alicia" />
-		<property name="surname" value="Gonzalez" />
-		<property name="email" value="dagona@gmail.com" />
-		<property name="userAccount" ref="userAccount5" />
-		<property name="phone" value="+34872532251" />	
-		<property name="company" value="meetic" />
-		<property name="VATNumber" value="ABCD-120899-5H9" />
-		<property name="Amount" value="0.0" />
-		<property name="events">
-			<list></list>
-		</property>
-			<property name="sendChirps">
-			<list></list>
-		</property>
-	</bean>	
-	
-	<bean id="manager2" class="domain.Manager">
-		<property name="name" value="Pepe Juan" />
-		<property name="surname" value="Gonzalez" />
-		<property name="email" value="pepejuan@gmail.com" />
-		<property name="userAccount" ref="userAccount6" />
-		<property name="phone" value="+34872535482" />	
-		<property name="company" value="Adopta a un tio" />
-		<property name="VATNumber" value="CDFG-120899-5HS" />
-		<property name="Amount" value="3.2" />
-		<property name="events">
-			<list></list>
-		</property>
-			<property name="sendChirps">
-			<list></list>
-		</property>
-	</bean>
-	
-		<bean id="manager3" class="domain.Manager">
+		<bean id="manager1" class="domain.Manager">
 		<property name="name" value="Iván" />
 		<property name="surname" value="Díaz" />
 		<property name="email" value="pepejuan@gmail.com" />
-		<property name="userAccount" ref="userAccount7" />
+		<property name="userAccount" ref="userAccount5" />
 		<property name="phone" value="+34872535482" />	
 		<property name="company" value="Tinder" />
 		<property name="VATNumber" value="CWSV-120899-J5S" />
 		<property name="Amount" value="1.2" />
+		<property name="creditCard" ref="creditCard4" />
 		<property name="events">
 			<list></list>
 		</property>
@@ -429,13 +375,13 @@
 	</bean>
 	
 	<bean id="creditCard4" class="domain.CreditCard">
-		<property name="holder" value="Ana Rosa" />
+		<property name="holder" value="Iván Díaz" />
 		<property name="brand" value="VISA" />
 		<property name="number" value="4485949886281843" />
 		<property name="expirationMonth" value="11" />
 		<property name="expirationYear" value="18" />
 		<property name="cvv" value="200" />
-		<property name="superUser" ref="manager3"/>
+		<property name="superUser" ref="manager1"/>
 	</bean>
 	
 	<!-- Config -->
@@ -488,7 +434,7 @@
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="6"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -504,7 +450,7 @@
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="4"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -520,7 +466,7 @@
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="7"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -536,7 +482,7 @@
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -552,7 +498,7 @@
 		<property name="description" value="Lo bueno si breve, dos veces bueno"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -568,7 +514,7 @@
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -584,7 +530,7 @@
 		<property name="description" value="Apuntate a la carrera popular de tu ciudad en patines"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -600,7 +546,7 @@
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -616,7 +562,7 @@
 		<property name="description" value="Ven a disfrutar con nosotros"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -633,7 +579,7 @@
 		<property name="description" value="No te lo pienses"/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -649,7 +595,7 @@
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
@@ -665,7 +611,7 @@
 		<property name="description" value=""/>
 		<property name="picture" value="http://diviertete.com"/>
 		<property name="seatsOffered" value="21"/>
-		<property name="manager" ref="manager3"/>
+		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
 			<list></list>
 		</property>
