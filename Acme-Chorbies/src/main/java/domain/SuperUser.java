@@ -21,7 +21,7 @@ public abstract class SuperUser extends Actor{
 	private CreditCard creditCard;
 	
 	@Valid
-	@OneToOne(optional=true)
+	@OneToOne(optional=true, mappedBy="superUser")
 	public CreditCard getCreditCard() {
 		return creditCard;
 	}

@@ -37,7 +37,7 @@
 	</jstl:if>
 	
 	<spring:message code="event.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="false" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="event.moment" var="momentHeader" />
 	<jstl:set var="moment" value="${event.day } / ${event.month} / ${event.year } - ${event.hour }:${event.minutes }"/>

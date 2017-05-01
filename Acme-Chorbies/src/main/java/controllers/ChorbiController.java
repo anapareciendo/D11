@@ -167,25 +167,5 @@ public class ChorbiController extends AbstractController {
 			result.addObject("message", "chorbi.card.error");
 		}
 		return result;
-		
-	}
-	
-
-	protected ModelAndView createEditModelAndView(Chorbi chorbi) {
-		ModelAndView result;
-
-		result = createEditModelAndView(chorbi, null);
-		
-		return result;
-	}	
-	
-	protected ModelAndView createEditModelAndView(Chorbi chorbi, String message) {
-		ModelAndView result;
-		
-		result = new ModelAndView("chorbi/edit");
-		result.addObject("chorbi", chorbi);
-		result.addObject("message", message);
-
-		return result;
 	}
 }

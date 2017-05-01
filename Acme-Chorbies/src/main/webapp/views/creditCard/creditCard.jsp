@@ -24,10 +24,10 @@
 	
 	<form:hidden path="id" />
 	
-	<acme:textbox code="chorbi.card.holder" path="holder"/>
-	<acme:textbox code="chorbi.card.number" path="number"/>
+	<acme:textbox code="creditcard.holder" path="holder"/>
+	<acme:textbox code="creditcard.number" path="number"/>
 	
-	<spring:message code='chorbi.card.brand' var="brand"/> 
+	<spring:message code='creditcard.brand' var="brand"/> 
 	<jstl:out value="${brand }"/>
 	<form:select path="brand">
 		<option value="VISA">Visa</option>

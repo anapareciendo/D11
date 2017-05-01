@@ -30,5 +30,10 @@
 			<spring:message code="chorbi.kindRelationship"/>: <jstl:out value="${chorbi.kindRelationship}" /><br>
 			<spring:message code="chorbi.birthDate"/>: <jstl:out value="${chorbi.birthDate}" /><br>
 			<spring:message code="chorbi.genre"/>: <jstl:out value="${chorbi.genre}" /><br>
+			<br>
+			<spring:message code="chorbi.country"/>: <jstl:out value="${chorbi.coordinates.country}" /><br>
+			<spring:message code="chorbi.city"/>: <jstl:out value="${chorbi.coordinates.city}" /><br>
+			<spring:message code="chorbi.state"/>: <jstl:out value="${chorbi.coordinates.state}" /><br>
+			<spring:message code="chorbi.province"/>: <jstl:out value="${chorbi.coordinates.province}" /><br>
 		</p>
 	</div>

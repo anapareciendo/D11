@@ -47,12 +47,11 @@
 					<li><a href="administrator/config.do"><spring:message code="master.page.config" /> </a></li>
 					<li><a href="dashboard/dashboard.do"><spring:message code="master.page.dashboard" /> </a></li>
 					</security:authorize>
-					<security:authorize access="hasRole('CHORBI')">
-					<li><a href="chorbi/creditCard.do"><spring:message code="master.page.card" /> </a></li>
+					<security:authorize access="hasRole('CHORBI') or hasRole('MANAGER)">
+					<li><a href="creditCard/edit.do"><spring:message code="master.page.card" /> </a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('MANAGER')">
 					<li><a href="manager/display.do"><spring:message code="master.page.manager.display" /></a></li>
-					<li><a href="manager/creditCard.do"><spring:message code="master.page.card" /> </a></li>
 					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
