@@ -1,8 +1,6 @@
 package controllers.manager;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +16,7 @@ import services.ChirpService;
 import services.EventService;
 import services.ManagerService;
 import controllers.AbstractController;
-import domain.Broadcast;
-import domain.Chirp;
-import domain.Chorbi;
 import domain.Event;
-import domain.Manager;
 
 
 @Controller
@@ -34,9 +28,9 @@ public class EventManagerController extends AbstractController {
 	@Autowired
 	private ManagerService managerService;
 	@Autowired
-	private ChirpService chirpService;
-	@Autowired
 	private BroadcastService broadcastService;
+	@Autowired
+	private ChirpService chirpService;
 
 	public EventManagerController() {
 		super();
@@ -51,6 +45,9 @@ public class EventManagerController extends AbstractController {
 		result.addObject("requestURI", "event/manager/list.do");
 		result.addObject("event", event);
 		result.addObject("edit",true);
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
 		
 
 		return result;
@@ -88,10 +85,12 @@ public class EventManagerController extends AbstractController {
 			Event res = eventService.reconstruct(event, binding);
 			if(!binding.hasErrors()){
 				try{
-					eventService.save(res);
+					Event saved=eventService.save(res);
 					if(event.getId()==0){
 						managerService.eventFee();
 					}
+					broadcastService.broadcastEditEvent(saved);
+					
 					result = new ModelAndView("redirect:list.do");
 				}catch (Throwable opps){
 					result = new ModelAndView("event/edit");
@@ -116,73 +115,15 @@ public class EventManagerController extends AbstractController {
 	public ModelAndView delete(Event event) {
 		ModelAndView result;
 		
-		try{
+//		try{
 			Event res = eventService.findOne(event.getId());
+			chirpService.broadcast(res);
 			eventService.delete(res);
 			result = new ModelAndView("redirect:list.do");
-		}catch (Throwable opps){
-			result = new ModelAndView("event/edit");
-			result.addObject("event", event);
-			result.addObject("message","event.commit.error");
-		}
-		return result;
-	}
-	
-	@RequestMapping(value="/broadcast", method = RequestMethod.GET)
-	public ModelAndView broadcast() {
-		ModelAndView result;
-		Broadcast bm = broadcastService.create();
-		
-		result = new ModelAndView("broadcast/broadcast");
-		result.addObject("broadcast", bm);
-
-		return result;
-	}
-	
-	@RequestMapping(value="/broadcast", method = RequestMethod.POST, params="send")
-	public ModelAndView broadcast(Chirp chirp, BindingResult binding) {
-		ModelAndView result;
-		
-//		try{
-			List<Chorbi> cc = new ArrayList<Chorbi>();
-			cc.addAll(eventService.findMyAssistants());
-			if(!cc.isEmpty()){
-				chirp.setRecipient(cc.get(0));
-				Chirp res = chirpService.reconstruct(chirp, binding);
-				if(!binding.hasErrors()){
-					try{
-						chirpService.broadcast(res);
-						Chirp newChirp = chirpService.create(new Manager(), new Chorbi());
-						
-						result = new ModelAndView("chirp/event");
-						result.addObject("chirp", newChirp);
-						result.addObject("mode", "send");
-						result.addObject("message", "event.broadcast.success");
-					}catch (Throwable opps){
-						result = new ModelAndView("chirp/event");
-						result.addObject("chirp", chirp);
-						result.addObject("mode", "send");
-						result.addObject("message","event.commit.error");
-					}
-				}else{
-					result = new ModelAndView("chirp/event");
-					result.addObject("chirp", chirp);
-					result.addObject("mode", "send");
-					result.addObject("message","event.commit.incomplete");
-				}
-			}else{
-				Chirp newChirp = chirpService.create(new Manager(), new Chorbi());
-				result = new ModelAndView("chirp/event");
-				result.addObject("chirp", newChirp);
-				result.addObject("mode", "send");
-				result.addObject("message", "event.broadcast.success");
-			}
-			
-//		}catch(Throwable oops){
-//			result = new ModelAndView("chirp/event");
-//			result.addObject("chirp", chirp);
-//			result.addObject("mode", "send");
-//			result.addObject("message","event.commit.incomplete");
+//		}catch (Throwable opps){
+//			result = new ModelAndView("event/edit");
+//			result.addObject("event", event);
+//			result.addObject("message","event.commit.error");
 //		}
 		return result;
 	}

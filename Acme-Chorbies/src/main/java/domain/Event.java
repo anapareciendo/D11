@@ -5,6 +5,8 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -132,12 +134,24 @@ public class Event extends DomainEntity{
 		this.manager = manager;
 	}
 	
+//	@Valid
+//	@NotNull
+//	@ManyToMany(
+//			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE},
+//			mappedBy="events",
+//			targetEntity=Chorbi.class
+//			)
+	
 	@Valid
 	@NotNull
 	@ManyToMany(
-			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE},
-			mappedBy="events",
-			targetEntity=Chorbi.class
+			targetEntity=Chorbi.class, 
+			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE}
+			)
+	@JoinTable(
+			name="event_chorbi",
+			joinColumns=@JoinColumn(name="event_id"),
+			inverseJoinColumns=@JoinColumn(name="chorbi_id")
 			)
 	public Collection<Chorbi> getChorbies() {
 		return chorbies;

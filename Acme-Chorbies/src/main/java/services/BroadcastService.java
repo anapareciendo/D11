@@ -12,6 +12,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Broadcast;
+import domain.Event;
 import domain.Manager;
 
 @Service
@@ -22,7 +23,6 @@ public class BroadcastService {
 	@Autowired
 	private BroadcastRepository	broadcastRepository;
 
-
 	//Validator
 //	@Autowired
 //	private Validator validator;
@@ -30,6 +30,8 @@ public class BroadcastService {
 	//Supporting services
 	@Autowired
 	private ManagerService managerService;
+	@Autowired
+	private EventService eventService;
 
 	//Constructors
 	public BroadcastService() {
@@ -84,4 +86,15 @@ public class BroadcastService {
 		managerService.save(manager);
 	}
 
+	public void broadcastEditEvent(Event saved) {
+		Broadcast res = saved.getBroadcast();
+		if(res==null){
+			res=this.create();
+		}
+		res.setTitle(saved.getTitle());
+		res.setText("Some changes were made, check the information of the event");
+		Broadcast ssb=this.save(res);
+		saved.setBroadcast(ssb);
+		eventService.save(saved);
+	}
 }

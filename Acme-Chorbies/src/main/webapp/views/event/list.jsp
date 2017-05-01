@@ -21,6 +21,11 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<jstl:choose>
+<jstl:when test="${isEmpty == true }">
+<spring:message code="event.empty"/>
+</jstl:when>
+<jstl:otherwise>
 <display:table name="event" id="event" requestURI="${requestURI}" pagesize="8" class="displaytag">
 	<jstl:set var="off" value="${event.seatsOffered }"/>
 	<jstl:set var="on" value="${fn:length(event.chorbies)}"/>
@@ -91,3 +96,5 @@
 	</security:authorize>
 	
 </display:table>
+</jstl:otherwise>
+</jstl:choose>

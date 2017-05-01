@@ -184,6 +184,10 @@ public class ChorbiService {
 		return this.chorbiRepository.findNotBanned();
 	}
 
+	public Collection<Chorbi> findEvent(int eventId){
+		return this.chorbiRepository.findEvent(eventId);
+	}
+	
 	public Chorbi ban(Chorbi chorbi) {
 		final UserAccount ua = LoginService.getPrincipal();
 		Assert.notNull(ua);
@@ -253,8 +257,6 @@ public class ChorbiService {
 		break;
 		}
 		res.setCoordinates(coor);
-		
-		
 		
 		validator.validate(res, binding);
 		

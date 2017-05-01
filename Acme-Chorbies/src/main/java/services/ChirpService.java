@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Chirp;
 import domain.Chorbi;
+import domain.Event;
 import domain.SuperUser;
 
 @Service
@@ -38,8 +39,6 @@ public class ChirpService {
 	private ChorbiService chorbiService;
 	@Autowired
 	private ManagerService managerService;
-	@Autowired
-	private EventService eventService;
 
 	//Constructors
 	public ChirpService() {
@@ -179,7 +178,7 @@ public class ChirpService {
 		return res;
 	}
 
-	public void broadcast(Chirp chirp) {
+	public void broadcast(Event event) {
 		UserAccount ua = LoginService.getPrincipal();
 		Assert.notNull(ua);
 		Authority a = new Authority();
@@ -187,13 +186,12 @@ public class ChirpService {
 		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a manager for this action.");
 		
 		List<Chorbi> chorbies = new ArrayList<Chorbi>();
-		chorbies.addAll(eventService.findMyAssistants());
+		chorbies.addAll(chorbiService.findEvent(event.getId()));
 		
 		for(Chorbi c:chorbies){
 			Chirp s = this.create(managerService.findByUserAccountId(ua.getId()), c);
-			s.setSubject(chirp.getSubject());
-			s.setText(chirp.getText());
-			s.getAttachments().addAll(chirp.getAttachments());
+			s.setSubject("Event canceled");
+			s.setText("The event '"+event.getTitle()+"' has been canceled");
 			this.save(s);
 		}
 	}

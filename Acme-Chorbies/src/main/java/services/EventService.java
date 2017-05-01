@@ -37,7 +37,9 @@ public class EventService {
 	private ManagerService managerService;
 	@Autowired
 	private ChorbiService chorbiService;
-
+	@Autowired
+	private BroadcastService broadcastService;
+	
 	//Constructors
 	public EventService() {
 		super();
@@ -86,26 +88,25 @@ public class EventService {
 		final Event res = this.eventRepository.save(event);
 		res.getManager().getEvents().add(res);
 
-		Calendar date =Calendar.getInstance();
-		int day=date.get(Calendar.DAY_OF_MONTH);
-		int month=date.get(Calendar.MONTH);
-		int year=date.get(Calendar.YEAR);
-		int hour=date.get(Calendar.HOUR_OF_DAY);
-		int minutes=date.get(Calendar.MINUTE);
-		res.setDay(day);
-		res.setMonth(month);
-		res.setYear(year);
-		res.setHour(hour);
-		res.setMinutes(minutes);
-		
 		return res;
 	}
-
+	
+	public Event saveAndEdit(final Event event){
+		Assert.notNull(event, "The evenet to save cannot be null.");
+		final Event res = this.eventRepository.save(event);
+		return res;
+	}
+	
 	public void delete(final Event event) {
 		Assert.notNull(event, "The event to delete cannot be null.");
 		Assert.isTrue(this.eventRepository.exists(event.getId()));
 		Manager principal = managerService.findByUserAccountId(LoginService.getPrincipal().getId());
 		Assert.isTrue(principal.getEvents().contains(event),"You are not the owner of this event");
+		
+		if(event.getBroadcast()!=null){
+			broadcastService.delete(event.getBroadcast());
+			event.setBroadcast(null);
+		}
 		
 		eventRepository.delete(event);
 	}
@@ -168,8 +169,8 @@ public class EventService {
 		
 		Event event = eventRepository.findOne(eventId);
 		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
-		chorbi.getEvents().remove(event);
-		chorbiService.save(chorbi);
+		event.getChorbies().remove(chorbi);
+		this.saveAndEdit(event);
 	}
 
 	public void register(int eventId) {
@@ -182,10 +183,8 @@ public class EventService {
 		Event event = eventRepository.findOne(eventId);
 		Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
 		if(!chorbi.getEvents().contains(event)){
-			chorbi.getEvents().add(event);
-			chorbiService.save(chorbi);
+			event.getChorbies().add(chorbi);
+			this.saveAndEdit(event);
 		}
 	}
-	
-
 }

@@ -44,6 +44,9 @@ public class EventController extends AbstractController {
 				result.addObject("all", true);
 			}
 		}catch(Throwable oops){}
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
 
 		return result;
 	}
@@ -62,6 +65,9 @@ public class EventController extends AbstractController {
 		result.addObject("year", date.get(Calendar.YEAR));
 		result.addObject("day", date.get(Calendar.DAY_OF_MONTH));
 		result.addObject("allEvents", true);
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
 
 		return result;
 	}

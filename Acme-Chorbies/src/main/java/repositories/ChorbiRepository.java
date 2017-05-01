@@ -20,4 +20,7 @@ public interface ChorbiRepository extends JpaRepository<Chorbi, Integer> {
 	@Query("select c from Chorbi c where c.banned=false")
 	Collection<Chorbi> findNotBanned();
 	
+	@Query("select e.chorbies from Event e where e.id=?1")
+	Collection<Chorbi> findEvent(int id);
+	
 }

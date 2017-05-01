@@ -38,6 +38,9 @@ public class EventChorbiController extends AbstractController {
 		result.addObject("requestURI", "event/chorbi/list.do");
 		result.addObject("event", event);
 		result.addObject("own", true);
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
 
 		return result;
 	}
@@ -58,6 +61,9 @@ public class EventChorbiController extends AbstractController {
 		result.addObject("requestURI", "event/chorbi/list.do");
 		result.addObject("event", event);
 		result.addObject("own", true);
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
 		
 		return result;
 	}
@@ -75,12 +81,23 @@ public class EventChorbiController extends AbstractController {
 			result.addObject("message", "event.commit.error");
 		}
 		
-		Collection<Event> events = eventService.eventOrganisedLessMonthAndSeatsAvailable();
+		Collection<Event> event;
+		event = eventService.eventOrganisedLessMonthAndSeatsAvailable();
 		
+		result = new ModelAndView("event/list/available");
 		result.addObject("requestURI", "event/listAvailable.do");
-		result.addObject("event", events);
-		result.addObject("all", true);
+		result.addObject("event", event);
 		result.addObject("available", true);
+		result.addObject("edit",true);
+		try{
+			if(chorbiService.findByUserAccountId(LoginService.getPrincipal().getId())!=null){
+				result.addObject("all", true);
+			}
+		}catch(Throwable oops){}
+		if(event.isEmpty()){
+			result.addObject("isEmpty", true);
+		}
+		result.addObject("message", "event.register.success");
 		
 		return result;
 	}

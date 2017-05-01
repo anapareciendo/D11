@@ -7,8 +7,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -147,17 +145,26 @@ public class Chorbi extends SuperUser{
 		this.receivedLikes = receivedLikes;
 	}
 	
+//	@Valid
+//	@NotNull
+//	@ManyToMany(
+//			targetEntity=Event.class, 
+//			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE}
+//			)
+//	@JoinTable(
+//			name="chorbi_event",
+//			joinColumns=@JoinColumn(name="chorbi_id"),
+//			inverseJoinColumns=@JoinColumn(name="event_id")
+//			)
+	
 	@Valid
 	@NotNull
 	@ManyToMany(
-			targetEntity=Event.class, 
-			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE}
+			cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE},
+			mappedBy="chorbies",
+			targetEntity=Event.class
 			)
-	@JoinTable(
-			name="chorbi_event",
-			joinColumns=@JoinColumn(name="chorbi_id"),
-			inverseJoinColumns=@JoinColumn(name="event_id")
-			)
+	
 	public Collection<Event> getEvents() {
 		return events;
 	}
