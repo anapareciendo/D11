@@ -1,6 +1,8 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,5 +98,19 @@ public class BroadcastService {
 		Broadcast ssb=this.save(res);
 		saved.setBroadcast(ssb);
 		eventService.save(saved);
+	}
+	
+	public Collection<Broadcast> findMyBroadcast(){
+		return this.broadcastRepository.findMyBroadcast(LoginService.getPrincipal().getId());
+	}
+	
+	public Broadcast findBroadcastManager(){
+		List<Manager> managers = new ArrayList<Manager>();
+		managers.addAll(managerService.findAll());
+		Broadcast res = managers.get(0).getBroadcast();
+		if(res==null){
+			res=this.create();
+		}
+		return res;
 	}
 }

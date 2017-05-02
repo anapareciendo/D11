@@ -10,7 +10,9 @@
 
 package controllers.chorbi;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.LoginService;
+import services.BroadcastService;
 import services.ChirpService;
 import services.ChorbiService;
 import controllers.AbstractController;
+import domain.Broadcast;
 import domain.Chirp;
 import domain.Chorbi;
 
@@ -34,6 +38,8 @@ public class ChirpChorbiController extends AbstractController {
 	// Services -------------------------------------------------------
 	@Autowired
 	private ChirpService chirpService;
+	@Autowired
+	private BroadcastService broadcastService;
 	@Autowired
 	private ChorbiService chorbiService;
 
@@ -47,14 +53,33 @@ public class ChirpChorbiController extends AbstractController {
 	public ModelAndView listReceived() {
 		ModelAndView result;
 		
-		
 		Collection<Chirp> chirps = chirpService.findMyReceivedChirps(LoginService.getPrincipal().getId());
-		
+
 		result = new ModelAndView("chirp/list");
 		result.addObject("chirps", chirps);
 		result.addObject("requestUri", "/chirp/chorbi/received.do");
+		
 		result.addObject("received", true);
 
+		return result;
+	}
+	
+	@RequestMapping(value="/broadcast", method = RequestMethod.GET)
+	public ModelAndView broadcastsList() {
+		ModelAndView result;
+		
+		
+		List<Broadcast> casts = new ArrayList<Broadcast>();
+		casts.addAll(broadcastService.findMyBroadcast());
+		Broadcast cast = broadcastService.findBroadcastManager();
+		if(cast.getId()!=0){
+			casts.add(cast);
+		}
+		
+		result = new ModelAndView("chirp/broadcast");
+		result.addObject("broadcast", casts);
+		result.addObject("requestUri", "/chirp/chorbi/broadcast.do");
+		
 		return result;
 	}
 	

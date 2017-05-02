@@ -36,4 +36,9 @@
 		<put-attribute name="body" value="/views/chirp/event.jsp"/>		
 	</definition>
 	
+	<definition name="chirp/broadcast" extends="master.page">
+		<put-attribute name="title" value="Notificaciones de Eventos"/>
+		<put-attribute name="body" value="/views/chirp/broadcast.jsp"/>		
+	</definition>
+	
 </tiles-definitions>

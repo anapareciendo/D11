@@ -57,6 +57,7 @@
 				</ul>
 			</li>
 			
+			<security:authorize access="hasRole('ADMIN') or hasRole('CHORBI')">
 			<li><a class="fNiv"><spring:message	code="master.page.chorbi" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -71,6 +72,7 @@
 					</security:authorize>
 				</ul>
 			</li>
+			</security:authorize>
 			
 			<security:authorize access="hasRole('ADMIN')">
 				<li><a class="fNiv"><spring:message	code="master.page.banner" /></a>
@@ -111,6 +113,7 @@
 				</security:authorize>
 				<security:authorize access="hasRole('CHORBI')">
 				<li><a href="event/chorbi/list.do"><spring:message code="master.page.manager.list" /></a></li>
+				<li><a href="chirp/chorbi/broadcast.do"><spring:message code="master.page.broadcast.list" /></a></li>
 				</security:authorize>
 			</ul>
 		</li>

@@ -65,6 +65,7 @@
 		<security:intercept-url pattern="/chirp/chorbi/received.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/chirp/chorbi/sent.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/chirp/chorbi/chirp.do" access="hasRole('CHORBI')" />
+		<security:intercept-url pattern="/chirp/chorbi/broadcast.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/chirp/chorbi/send.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/chirp/chorbi/reply.do" access="hasRole('CHORBI')" />
 		<security:intercept-url pattern="/chirp/chorbi/forward.do" access="hasRole('CHORBI')" />

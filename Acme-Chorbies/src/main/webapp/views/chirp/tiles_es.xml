@@ -35,5 +35,10 @@
 		<put-attribute name="title" value="Emitir un Flechazo Chirp"/>
 		<put-attribute name="body" value="/views/chirp/event.jsp"/>		
 	</definition>
+	
+	<definition name="chirp/broadcast" extends="master.page">
+		<put-attribute name="title" value="Event Notifications"/>
+		<put-attribute name="body" value="/views/chirp/broadcast.jsp"/>		
+	</definition>
 
 </tiles-definitions>
