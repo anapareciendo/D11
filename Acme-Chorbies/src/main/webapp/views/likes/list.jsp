@@ -27,7 +27,10 @@
 	<display:column property="moment" title="${momentHeader }" sortable="true" />
 	
 	<spring:message code="likes.comment" var="commentHeader" />
-	<display:column property="comment" title="${commentHeader }" sortable="true" />
+	<display:column property="comment" title="${commentHeader }" sortable="false" />
+	
+	<spring:message code="likes.stars" var="starsHeader" />
+	<display:column property="stars" title="${starsHeader }" sortable="true" />
 	
 	<jstl:if test="${make == true }">
 	<display:column>

@@ -132,12 +132,7 @@
 			<list></list>
 		</property>
 		<property name="events">
-			<list>
-				<!-- <ref bean="event1"/>
-				<ref bean="event3"/>
-				<ref bean="event4"/>
-				<ref bean="event6"/> -->
-			</list>
+			<list></list>
 		</property>
 		<property name="monthlyFee">
 			<list></list>
@@ -172,10 +167,7 @@
 			<list></list>
 		</property>
 		<property name="events">
-			<list>
-				<!-- <ref bean="event5"/>
-				<ref bean="event2"/> -->
-			</list>
+			<list></list>
 		</property>
 		<property name="monthlyFee">
 			<list></list>
@@ -385,7 +377,9 @@
 		<property name="seatsOffered" value="12"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
-			<list></list>
+			<list>
+				<ref bean="chorbi1"/>
+			</list>
 		</property>
 	</bean>
 	
@@ -594,7 +588,9 @@
 		<property name="seatsOffered" value="21"/>
 		<property name="manager" ref="manager1"/>
 		<property name="chorbies">
-			<list></list>
+			<list>
+				<ref bean="chorbi1"/>
+			</list>
 		</property>
 	</bean>
 	
