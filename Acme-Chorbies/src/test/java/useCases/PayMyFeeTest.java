@@ -13,69 +13,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import services.EventService;
+import security.LoginService;
 import services.ManagerService;
 import utilities.AbstractTest;
-import domain.Event;
 import domain.Manager;
 
 @ContextConfiguration(locations = { "classpath:spring/junit.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class EditMyEventTest extends AbstractTest {
+public class PayMyFeeTest extends AbstractTest {
 
 	/*
-	 * Edit my event - Manager
+	 * Pay my fee - Manager
 	 *
-	 * -El orden de los parámetros es: Usuario (Manager) que se va a autenticar, Id del evento a editar, Error esperado
+	 * -El orden de los parámetros es: Usuario (Manager) que se va a autenticar, Error esperado
 	 * 
 	 * Cobertura del test:
-	 * -El usuario autenticado existe y uno de sus eventos puede editarse(test positivo)
-	 * -El usuario no está autenticado y no se puede editar(test negativo)
+	 * -El usuario autenticado existe (test positivo)
+	 * -El usuario no está autenticado (test negativo)
 	 */
-	@Autowired
-	private EventService eventService;
 	
 	@Autowired
 	private ManagerService managerService;
 
+	
 	private List<Manager> managers;
-	private List<Event> events;
 	
 	@Before
     public void setup() {
-		this.managers = new ArrayList<Manager>();
+		this.managers= new ArrayList<Manager>();
 		this.managers.addAll(this.managerService.findAll());
 		
 		Collections.shuffle(this.managers);
-		while(this.managers.get(0).getEvents().isEmpty())
-			Collections.shuffle(this.managers);
-		
-		events = new ArrayList<Event>(this.managers.get(0).getEvents());
 	}
 	@Test
 	public void driver() {
 		final Object testingData[][] = {
-				{this.managers.get(0).getUserAccount().getUsername(),this.events.get(0).getId(),null },
-				{"", this.events.get(0).getId(),IllegalArgumentException.class}
+				{this.managers.get(0).getUserAccount().getUsername(), null },
+				{"", IllegalArgumentException.class}
 				};
 
 		for (int i = 0; i < testingData.length; i++)
 			this.template((String) testingData[i][0],
-					(Integer) testingData[i][1],
-					(Class<?>) testingData[i][2]);
+					(Class<?>) testingData[i][1]);
 	}
 
-	protected void template(String username, Integer eventId, final Class<?> expected) {
+	protected void template(String username, final Class<?> expected) {
 		Class<?> caught;
 		caught = null;
 		try {
 			this.authenticate(username);
 			
-			Event event = eventService.findOne(eventId);
-			
-			event.setDescription("Cambiando la descripción");
-			eventService.save(event);
+			Manager manager = managerService.findByUserAccountId(LoginService.getPrincipal().getId());
+			manager.setAmount(0);
+			managerService.save(manager);
 			
 			this.unauthenticate();
 
