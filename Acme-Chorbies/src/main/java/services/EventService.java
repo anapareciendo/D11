@@ -1,6 +1,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class EventService {
 		Event res;
 		res = new Event();
 		res.setManager(manager);
+		res.setDate(Calendar.getInstance().getTime());
 //		Calendar date =Calendar.getInstance();
 //		int day=date.get(Calendar.DAY_OF_MONTH);
 //		int month=date.get(Calendar.MONTH)+1;
@@ -83,6 +85,10 @@ public class EventService {
 //		Assert.notNull(event.getMoment(), "The evenet to save cannot have 'moment' null.");
 //		Assert.notNull(event.getTitle(), "The evenet to save cannot have 'title' null.");
 //		Assert.notNull(event.getDescription(), "The event to save cannot have 'description' null.");
+		
+		Calendar date = Calendar.getInstance();
+		date.set(event.getYear(), event.getMonth()-1, event.getDay(), event.getHour(), event.getMinutes());
+		event.setDate(date.getTime());
 		
 		final Event res = this.eventRepository.save(event);
 		res.getManager().getEvents().add(res);

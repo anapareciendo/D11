@@ -45,8 +45,9 @@
 	<display:column property="title" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="event.moment" var="momentHeader" />
-	<jstl:set var="moment" value="${event.day } / ${event.month} / ${event.year } - ${event.hour }:${event.minutes }"/>
-	<display:column value="${moment}" title="${momentHeader}" sortable="false" />
+	<display:column property="date" title="${momentHeader}" sortable="true" />
+	<%-- <jstl:set var="moment" value="${event.day } / ${event.month} / ${event.year } - ${event.hour }:${event.minutes }"/>
+	<display:column value="${moment}" title="${momentHeader}" sortable="false" /> --%>
 	
 	
 	<spring:message code="event.description" var="descriptionHeader" />

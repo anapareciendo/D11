@@ -372,6 +372,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
+		<property name="date" value="2017/12/12 12:12"/>
 		<property name="description" value="Conoce a tu alma gemela"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="12"/>
@@ -390,6 +391,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="15"/>
 		<property name="minutes" value="21"/>
+		<property name="date" value="2017/08/10 12:12"/>
 		<property name="description" value="Aprende a bailar riendote"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="5"/>
@@ -406,6 +408,7 @@
 		<property name="year" value="2001"/>
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
+		<property name="date" value="2001/01/01 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="6"/>
@@ -422,6 +425,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="12"/>
 		<property name="minutes" value="12"/>
+		<property name="date" value="2017/10/04 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="4"/>
@@ -438,6 +442,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="12"/>
 		<property name="minutes" value="59"/>
+		<property name="date" value="2017/04/21 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="7"/>
@@ -454,6 +459,7 @@
 		<property name="year" value="2018"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2018/01/22 12:12"/>
 		<property name="description" value="Atrévete a actividades que jamás has hecho"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -470,6 +476,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2017/05/29 12:12"/>
 		<property name="description" value="Lo bueno si breve, dos veces bueno"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -486,6 +493,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2017/04/30 12:12"/>
 		<property name="description" value=""/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -502,6 +510,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2017/06/21 12:12"/>
 		<property name="description" value="Apuntate a la carrera popular de tu ciudad en patines"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -518,6 +527,7 @@
 		<property name="year" value="2005"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2005/01/22 12:12"/>
 		<property name="description" value=""/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -534,6 +544,7 @@
 		<property name="year" value="2009"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2009/09/05 12:12"/>
 		<property name="description" value="Ven a disfrutar con nosotros"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -551,6 +562,7 @@
 		<property name="year" value="2015"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2015/10/05 12:12"/>
 		<property name="description" value="No te lo pienses"/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -567,6 +579,7 @@
 		<property name="year" value="2014"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2014/12/07 12:12"/>
 		<property name="description" value=""/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
@@ -583,6 +596,7 @@
 		<property name="year" value="2017"/>
 		<property name="hour" value="21"/>
 		<property name="minutes" value="00"/>
+		<property name="date" value="2017/12/13 12:12"/>
 		<property name="description" value=""/>
 		<property name="picture" value="https://wallpaperscraft.com/image/one_piece_punk_metal_company_party_29700_1024x1024.jpg"/>
 		<property name="seatsOffered" value="21"/>
