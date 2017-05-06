@@ -51,7 +51,7 @@
 					<li><a href="creditCard/creditCard.do"><spring:message code="master.page.card" /> </a></li>
 					</security:authorize>
 					<security:authorize access="hasRole('MANAGER')">
-					<li><a href="manager/display.do"><spring:message code="master.page.manager.display" /></a></li>
+					<li><a href="managerr/display.do"><spring:message code="master.page.manager.display" /></a></li>
 					</security:authorize>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
@@ -109,7 +109,7 @@
 				<security:authorize access="hasRole('MANAGER')">
 					<li><a href="event/manager/list.do"><spring:message code="master.page.manager.list" /></a></li>
 					<li><a href="event/manager/create.do"><spring:message code="master.page.manager.create" /></a></li>
-					<li><a href="manager/broadcast.do"><spring:message code="master.page.manager.broadcast" /></a></li>
+					<li><a href="managerr/broadcast.do"><spring:message code="master.page.manager.broadcast" /></a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('CHORBI')">
 				<li><a href="event/chorbi/list.do"><spring:message code="master.page.manager.list" /></a></li>

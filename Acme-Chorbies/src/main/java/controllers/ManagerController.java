@@ -24,7 +24,7 @@ import domain.Broadcast;
 import domain.Manager;
 
 @Controller
-@RequestMapping("/manager")
+@RequestMapping("/managerr")
 public class ManagerController extends AbstractController {
 	
 	// Services -------------------------------------------------------
