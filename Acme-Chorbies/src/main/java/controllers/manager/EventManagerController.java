@@ -92,7 +92,7 @@ public class EventManagerController extends AbstractController {
 					int year=date.get(Calendar.YEAR);
 					int hour=date.get(Calendar.HOUR_OF_DAY);
 					int minutes=date.get(Calendar.MINUTE);
-					if(event.getId()==0 && (event.getYear()>year || (event.getYear()==year && event.getMonth()>=month) || (event.getYear()==year && event.getMonth()==month && event.getDay()>day)
+					if(event.getId()!=0 || event.getId()==0 && (event.getYear()>year || (event.getYear()==year && event.getMonth()>=month) || (event.getYear()==year && event.getMonth()==month && event.getDay()>day)
 							|| (event.getYear()==year && event.getMonth()==month && event.getDay()>day && event.getHour()>hour) 
 							|| (event.getYear()==year && event.getMonth()==month && event.getDay()>day && event.getHour()>hour && event.getMinutes()>minutes+10))){
 						Event saved=eventService.save(res);
