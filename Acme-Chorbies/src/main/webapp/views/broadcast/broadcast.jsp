@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="manager/broadcast.do" modelAttribute="broadcast">
+<form:form action="managerr/broadcast.do" modelAttribute="broadcast">
 	
 	<acme:textbox code="broadcast.title" path="title"/>
 	<acme:textbox code="broadcast.text" path="text"/>
