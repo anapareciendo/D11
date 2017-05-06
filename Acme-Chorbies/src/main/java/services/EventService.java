@@ -1,7 +1,6 @@
 package services;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,17 +50,17 @@ public class EventService {
 		Event res;
 		res = new Event();
 		res.setManager(manager);
-		Calendar date =Calendar.getInstance();
-		int day=date.get(Calendar.DAY_OF_MONTH);
-		int month=date.get(Calendar.MONTH)+1;
-		int year=date.get(Calendar.YEAR);
-		int hour=date.get(Calendar.HOUR_OF_DAY);
-		int minutes=date.get(Calendar.MINUTE);
-		res.setDay(day);
-		res.setMonth(month);
-		res.setYear(year);
-		res.setHour(hour);
-		res.setMinutes(minutes);
+//		Calendar date =Calendar.getInstance();
+//		int day=date.get(Calendar.DAY_OF_MONTH);
+//		int month=date.get(Calendar.MONTH)+1;
+//		int year=date.get(Calendar.YEAR);
+//		int hour=date.get(Calendar.HOUR_OF_DAY);
+//		int minutes=date.get(Calendar.MINUTE);
+//		res.setDay(day);
+//		res.setMonth(month);
+//		res.setYear(year);
+//		res.setHour(hour);
+//		res.setMinutes(minutes);
 		res.setChorbies(new ArrayList<Chorbi>());
 		return res;
 	}
@@ -150,6 +149,11 @@ public class EventService {
 		}else{
 			res = eventRepository.findOne(event.getId());
 		}
+		res.setDay(event.getDay());
+		res.setMonth(event.getMonth());
+		res.setYear(event.getYear());
+		res.setHour(event.getHour());
+		res.setMinutes(event.getMinutes());
 		res.setDescription(event.getDescription());
 		res.setPicture(event.getPicture());
 		res.setSeatsOffered(event.getSeatsOffered());

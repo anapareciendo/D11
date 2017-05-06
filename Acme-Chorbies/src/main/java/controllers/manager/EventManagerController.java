@@ -1,5 +1,6 @@
 package controllers.manager;
 
+import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,13 +86,27 @@ public class EventManagerController extends AbstractController {
 			Event res = eventService.reconstruct(event, binding);
 			if(!binding.hasErrors()){
 				try{
-					Event saved=eventService.save(res);
-					if(event.getId()==0){
-						managerService.eventFee();
+					Calendar date =Calendar.getInstance();
+					int day=date.get(Calendar.DAY_OF_MONTH);
+					int month=date.get(Calendar.MONTH)+1;
+					int year=date.get(Calendar.YEAR);
+					int hour=date.get(Calendar.HOUR_OF_DAY);
+					int minutes=date.get(Calendar.MINUTE);
+					if(event.getId()==0 && (event.getYear()>year || (event.getYear()==year && event.getMonth()>=month) || (event.getYear()==year && event.getMonth()==month && event.getDay()>day)
+							|| (event.getYear()==year && event.getMonth()==month && event.getDay()>day && event.getHour()>hour) 
+							|| (event.getYear()==year && event.getMonth()==month && event.getDay()>day && event.getHour()>hour && event.getMinutes()>minutes+10))){
+						Event saved=eventService.save(res);
+						if(event.getId()==0){
+							managerService.eventFee();
+						}
+						broadcastService.broadcastEditEvent(saved);
+						
+						result = new ModelAndView("redirect:list.do");
+					}else{
+						result = new ModelAndView("event/edit");
+						result.addObject("event", event);
+						result.addObject("message", "event.error.date");
 					}
-					broadcastService.broadcastEditEvent(saved);
-					
-					result = new ModelAndView("redirect:list.do");
 				}catch (Throwable opps){
 					result = new ModelAndView("event/edit");
 					result.addObject("event", event);
