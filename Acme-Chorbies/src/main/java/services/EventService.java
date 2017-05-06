@@ -87,7 +87,7 @@ public class EventService {
 //		Assert.notNull(event.getDescription(), "The event to save cannot have 'description' null.");
 		
 		Calendar date = Calendar.getInstance();
-		date.set(event.getYear(), event.getMonth()-1, event.getDay(), event.getHour(), event.getMinutes());
+		date.set(event.getYear(), event.getMonth()-1, event.getDay(), event.getHour(), event.getMinutes(), 0);
 		event.setDate(date.getTime());
 		
 		final Event res = this.eventRepository.save(event);
