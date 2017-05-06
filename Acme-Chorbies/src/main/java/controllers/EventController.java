@@ -33,6 +33,8 @@ public class EventController extends AbstractController {
 		ModelAndView result;
 		Collection<Event> event;
 		event = eventService.eventOrganisedLessMonthAndSeatsAvailable();
+//		event = eventService.findAll();
+		//TODO
 		
 		result = new ModelAndView("event/list/available");
 		result.addObject("requestURI", "event/listAvailable.do");

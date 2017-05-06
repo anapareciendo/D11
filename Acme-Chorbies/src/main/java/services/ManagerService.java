@@ -97,6 +97,8 @@ public class ManagerService {
 	public void eventFee() {
 		Manager manager = this.findByUserAccountId(LoginService.getPrincipal().getId());
 		manager.setAmount(manager.getAmount()+configService.find().getFee());
+		//TODO
+//		manager.setAmount(manager.getAmount()+0);
 		this.save(manager);
 	}
 

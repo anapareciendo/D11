@@ -16,6 +16,7 @@ public class Config extends DomainEntity{
 	private double fee;
 	private double registrationFee;
 
+	//TODO
 	@Range(min=0, max=10000)
 	public int getCache() {
 		return cache;
@@ -24,6 +25,7 @@ public class Config extends DomainEntity{
 		this.cache = cache;
 	}
 
+	//TODO
 	@Min(0)
 	public double getFee() {
 		return fee;
@@ -32,6 +34,7 @@ public class Config extends DomainEntity{
 		this.fee = fee;
 	}
 
+	//TODO
 	@Min(0)
 	public double getRegistrationFee() {
 		return registrationFee;

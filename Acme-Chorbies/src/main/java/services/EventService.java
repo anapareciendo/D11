@@ -90,6 +90,9 @@ public class EventService {
 		date.set(event.getYear(), event.getMonth()-1, event.getDay(), event.getHour(), event.getMinutes(), 0);
 		event.setDate(date.getTime());
 		
+		//TODO
+//		event.setSeatsOffered(0);
+		
 		final Event res = this.eventRepository.save(event);
 		res.getManager().getEvents().add(res);
 

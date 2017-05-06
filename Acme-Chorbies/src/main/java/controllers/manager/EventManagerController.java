@@ -130,16 +130,17 @@ public class EventManagerController extends AbstractController {
 	public ModelAndView delete(Event event) {
 		ModelAndView result;
 		
-//		try{
+		try{
 			Event res = eventService.findOne(event.getId());
 			chirpService.broadcast(res);
+			//TODO
 			eventService.delete(res);
 			result = new ModelAndView("redirect:list.do");
-//		}catch (Throwable opps){
-//			result = new ModelAndView("event/edit");
-//			result.addObject("event", event);
-//			result.addObject("message","event.commit.error");
-//		}
+		}catch (Throwable opps){
+			result = new ModelAndView("event/edit");
+			result.addObject("event", event);
+			result.addObject("message","event.commit.error");
+		}
 		return result;
 	}
 	

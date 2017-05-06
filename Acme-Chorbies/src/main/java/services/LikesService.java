@@ -65,6 +65,9 @@ public class LikesService {
 		Assert.notNull(likes.getLiked(), "The like to save cannot have 'liked' null.");
 		Assert.notNull(likes.getLiker(), "The like to save cannot have 'liker' null.");
 		
+		//TODO
+//		likes.setStars(0);
+		
 		final Likes res = this.likesRepository.save(likes);
 		
 		res.getLiked().getReceivedLikes().add(res);
