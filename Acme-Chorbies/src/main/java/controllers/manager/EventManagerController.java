@@ -103,22 +103,38 @@ public class EventManagerController extends AbstractController {
 						
 						result = new ModelAndView("redirect:list.do");
 					}else{
-						result = new ModelAndView("event/edit");
+						if(event.getId()!=0){
+							result = new ModelAndView("event/edit");
+						}else{
+							result = new ModelAndView("event/create");
+						}
 						result.addObject("event", event);
 						result.addObject("message", "event.error.date");
 					}
 				}catch (Throwable opps){
-					result = new ModelAndView("event/edit");
+					if(event.getId()!=0){
+						result = new ModelAndView("event/edit");
+					}else{
+						result = new ModelAndView("event/create");
+					}
 					result.addObject("event", event);
 					result.addObject("message","event.commit.error");
 				}
 			}else{
-				result = new ModelAndView("event/edit");
+				if(event.getId()!=0){
+					result = new ModelAndView("event/edit");
+				}else{
+					result = new ModelAndView("event/create");
+				}
 				result.addObject("event", event);
 				result.addObject("message","event.commit.incomplete");
 			}
 		}catch(Throwable oops){
-			result = new ModelAndView("event/edit");
+			if(event.getId()!=0){
+				result = new ModelAndView("event/edit");
+			}else{
+				result = new ModelAndView("event/create");
+			}
 			result.addObject("event", event);
 			result.addObject("message","event.commit.incomplete");
 		}
