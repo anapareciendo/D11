@@ -85,7 +85,10 @@ public class EventService {
 //		Assert.notNull(event.getMoment(), "The evenet to save cannot have 'moment' null.");
 //		Assert.notNull(event.getTitle(), "The evenet to save cannot have 'title' null.");
 //		Assert.notNull(event.getDescription(), "The event to save cannot have 'description' null.");
-		
+		Assert.isTrue(event.getDay()>0 && event.getDay()<=31);
+		Assert.isTrue(event.getMonth()>0 && event.getMonth()<=12);
+		Assert.isTrue(event.getHour()>0 && event.getHour()<=24);
+		Assert.isTrue(event.getMinutes()>0 && event.getMinutes()<=60);
 		Calendar date = Calendar.getInstance();
 		date.set(event.getYear(), event.getMonth()-1, event.getDay(), event.getHour(), event.getMinutes(), 0);
 		event.setDate(date.getTime());
