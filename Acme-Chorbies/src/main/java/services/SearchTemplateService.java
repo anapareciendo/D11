@@ -68,8 +68,17 @@ public class SearchTemplateService {
 
 	public SearchTemplate save(final SearchTemplate search) {
 		Assert.notNull(search, "The template to save cannot be null.");
+		final UserAccount ua = LoginService.getPrincipal();
+		Assert.notNull(ua);
+		final Authority a = new Authority();
+		a.setAuthority(Authority.CHORBI);
+		Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi to save a template.");
+		
 		final SearchTemplate res=this.searchTemplateRepository.save(search);
 		if(search.getId()==0){
+			
+			Assert.isTrue(ua.getAuthorities().contains(a), "You must to be a chorbi to save a template.");
+			
 			Chorbi chorbi = chorbiService.findByUserAccountId(LoginService.getPrincipal().getId());
 			chorbi.setSearchTemplate(res);
 			chorbiService.save(chorbi);

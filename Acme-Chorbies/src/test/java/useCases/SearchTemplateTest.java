@@ -69,8 +69,6 @@ public class SearchTemplateTest extends AbstractTest{
 			{
 				this.chorbies.get(0).getUserAccount().getUsername(), null
 			}, {
-				null, IllegalArgumentException.class
-			},{
 				this.admins.get(0).getUserAccount().getUsername(), IllegalArgumentException.class
 			},
 		};

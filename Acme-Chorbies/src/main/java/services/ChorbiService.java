@@ -22,6 +22,7 @@ import security.UserAccountService;
 import domain.Chirp;
 import domain.Chorbi;
 import domain.Coordinates;
+import domain.Event;
 import domain.Genre;
 import domain.KindRelationship;
 import domain.Likes;
@@ -62,6 +63,7 @@ public class ChorbiService {
 		res.setAge(18);
 		res.setBanned(false);
 		res.setUserAccount(ua);
+		res.setEvents(new ArrayList<Event>());
 		return res;
 	}
 
